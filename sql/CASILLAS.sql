@@ -12,4 +12,3 @@ ALTER TABLE casillas
 ADD ( CONSTRAINT pk_casillas
        		 PRIMARY KEY (id_casilla)
     ) ;
-
