@@ -9,6 +9,10 @@ public abstract class Usuario {
 	private String pswd;
 	private String email;
 	
+	public Usuario() {
+		super();
+		
+	}
 	public Usuario(int id_usuario, String nombre, String apellido, String user, String pswd, String email) {
 		super();
 		this.id_usuario = id_usuario;
@@ -17,10 +21,6 @@ public abstract class Usuario {
 		this.user = user;
 		this.pswd = pswd;
 		this.email = email;
-	}
-	
-	public Usuario() {
-		super();
 	}
 
 	public int getId_usuario() {
