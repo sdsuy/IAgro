@@ -37,14 +37,5 @@ private Experto() {
 		this.profesion = profesion;
 	}
 
-	
-	
-	
-		
-	
-	
-
-}
-
 
 }
