@@ -1,0 +1,36 @@
+Carpeta para todos los archivos SQL
+
+Base de datos
+
+Para el proyecto se trabaja con:
+
+● Base Datos: Oracle XE
+● Herramienta: SQLDeveloper
+● Usuario/esquema: PROYECTO
+
+Se debe Crear:
+
+● Usuario/esquema: PROYECTO
+● Asignar Permiso de Administrador al usuario “PROYECTO”: GRANT DBA TO
+PROYECTO;
+
+PAUTAS DE DISEÑO
+
+Para la creación de la Base de Datos tener en cuenta:
+
+1. Las estructuras de las tablas deberán ser definidas con el tipo y tamaño de los
+campos que sean lo más adecuados al contenido de los datos de sus registros.
+2. Definir los campos obligatorios que correspondan.
+3. Definir las claves primarias (PK), claves foráneas (FK) y claves únicas (UK) que
+correspondan.
+4. Para la definición de las claves hay que recordar que en algunos casos pueden ser
+compuestas (por varios campos) y deberán ser correctamente definidas.
+5. Las tablas que lo ameriten deberán contener la clave primaria como ID
+(autonumérico) y una clave primaria lógica (ó clave alternativa), es decir el campo, que
+a nivel de negocio identifique el registro.
+6. En los casos que tengan claves ID (auto numérico), deberán utilizar secuencia (y
+por ende trigger) para generar los valores de dichos campos.
+7. Crear TODAS las tablas y relaciones según el MER.
+
+Fuente:
+Documento General PDT página 28.
