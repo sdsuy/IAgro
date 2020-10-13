@@ -19,4 +19,9 @@ public class DatabaseManager {
 		}
 	}
 
+	public static Connection getConexion() {
+		
+		return Conexion;
+	}
+
 }
