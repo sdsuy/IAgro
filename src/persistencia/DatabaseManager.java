@@ -8,8 +8,8 @@ public class DatabaseManager {
 	
 	private static Connection Conexion;
 	private static String CADENA_CONEXION = "jdbc:oracle:thin:@localhost:1521/xepdb1";
-	private static String USUARIO = "JAVA";
-	private static String CLAVE = "JAVA";
+	private static String USUARIO = "PROYECTO";
+	private static String CLAVE = "PROYECTO";
 	
 	static {
 		try {
