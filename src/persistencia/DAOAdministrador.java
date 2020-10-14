@@ -78,12 +78,12 @@ private static Connection conexion = DatabaseManager.getConexion();
 		return false;	
 	}
 	
-	public static Administrador findUser(String user) {
+	public static Administrador findUser(int documento) {
 		Administrador usuario = new Administrador();
 		try {
 			PreparedStatement pst = conexion.prepareStatement(FIND_ADMIN);
 			
-			pst.setString(1, user);
+			pst.setInt(1, documento);
 			ResultSet rs = pst.executeQuery();
 			
 			if(rs.next()) {
