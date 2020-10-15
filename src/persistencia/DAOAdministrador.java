@@ -8,12 +8,15 @@ import java.sql.Statement;
 import java.util.LinkedList;
 
 import entidades.Administrador;
+import static entidades.Usuario.INSERT_USUARIO;
+import static entidades.Usuario.DELETE_USUARIO;
+import static entidades.Usuario.UPDATE_USUARIO;
 
 public class DAOAdministrador {
 	
 private static Connection conexion = DatabaseManager.getConexion();
 	
-	private static final String INSERT_ADMIN = "INSERT INTO ADMINISTRADOR (ID_USUARIO,NOMBRE,APELLIDO,NOMB_USUARIO,CONTRASENIA,EMAIL,CEDULA,INSTITUTO,LIST_TAREAS) VALUES (SEQ_ID_USUARIO.NEXTVAL,?,?,?,?,?,?,?,?)";
+	private static final String INSERT_ADMIN = "INSERT INTO ADMINISTRADORES (ID_USUARIO,CEDULA,INSTITUTO,LIST_TAREAS) VALUES (SEQ_ID_USUARIO.NEXTVAL,?,?,?)";
 	private static final String DELETE_ADMIN = "DELETE FROM ADMINISTRADOR WHERE ID_USUARIO = ?";
 	private static final String UPDATE_ADMIN = "UPDATE ADMINISTRADOR SET NOMBRE=?,APELLIDO=?,NOMB_USUARIO=?,CONTRASENIA=?,EMAIL=?,CEDULA=?,INSTITUTO,LIST_TAREAS WHERE ID_USUARIO=?";
 	private static final String ALL_ADMIN = "SELECT * FROM ADMINISTRADOR";
@@ -21,19 +24,31 @@ private static Connection conexion = DatabaseManager.getConexion();
 	
 	public static boolean nuevoUsuario(Administrador user) {
 		try {
-			PreparedStatement pst = conexion.prepareStatement(INSERT_ADMIN);
+			PreparedStatement insertarUsuario = conexion.prepareStatement(INSERT_USUARIO);
+			PreparedStatement insertarAdmin = conexion.prepareStatement(INSERT_ADMIN);
 			
-			pst.setString(1, user.getNombre());
-			pst.setString(2, user.getApellido());
-			pst.setString(3, user.getUser());
-			pst.setString(4, user.getPswd());
-			pst.setString(5, user.getEmail());
-			pst.setInt(6, user.getCedula());
-			pst.setString(7, user.getInstituto());
-			pst.setString(8, user.getList_tareas());
+			// Usamos una transaccion con auto commit deshabilitado
+			// ya que son 2 consultas y ambas deben hacerse al mismo tiempo
+			conexion.setAutoCommit(false);
 			
-			int filasAgregadas = pst.executeUpdate();
-			return filasAgregadas > 0;
+			// Primero inserto un Usuario
+			insertarUsuario.setString(1, user.getNombre());
+			insertarUsuario.setString(2, user.getApellido());
+			insertarUsuario.setString(3, user.getUser());
+			insertarUsuario.setString(4, user.getPswd());
+			insertarUsuario.setString(5, user.getEmail());
+			int filasAgregadas1 = insertarUsuario.executeUpdate();
+			
+			// Despues inserto el Administrador relacionado a ese usuario
+			insertarAdmin.setInt(1, user.getCedula());
+			insertarAdmin.setString(2, user.getInstituto());
+			insertarAdmin.setString(3, user.getList_tareas());
+			int filasAgregadas2 = insertarAdmin.executeUpdate();
+			
+			// Hacemos el commit con ambas consultas de una vez sola
+			conexion.commit();
+			
+			return filasAgregadas1 > 0 && filasAgregadas2 > 0;
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
