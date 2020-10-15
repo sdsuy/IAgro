@@ -34,11 +34,4 @@ public class Experto extends Usuario {
 		this.profesion = profesion;
 	}
 
-	
-	
-	
-		
-	
-	
 
-}
