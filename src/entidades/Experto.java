@@ -33,5 +33,5 @@ public class Experto extends Usuario {
 	public void setProfesion(String profesion) {
 		this.profesion = profesion;
 	}
-
-
+	
+}
