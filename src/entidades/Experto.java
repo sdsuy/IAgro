@@ -1,15 +1,12 @@
 package entidades;
 
 public class Experto extends Usuario {
-
-
-private String lis_tareas;
+	
+	
+	private String lis_tareas;
 	private int cedula;
 	private String profesion;
-	
-
-
-private Experto() {
+	private Experto() {
 		super();
 		
 	}
@@ -43,8 +40,5 @@ private Experto() {
 		
 	
 	
-
-}
-
 
 }
