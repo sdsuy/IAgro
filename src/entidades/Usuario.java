@@ -2,6 +2,10 @@ package entidades;
 
 public abstract class Usuario {
 	
+	public static final String INSERT_USUARIO = "INSERT INTO USUARIOS (ID_USUARIO, NOMBRE, APELLIDO, NOMB_USUARIO, CONTRASENIA, EMAIL) VALUES (SEQ_ID_USUARIO.NEXTVAL,?,?,?,?,?)";
+	public static final String DELETE_USUARIO = "DELETE FROM USUARIOS WHERE ID_USUARIO = ?";
+	public static final String UPDATE_USUARIO = "UPDATE USUARIOS SET NOMBRE=?,APELLIDO=?,NOMB_USUARIO=?,CONTRASENIA=?,EMAIL=? WHERE ID_USUARIO=?";
+	
 	private int id_usuario;
 	private String nombre;
 	private String apellido;
