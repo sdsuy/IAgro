@@ -8,16 +8,12 @@ import java.sql.Statement;
 import java.util.LinkedList;
 
 import entidades.Administrador;
-import static entidades.Usuario.INSERT_USUARIO;
-import static entidades.Usuario.DELETE_USUARIO;
-import static entidades.Usuario.UPDATE_USUARIO;
 
-public class DAOAdministrador {
+public class DAOAdministrador extends DAOUsuario {
 	
 private static Connection conexion = DatabaseManager.getConexion();
 	
 	private static final String INSERT_ADMIN = "INSERT INTO ADMINISTRADORES (ID_USUARIO,CEDULA,INSTITUTO,LIST_TAREAS) VALUES (SEQ_ID_USUARIO.NEXTVAL,?,?,?)";
-	private static final String DELETE_ADMIN = "DELETE FROM ADMINISTRADOR WHERE ID_USUARIO = ?";
 	private static final String UPDATE_ADMIN = "UPDATE ADMINISTRADOR SET NOMBRE=?,APELLIDO=?,NOMB_USUARIO=?,CONTRASENIA=?,EMAIL=?,CEDULA=?,INSTITUTO,LIST_TAREAS WHERE ID_USUARIO=?";
 	private static final String ALL_ADMIN = "SELECT * FROM ADMINISTRADOR";
 	private static final String FIND_ADMIN = "SELECT * FROM ADMINISTRADOR WHERE NOMB_USUARIO=?";
@@ -53,25 +49,6 @@ private static Connection conexion = DatabaseManager.getConexion();
 			e.printStackTrace();
 		}
 		return false;	
-	}
-	
-	public static boolean deleteAdmin(int id) {
-		try {
-			PreparedStatement eliminarUsuario = conexion.prepareStatement(DELETE_USUARIO);
-			
-			conexion.setAutoCommit(false);
-			
-			eliminarUsuario.setInt(1, id);
-			
-			int retorno = eliminarUsuario.executeUpdate();
-			
-			return retorno > 0;
-			
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		return false;
-		
 	}
 	
 	public static boolean updateAdmin(Administrador user) {
