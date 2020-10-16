@@ -14,9 +14,9 @@ public class DAOAdministrador extends DAOUsuario {
 private static Connection conexion = DatabaseManager.getConexion();
 	
 	private static final String INSERT_ADMIN = "INSERT INTO ADMINISTRADORES (ID_USUARIO,CEDULA,INSTITUTO,LIST_TAREAS) VALUES (SEQ_ID_USUARIO.NEXTVAL,?,?,?)";
-	private static final String UPDATE_ADMIN = "UPDATE ADMINISTRADOR SET NOMBRE=?,APELLIDO=?,NOMB_USUARIO=?,CONTRASENIA=?,EMAIL=?,CEDULA=?,INSTITUTO,LIST_TAREAS WHERE ID_USUARIO=?";
-	private static final String ALL_ADMIN = "SELECT * FROM ADMINISTRADOR";
-	private static final String FIND_ADMIN = "SELECT * FROM ADMINISTRADOR WHERE NOMB_USUARIO=?";
+	private static final String UPDATE_ADMIN = "UPDATE ADMINISTRADORES SET CEDULA=?,INSTITUTO=?,LIST_TAREAS=? WHERE ID_USUARIO=?";
+	private static final String ALL_ADMIN = "--ES UN JOIN--";
+	private static final String FIND_ADMIN = "--ES OTRO JOIN-- WHERE NOMB_USUARIO=?";
 	
 	public static boolean nuevoUsuario(Administrador user) {
 		try {
@@ -63,11 +63,13 @@ private static Connection conexion = DatabaseManager.getConexion();
 			modificarUser.setString(3, user.getUser());
 			modificarUser.setString(4, user.getPswd());
 			modificarUser.setString(5, user.getEmail());
+			modificarUser.setInt(6, user.getId());
 			int filasAgregadas1 = modificarUser.executeUpdate();
 			
-			modificarAdmin.setInt(6, user.getCedula());
-			modificarAdmin.setString(7, user.getInstituto());
-			modificarAdmin.setString(8, user.getList_tareas());
+			modificarAdmin.setInt(1, user.getCedula());
+			modificarAdmin.setString(2, user.getInstituto());
+			modificarAdmin.setString(3, user.getList_tareas());
+			modificarUser.setInt(4, user.getId());
 			int filasAgregadas2 = modificarAdmin.executeUpdate();
 			
 			conexion.commit();
@@ -88,7 +90,7 @@ private static Connection conexion = DatabaseManager.getConexion();
 			ResultSet rs = pst.executeQuery();
 			
 			if(rs.next()) {
-				usuario.setId_usuario(rs.getInt("ID_USUARIO"));
+				usuario.setId(rs.getInt("ID_USUARIO"));
 				usuario.setNombre(rs.getString("NOMBRE"));
 				usuario.setApellido(rs.getString("APELLIDO"));
 				usuario.setUser(rs.getString("NOMB_USUARIO"));
@@ -114,7 +116,7 @@ private static Connection conexion = DatabaseManager.getConexion();
 			
 			while(rs.next()) {
 				Administrador user = new Administrador();
-				user.setId_usuario(rs.getInt("ID_USUARIO"));
+				user.setId(rs.getInt("ID_USUARIO"));
 				user.setNombre(rs.getString("NOMBRE"));
 				user.setApellido(rs.getString("APELLIDO"));
 				user.setUser(rs.getString("NOMB_USUARIO"));
