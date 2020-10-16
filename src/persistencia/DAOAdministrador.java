@@ -55,12 +55,15 @@ private static Connection conexion = DatabaseManager.getConexion();
 		return false;	
 	}
 	
-	public static boolean deleteUser(int id) {
+	public static boolean deleteAdmin(int id) {
 		try {
-			PreparedStatement pst = conexion.prepareStatement(DELETE_ADMIN);
+			PreparedStatement eliminarUsuario = conexion.prepareStatement(DELETE_USUARIO);
 			
-			pst.setInt(1, id);
-			int retorno = pst.executeUpdate();
+			conexion.setAutoCommit(false);
+			
+			eliminarUsuario.setInt(1, id);
+			
+			int retorno = eliminarUsuario.executeUpdate();
 			
 			return retorno > 0;
 			
@@ -71,22 +74,28 @@ private static Connection conexion = DatabaseManager.getConexion();
 		
 	}
 	
-	public static boolean updateUser(Administrador user) {
+	public static boolean updateAdmin(Administrador user) {
 		try {
-			PreparedStatement pst = conexion.prepareStatement(UPDATE_ADMIN);
+			PreparedStatement modificarUser = conexion.prepareStatement(UPDATE_USUARIO);
+			PreparedStatement modificarAdmin = conexion.prepareStatement(UPDATE_ADMIN);
 			
-			pst.setString(1, user.getNombre());
-			pst.setString(2, user.getApellido());
-			pst.setString(3, user.getUser());
-			pst.setString(4, user.getPswd());
-			pst.setString(5, user.getEmail());
-			pst.setInt(6, user.getCedula());
-			pst.setString(7, user.getInstituto());
-			pst.setString(8, user.getList_tareas());
+			conexion.setAutoCommit(false);
 			
+			modificarUser.setString(1, user.getNombre());
+			modificarUser.setString(2, user.getApellido());
+			modificarUser.setString(3, user.getUser());
+			modificarUser.setString(4, user.getPswd());
+			modificarUser.setString(5, user.getEmail());
+			int filasAgregadas1 = modificarUser.executeUpdate();
 			
-			int filasAgregadas = pst.executeUpdate();
-			return filasAgregadas > 0;
+			modificarAdmin.setInt(6, user.getCedula());
+			modificarAdmin.setString(7, user.getInstituto());
+			modificarAdmin.setString(8, user.getList_tareas());
+			int filasAgregadas2 = modificarAdmin.executeUpdate();
+			
+			conexion.commit();
+			
+			return filasAgregadas1 > 0 && filasAgregadas2 > 0;
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
