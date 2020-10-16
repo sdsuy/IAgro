@@ -58,6 +58,7 @@ private static Connection conexion = DatabaseManager.getConexion();
 			
 			conexion.setAutoCommit(false);
 			
+			//Primero modifico datos propios del Usuario
 			modificarUser.setString(1, user.getNombre());
 			modificarUser.setString(2, user.getApellido());
 			modificarUser.setString(3, user.getUser());
@@ -66,12 +67,14 @@ private static Connection conexion = DatabaseManager.getConexion();
 			modificarUser.setInt(6, user.getId());
 			int filasAgregadas1 = modificarUser.executeUpdate();
 			
+			//Despues modifico datos propios del Administrador
 			modificarAdmin.setInt(1, user.getCedula());
 			modificarAdmin.setString(2, user.getInstituto());
 			modificarAdmin.setString(3, user.getList_tareas());
 			modificarUser.setInt(4, user.getId());
 			int filasAgregadas2 = modificarAdmin.executeUpdate();
 			
+			// Hacemos el commit con ambas consultas de una vez sola
 			conexion.commit();
 			
 			return filasAgregadas1 > 0 && filasAgregadas2 > 0;
@@ -81,12 +84,12 @@ private static Connection conexion = DatabaseManager.getConexion();
 		return false;	
 	}
 	
-	public static Administrador findUser(int documento) {
+	public static Administrador findUser(String user) {
 		Administrador usuario = new Administrador();
 		try {
 			PreparedStatement pst = conexion.prepareStatement(FIND_ADMIN);
 			
-			pst.setInt(1, documento);
+			pst.setString(1, user);
 			ResultSet rs = pst.executeQuery();
 			
 			if(rs.next()) {
