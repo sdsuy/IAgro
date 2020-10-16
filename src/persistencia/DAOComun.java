@@ -25,7 +25,7 @@ public class DAOComun {
 	}
 	
 	public static boolean borrarUsuario(Comun usuario){
-		String consulta = "DELETE FROM COMUNES WHERE ID_USUARIO ="+ usuario.getId_usuario(); 
+		String consulta = "DELETE FROM COMUNES WHERE ID_USUARIO ="+ usuario.getId(); 
 		try {
 			Statement sentencia = conexion.createStatement();
 			sentencia.executeQuery(consulta);
@@ -46,7 +46,7 @@ public class DAOComun {
 			
 			while(resultados.next()) {
 				Comun user = new Comun();
-				user.setId_usuario(resultados.getInt("ID_USUARIO"));
+				user.setId(resultados.getInt("ID_USUARIO"));
 				user.setNombre(resultados.getString("NOMBRE"));
 				user.setApellido(resultados.getString("APELLIDO"));
 				user.setUser(resultados.getString("NOMB_USUARIO"));
@@ -96,7 +96,7 @@ public class DAOComun {
 			ResultSet rs = pst.executeQuery();
 			
 			if(rs.next()) {
-				usuario.setId_usuario(rs.getInt("ID_USUARIO"));
+				usuario.setId(rs.getInt("ID_USUARIO"));
 				usuario.setNombre(rs.getString("NOMBRE"));
 				usuario.setApellido(rs.getString("APELLIDO"));
 				usuario.setUser(rs.getString("NOMB_USUARIO"));
