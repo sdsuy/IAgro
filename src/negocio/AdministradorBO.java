@@ -53,7 +53,7 @@ public class AdministradorBO {
 	 */
 	public boolean eliminarAdmin(int idUser) {
 		
-		return DAOAdministrador.deleteAdmin(idUser);
+		return DAOAdministrador.deleteUser(idUser);
 	}
 	
 	/**
