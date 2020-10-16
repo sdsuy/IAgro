@@ -74,7 +74,7 @@ private static Connection conexion = DatabaseManager.getConexion();
 		
 	}
 	
-	public static boolean updateAdmin(Administrador user) {
+	public static boolean updateUser(Administrador user) {
 		try {
 			PreparedStatement modificarUser = conexion.prepareStatement(UPDATE_USUARIO);
 			PreparedStatement modificarAdmin = conexion.prepareStatement(UPDATE_ADMIN);
