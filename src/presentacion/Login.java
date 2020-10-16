@@ -4,9 +4,13 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 
+import negocio.AdministradorBO;
+
 public class Login {
 
 	private JFrame frame;
+	
+	private AdministradorBO administrador = new AdministradorBO();
 
 	/**
 	 * Launch the application.
@@ -28,6 +32,9 @@ public class Login {
 	 * Create the application.
 	 */
 	public Login() {
+		if(administrador.bootstrap())
+	// emitir algun mensaje que se debe cambiar la contraseña del administrador creado de fabrica
+			; // cierro el if luego de emitir el mensaje en caso que sea el primer uso
 		initialize();
 	}
 
