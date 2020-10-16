@@ -55,7 +55,7 @@ private static Connection conexion = DatabaseManager.getConexion();
 		return false;	
 	}
 	
-	public static boolean deleteUser(int id) {
+	public static boolean deleteAdmin(int id) {
 		try {
 			PreparedStatement pst = conexion.prepareStatement(DELETE_ADMIN);
 			
@@ -71,7 +71,7 @@ private static Connection conexion = DatabaseManager.getConexion();
 		
 	}
 	
-	public static boolean updateUser(Administrador user) {
+	public static boolean updateAdmin(Administrador user) {
 		try {
 			PreparedStatement pst = conexion.prepareStatement(UPDATE_ADMIN);
 			
@@ -83,6 +83,8 @@ private static Connection conexion = DatabaseManager.getConexion();
 			pst.setInt(6, user.getCedula());
 			pst.setString(7, user.getInstituto());
 			pst.setString(8, user.getList_tareas());
+			
+			
 			
 			
 			int filasAgregadas = pst.executeUpdate();
