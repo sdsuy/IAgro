@@ -86,4 +86,20 @@ public class AdministradorBO {
 		
 	}
 	
+	/**
+	 * 
+	 * Creamos un usuario Administrador para arrancar con uno de fabrica
+	 * @return
+	 */
+	public boolean bootstrap() {
+		Administrador admin = DAOAdministrador.findUser(1234);
+		if(admin == null) {
+			Administrador user = new Administrador();
+			user.setEmail("admin@utec");
+			user.setPswd("admin");
+			return DAOAdministrador.nuevoUsuario(user);
+		}
+		return false;
+	}
+	
 }
