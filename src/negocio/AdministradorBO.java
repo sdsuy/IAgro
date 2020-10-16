@@ -71,9 +71,9 @@ public class AdministradorBO {
 	 * @param cedula
 	 */
 	
-	public void buscarAdmin(int cedula) {
+	public void buscarAdmin(String user) {
 		
-		admin = DAOAdministrador.findUser(cedula);
+		admin = DAOAdministrador.findUser(user);
 		
 	}
 	
@@ -92,7 +92,7 @@ public class AdministradorBO {
 	 * @return
 	 */
 	public boolean bootstrap() {
-		Administrador admin = DAOAdministrador.findUser(1234);
+		Administrador admin = DAOAdministrador.findUser("jose");
 		if(admin == null) {
 			Administrador user = new Administrador();
 			user.setEmail("admin@utec");
