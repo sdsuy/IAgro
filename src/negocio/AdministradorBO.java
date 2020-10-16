@@ -41,7 +41,7 @@ public class AdministradorBO {
 	 */
 	public boolean actualizarAdmin(Administrador adm) {
 		
-		return DAOAdministrador.updateAdmin(adm);
+		return DAOAdministrador.updateUser(adm);
 	
 	}
 	
