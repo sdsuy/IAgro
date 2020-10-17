@@ -21,7 +21,7 @@ public class ComunBO {
 	
 	//modificar usuario Comun
 	public void modificarComun(Comun usuario){
-		DAOComun.actualizarUsuario(usuario);
+		DAOComun.updateUsuario(usuario);
 		System.out.println("Modificando usuario");
 	}
 	//eliminar usuario Comun
