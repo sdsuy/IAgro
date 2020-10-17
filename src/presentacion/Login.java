@@ -11,6 +11,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JDesktopPane;
 import javax.swing.JTextField;
 import java.awt.Font;
+import javax.swing.JButton;
 
 public class Login {
 
@@ -18,7 +19,7 @@ public class Login {
 	
 	private AdministradorBO administrador = new AdministradorBO();
 	private JTextField txtFieldUser;
-	private JTextField textPass;
+	private JTextField textFieldPass;
 
 	/**
 	 * Launch the application.
@@ -58,20 +59,28 @@ public class Login {
 		JDesktopPane desktopPane = new JDesktopPane();
 		frmIagro.getContentPane().add(desktopPane, BorderLayout.CENTER);
 		
+		txtFieldUser = new JTextField();
+		txtFieldUser.setBounds(316, 225, 151, 34);
+		desktopPane.add(txtFieldUser);
+		txtFieldUser.setColumns(10);
+		
+		textFieldPass = new JTextField();
+		textFieldPass.setColumns(10);
+		textFieldPass.setBounds(316, 286, 144, 34);
+		desktopPane.add(textFieldPass);
+		
+		JDesktopPane desktopPane_1 = new JDesktopPane();
+		desktopPane_1.setBounds(355, 195, 1, 1);
+		desktopPane.add(desktopPane_1);
+		
+		JButton btnEntrar = new JButton("Entrar");
+		btnEntrar.setBounds(324, 342, 109, 23);
+		desktopPane.add(btnEntrar);
+		
 		JLabel lblFondo = new JLabel("");
 		lblFondo.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		lblFondo.setIcon(new ImageIcon(Login.class.getResource("/IMG/login.png")));
 		lblFondo.setBounds(0, 0, 734, 461);
 		desktopPane.add(lblFondo);
-		
-		txtFieldUser = new JTextField();
-		txtFieldUser.setBounds(324, 225, 143, 34);
-		desktopPane.add(txtFieldUser);
-		txtFieldUser.setColumns(10);
-		
-		textPass = new JTextField();
-		textPass.setColumns(10);
-		textPass.setBounds(324, 288, 143, 34);
-		desktopPane.add(textPass);
 	}
 }
