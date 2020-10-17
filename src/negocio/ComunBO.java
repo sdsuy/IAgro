@@ -7,6 +7,7 @@ import persistencia.DAOComun;
 
 public class ComunBO {
 	private LinkedList<Comun> comunes;
+	
 	//constructor
 	public ComunBO(){
 		comunes = DAOComun.listarUsuarios();	
@@ -15,12 +16,13 @@ public class ComunBO {
 	//insertar nuevo usuario comun
 	public void insertarUsuario(Comun usuario){
 		DAOComun.nuevoUsuario(usuario);
-		System.out.println("Usuario ingresado");
+		System.out.println("Ingresando usuario");
 	}
 	
 	//modificar usuario Comun
-	public void modificarComun(){
-		//
+	public void modificarComun(Comun usuario){
+		DAOComun.actualizarUsuario(usuario);
+		System.out.println("Modificando usuario");
 	}
 	//eliminar usuario Comun
 	public void eliminarComun(Comun usuario){
@@ -30,7 +32,7 @@ public class ComunBO {
 	
 	//obtener lista usuario Comun
 	public LinkedList<Comun> listarComun(){
-		return DAOComun.listarUsuarios();
+		return comunes;
 	}
 	
 	//encontrar usuario por nombre de usuario
