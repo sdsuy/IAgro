@@ -12,6 +12,8 @@ import javax.swing.JDesktopPane;
 import javax.swing.JTextField;
 import java.awt.Font;
 import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class Login {
 
@@ -41,9 +43,9 @@ public class Login {
 	 * Create the application.
 	 */
 	public Login() {
-		if(administrador.bootstrap())
+//		if(administrador.bootstrap())
 	// emitir algun mensaje que se debe cambiar la contraseña del administrador creado de fabrica
-			; // cierro el if luego de emitir el mensaje en caso que sea el primer uso
+//			; // cierro el if luego de emitir el mensaje en caso que sea el primer uso
 		initialize();
 	}
 
@@ -74,6 +76,14 @@ public class Login {
 		desktopPane.add(desktopPane_1);
 		
 		JButton btnEntrar = new JButton("Entrar");
+		btnEntrar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String username = txtFieldUser.getText();
+				String password = textFieldPass.getText();
+				administrador.login(username, password);
+				System.out.println(administrador.getId());
+			}
+		});
 		btnEntrar.setBounds(324, 342, 109, 23);
 		desktopPane.add(btnEntrar);
 		
