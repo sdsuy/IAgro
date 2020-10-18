@@ -9,6 +9,7 @@ import java.util.LinkedList;
 
 import entidades.Administrador;
 import entidades.Experto;
+import entidades.Usuario;
 
 public class DAOExperto extends DAOUsuario {
 	
@@ -28,7 +29,7 @@ public class DAOExperto extends DAOUsuario {
 	
 	
 	
-	public static boolean nuevoUsuario(Experto user) {
+	public static boolean CreateUsuario(Usuario user) {
 		try {
 			PreparedStatement insertarUsuario = conexion.prepareStatement(INSERT_USUARIO);
 			PreparedStatement insertarExperto = conexion.prepareStatement(INSERT_EXPERT);
