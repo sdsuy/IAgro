@@ -16,6 +16,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 import aplicacion.IAgro;
+import javax.swing.JPasswordField;
 
 public class Login {
 
@@ -25,6 +26,7 @@ public class Login {
 	private JTextField textFieldPass;
 	
 	private IAgro iagro;
+	private JPasswordField passwordField;
 
 	/**
 	 * Launch the application.
@@ -94,7 +96,7 @@ public class Login {
 		desktopPane.add(txtFieldUser);
 		txtFieldUser.setColumns(10);
 		
-		textFieldPass = new JTextField();
+		textFieldPass = new JPasswordField();
 		textFieldPass.setColumns(10);
 		textFieldPass.setBounds(316, 286, 144, 34);
 		desktopPane.add(textFieldPass);
@@ -131,5 +133,10 @@ public class Login {
 		lblFondo.setIcon(new ImageIcon(Login.class.getResource("/IMG/login.png")));
 		lblFondo.setBounds(0, 0, 734, 461);
 		desktopPane.add(lblFondo);
+		
+	
+		
+		
+		
 	}
 }
