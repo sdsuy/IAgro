@@ -16,3 +16,8 @@ ADD
 )
 ;
 
+DROP SEQUENCE seq_id_usuario;
+
+CREATE SEQUENCE seq_id_usuario
+START WITH 1
+INCREMENT BY 1;
