@@ -13,7 +13,7 @@ public class DAOAdministrador extends DAOUsuario {
 	
 private static Connection conexion = DatabaseManager.getConexion();
 	
-	private static final String INSERT_ADMIN = "INSERT INTO ADMINISTRADORES (ID_USUARIO,CEDULA,INSTITUTO,LIST_TAREAS) VALUES (SEQ_ID_USUARIO.NEXTVAL,?,?,?)";
+	private static final String INSERT_ADMIN = "INSERT INTO ADMINISTRADORES (ID_USUARIO,CEDULA,INSTITUTO,LIST_TAREAS) VALUES (SEQ_ID_USUARIO.CURRVAL,?,?,?)";
 	private static final String UPDATE_ADMIN = "UPDATE ADMINISTRADORES SET CEDULA=?,INSTITUTO=?,LIST_TAREAS=? WHERE ID_USUARIO=?";
 	private static final String ALL_ADMIN = "--ES UN JOIN--";
 	private static final String FIND_ADMIN = "--ES OTRO JOIN-- WHERE NOMB_USUARIO=?";
