@@ -16,7 +16,9 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 import aplicacion.IAgro;
+
 import javax.swing.JPasswordField;
+import java.awt.Color;
 
 public class Login {
 
@@ -73,9 +75,14 @@ public class Login {
 	 */
 	public Login(IAgro iagro) {
 		this.iagro = iagro;
-//		if(administrador.bootstrap())
-	// emitir algun mensaje que se debe cambiar la contraseña del administrador creado de fabrica
-//			; // cierro el if luego de emitir el mensaje en caso que sea el primer uso
+		if(administrador.bootstrap() {
+			
+			JLabel lblError = new JLabel("Debe cambiar la contrase\u00F1a del Administrador por defecto");
+			lblError.setFont(new Font("Tw Cen MT Condensed", Font.PLAIN, 15));
+			lblError.setForeground(Color.RED);
+			lblError.setBounds(253, 114, 256, 53);
+			
+		}
 		initialize();
 	}
 
@@ -105,6 +112,8 @@ public class Login {
 		desktopPane_1.setBounds(355, 195, 1, 1);
 		desktopPane.add(desktopPane_1);
 		
+		
+		
 		JButton btnEntrar = new JButton("Entrar");
 		btnEntrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -127,6 +136,13 @@ public class Login {
 		});
 		btnEntrar.setBounds(324, 342, 109, 23);
 		desktopPane.add(btnEntrar);
+		
+		JLabel lblError = new JLabel("Debe cambiar la contrase\u00F1a del Administrador por defecto");
+		lblError.setVisible(false);
+		lblError.setFont(new Font("Tw Cen MT Condensed", Font.PLAIN, 15));
+		lblError.setForeground(Color.RED);
+		lblError.setBounds(253, 114, 256, 53);
+		desktopPane.add(lblError);
 		
 		JLabel lblFondo = new JLabel("");
 		lblFondo.setFont(new Font("Tahoma", Font.PLAIN, 16));
