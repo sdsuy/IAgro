@@ -19,7 +19,7 @@ import aplicacion.IAgro;
 
 public class Login {
 
-	public JFrame frmIagro;
+	private JFrame frmIagro;
 	
 	private JTextField txtFieldUser;
 	private JTextField textFieldPass;
@@ -113,7 +113,7 @@ public class Login {
 				if(iagro.getId() > 0) { // si se encuentra un id
 					iagro.findUsuario(); // busco el usuario con ese id y su nivel de permisos
 					if(iagro.getUsuario().getId() >= 0) { // si encuentro un usuario con ese id
-						System.out.println(iagro.getUsuario().getRol());
+//						System.out.println(iagro.getUsuario().getRol());
 						iagro.menuPrincipal(); // abro la Ventana Principal
 						frmIagro.dispose(); // cierro login
 					}
