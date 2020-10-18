@@ -4,24 +4,27 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 
-import negocio.AdministradorBO;
 import javax.swing.JLabel;
 import java.awt.BorderLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JDesktopPane;
 import javax.swing.JTextField;
+
 import java.awt.Font;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
+import aplicacion.IAgro;
+
 public class Login {
 
-	private JFrame frmIagro;
+	public JFrame frmIagro;
 	
-	private AdministradorBO administrador = new AdministradorBO();
 	private JTextField txtFieldUser;
 	private JTextField textFieldPass;
+	
+	private IAgro iagro;
 
 	/**
 	 * Launch the application.
@@ -38,11 +41,36 @@ public class Login {
 			}
 		});
 	}
-
+	
+	/**
+	 * 
+	 * Hago visible la ventana de Login
+	 */
+	public void start() {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					frmIagro.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+	
 	/**
 	 * Create the application.
 	 */
 	public Login() {
+		initialize();
+	}
+
+	/**
+	 * 
+	 * Constructor con la aplicacion de IAgro integrada.
+	 */
+	public Login(IAgro iagro) {
+		this.iagro = iagro;
 //		if(administrador.bootstrap())
 	// emitir algun mensaje que se debe cambiar la contraseña del administrador creado de fabrica
 //			; // cierro el if luego de emitir el mensaje en caso que sea el primer uso
@@ -56,7 +84,7 @@ public class Login {
 		frmIagro = new JFrame();
 		frmIagro.setTitle("IAgro");
 		frmIagro.setBounds(100, 100, 750, 500);
-		frmIagro.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frmIagro.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		
 		JDesktopPane desktopPane = new JDesktopPane();
 		frmIagro.getContentPane().add(desktopPane, BorderLayout.CENTER);
@@ -80,8 +108,9 @@ public class Login {
 			public void actionPerformed(ActionEvent e) {
 				String username = txtFieldUser.getText();
 				String password = textFieldPass.getText();
-				administrador.login(username, password);
-				System.out.println(administrador.getId());
+				iagro.login(username, password);
+				System.out.println(iagro.getId());
+				frmIagro.dispose();
 			}
 		});
 		btnEntrar.setBounds(324, 342, 109, 23);
