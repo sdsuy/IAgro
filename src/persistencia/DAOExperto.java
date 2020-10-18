@@ -38,7 +38,7 @@ public class DAOExperto extends DAOUsuario {
 			int filasAgregadas1 = insertarUsuario.executeUpdate();
 			
 			
-			insertarExperto.setString(1, user.getLis_tareas());
+			insertarExperto.setString(1, user.getList_tareas());
 			insertarExperto.setInt(2, user.getCedula());
 			insertarExperto.setString(3, user.getProfesion());
 			
@@ -71,7 +71,7 @@ public class DAOExperto extends DAOUsuario {
 			int filasAgregadas1 = modificarUser.executeUpdate();
 			
 			
-			modificarExperto.setString(1, user.getLis_tareas());
+			modificarExperto.setString(1, user.getList_tareas());
 			modificarExperto.setInt(2, user.getCedula());
 			modificarExperto.setString(3, user.getProfesion());
 			modificarUser.setInt(4, user.getId());
@@ -102,7 +102,7 @@ public class DAOExperto extends DAOUsuario {
 				usuario.setUser(rs.getString("NOMB_USUARIO"));
 				usuario.setPswd(rs.getString("CONTRASENIA"));
 				usuario.setEmail(rs.getString("EMAIL"));
-				usuario.setLis_tareas(rs.getString("LIST_TAREAS"));
+				usuario.setList_tareas(rs.getString("LIST_TAREAS"));
 				usuario.setCedula(rs.getInt("CEDULA"));
 				usuario.setProfesion(rs.getString("INSTITUTO"));
 				
@@ -129,7 +129,7 @@ public class DAOExperto extends DAOUsuario {
 				user.setUser(rs.getString("NOMB_USUARIO"));
 				user.setPswd(rs.getString("CONTRASENIA"));
 				user.setEmail(rs.getString("EMAIL"));
-				user.setLis_tareas(rs.getString("LIST_TAREAS"));
+				user.setList_tareas(rs.getString("LIST_TAREAS"));
 				user.setCedula(rs.getInt("CEDULA"));
 				user.setProfesion(rs.getString("INSTITUTO"));
 				users.add(user);

@@ -29,7 +29,7 @@ public class DAOComun extends DAOUsuario {
 			int filasAgregadas1 = insertarUsuario.executeUpdate();
 			
 			// Despues inserto el usuario comun relacionado a ese usuario
-			insertarComun.setString(1, user.getList_tarea());
+			insertarComun.setString(1, user.getList_tareas());
 			int filasAgregadas2 = insertarComun.executeUpdate();
 			
 			// Hacemos el commit con ambas consultas de una vez sola
@@ -59,7 +59,7 @@ public class DAOComun extends DAOUsuario {
 			int filasAgregadas1 = modificarUser.executeUpdate();
 			
 			//Despues modifico datos propios del Administrador
-			modificarComun.setString(1, user.getList_tarea());
+			modificarComun.setString(1, user.getList_tareas());
 			int filasAgregadas2 = modificarComun.executeUpdate();
 			
 			// Hacemos el commit con ambas consultas de una vez sola
