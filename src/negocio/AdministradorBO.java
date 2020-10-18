@@ -2,15 +2,12 @@ package negocio;
 
 import java.util.LinkedList;
 
-import entidades.Administrador;
 import entidades.Usuario;
 import persistencia.DAOAdministrador;
-import persistencia.DAOUsuario;
 
-public class AdministradorBO {
+public class AdministradorBO extends UsuarioBO {
 	
-	private LinkedList<Administrador> admins;
-	private Administrador admin;
+	private LinkedList<Usuario> admins;
 	
 	//Constructor que crea un linkedlist de personas vacio
 	public AdministradorBO() {
@@ -20,42 +17,37 @@ public class AdministradorBO {
 	/**
 	 * 
 	 * Agrego un administrador
-	 * @param admin
+	 * @param Usuario
 	 * @return
 	 */
-	public boolean agregarAdmin(Administrador adm) {
-		
-		return DAOAdministrador.nuevoUsuario(adm);
-		
+	@Override
+	public boolean createUsuario(Usuario usuario) {
+		return DAOAdministrador.createUsuario(usuario);
+	}
+
+	/**
+	 * 
+	 * Busco un Usuario
+	 * @param int
+	 * @return Usuario
+	 */
+	@Override
+	public Usuario findUsuario(int id) {
+		return DAOAdministrador.findUsuario(id);
 	}
 	
-	//Cargo los Administradores
-	public void obtenerAdmins() {
-		
-		admins = DAOAdministrador.selectUser();
-	}
 	
 	/**
 	 * 
-	 * Actualizo un administrador
-	 * @param adm
-	 * @return
+	 * Actualizar usuarop
+	 * @param Usuario
+	 * @return boolean
 	 */
-	public boolean actualizarAdmin(Administrador adm) {
+	@Override
+	public boolean updateUsuario(Usuario usuario) {
 		
-		return DAOAdministrador.updateUser(adm);
+		return DAOAdministrador.updateUsuario(usuario);
 	
-	}
-	
-	/**
-	 * 
-	 * Elimino un Administrador
-	 * @param idAdmin
-	 * @return
-	 */
-	public boolean eliminarAdmin(int idUser) {
-		
-		return DAOAdministrador.deleteUser(idUser);
 	}
 	
 	/**
@@ -63,49 +55,10 @@ public class AdministradorBO {
 	 * Getter del linkedlist Admins
 	 * @return
 	 */
-	public LinkedList<Administrador> getPersonas() {
+	@Override
+	public LinkedList<Usuario> allUsuarios() {
 		
 		return admins;
-	}
-	
-	/**
-	 * Busco un administrador
-	 * @param cedula
-	 */
-	
-	public void buscarAdmin(String user) {
-		
-		admin = DAOAdministrador.findUser(user);
-		
-	}
-	
-	/**
-	 * Getter de Administrador
-	 * @return
-	 */
-	public Administrador getPersona() {
-		return admin;
-		
-	}
-	
-	/**
-	 * 
-	 * Creamos un usuario Administrador para arrancar con uno de fabrica
-	 * @return
-	 */
-	public boolean bootstrap() {
-		Administrador admin = DAOAdministrador.findUser("jose");
-		if(admin == null) {
-			Administrador user = new Administrador();
-			user.setEmail("admin@utec");
-			user.setPswd("admin");
-			return DAOAdministrador.nuevoUsuario(user);
-		}
-		return false;
-	}
-	
-	public int login(String username, String password) {
-		return DAOUsuario.login(username, password);
 	}
 	
 }
