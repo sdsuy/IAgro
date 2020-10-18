@@ -39,6 +39,18 @@ public class ExpertoBO extends UsuarioBO {
 		return DAOExperto.findExperto(id);
 	}
 	
+	
+	/**
+	 * 
+	 * Getter del linkedlist de Usuarios
+	 * @return
+	 */
+
+	@Override
+	public LinkedList<Usuario> allUsuarios() {
+		return experts;
+	}
+	
 	/**
 	 * 
 	 * Actualizar un Usuaro
@@ -47,14 +59,7 @@ public class ExpertoBO extends UsuarioBO {
 	 */
 
 	@Override
-	public LinkedList<Usuario> allUsuarios() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
 	public boolean updateUsuario(Usuario usuario) {
-		// TODO Auto-generated method stub
 		return DAOExperto.updateExperto(usuario);
 	}
 
