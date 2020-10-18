@@ -3,7 +3,7 @@ package entidades;
 public class Administrador extends Usuario {
 
 	@Override
-	String getRol() {
+	public String getRol() {
 		return "admnistrador";
 	}
 

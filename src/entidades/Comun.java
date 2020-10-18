@@ -3,7 +3,7 @@ package entidades;
 public class Comun extends Usuario {
 
 	@Override
-	String getRol() {
+	public String getRol() {
 		return "comun";
 	}
 

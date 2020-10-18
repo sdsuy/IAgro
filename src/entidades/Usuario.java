@@ -35,7 +35,7 @@ public abstract class Usuario {
 		this.instituto = instituto;
 	}
 	
-	abstract String getRol();
+	public abstract String getRol();
 
 	public int getId() {
 		return id;
