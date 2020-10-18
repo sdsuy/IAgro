@@ -62,7 +62,7 @@ public class DAOExperto extends DAOUsuario {
 		return false;	
 	}
 	
-	public static boolean actualizarUsuario(Experto user) {
+	public static boolean updateExperto(Usuario user) {
 		try {
 			PreparedStatement modificarUser = conexion.prepareStatement(UPDATE_USUARIO);
 			PreparedStatement modificarExperto = conexion.prepareStatement(UPDATE_EXPERT);

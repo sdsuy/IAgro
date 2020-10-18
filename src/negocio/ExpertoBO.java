@@ -55,7 +55,7 @@ public class ExpertoBO extends UsuarioBO {
 	@Override
 	public boolean updateUsuario(Usuario usuario) {
 		// TODO Auto-generated method stub
-		return false;
+		return DAOExperto.updateExperto(usuario);
 	}
 
 }
