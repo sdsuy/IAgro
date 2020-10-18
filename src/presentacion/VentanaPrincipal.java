@@ -13,11 +13,16 @@ import java.awt.event.MouseEvent;
 import javax.swing.JMenuItem;
 import javax.swing.JCheckBoxMenuItem;
 import javax.swing.JRadioButtonMenuItem;
+
+import aplicacion.IAgro;
+
 import javax.swing.JMenu;
 
 public class VentanaPrincipal {
 
 	private JFrame frame;
+	
+	private IAgro iagro;
 
 	/**
 	 * Launch the application.
@@ -34,6 +39,21 @@ public class VentanaPrincipal {
 			}
 		});
 	}
+	
+	/**
+	 * Launch the application.
+	 */
+	public void start() {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
 
 	/**
 	 * Create the application.
@@ -41,11 +61,20 @@ public class VentanaPrincipal {
 	public VentanaPrincipal() {
 		initialize();
 	}
+	
+	/**
+	 * Create the application con IAgro integrado.
+	 */
+	public VentanaPrincipal(IAgro iagro) {
+		this.iagro = iagro; // inyecto la aplicacion IAgro en la ventana
+		initialize();
+	}
 
 	/**
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
+		System.out.println(iagro.getUsuario().getRol());
 		frame = new JFrame();
 		frame.setBounds(100, 100, 750, 500);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
