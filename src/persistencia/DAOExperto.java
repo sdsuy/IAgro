@@ -17,7 +17,14 @@ public class DAOExperto extends DAOUsuario {
 	private static final String INSERT_EXPERT = "INSERT INTO EXPERTOS (ID_USUARIO, LIST_TAREAS, CEDULA, PROFESION) VALUES (SEQ_ID_USUARIO.NEXTVAL,?,?,?)";
 	private static final String UPDATE_EXPERT = "UPDATE EXPERTOS SET LIST_TAREAS=?, CEDULA=?, PROFESION=? WHERE ID_USUARIO=?";
 	private static final String ALL_EXPERTS = "SELECT * FROM EXPERTOS"; //+join
-	private static final String FIND_EXPERT = "SELECT * FROM EXPERTOS WHERE NOMB_USUARIO=?"; //+join
+	private static final String FIND_EXPERT = "SELECT\r\n" + 
+			"    usuarios.*,\r\n" + 
+			"    expertos.*\r\n" + 
+			"FROM\r\n" + 
+			"    expertos\r\n" + 
+			"    INNER JOIN usuarios ON usuarios.id_usuario = expertos.id_usuario\r\n" + 
+			"WHERE\r\n" + 
+			"    expertos.id_usuario = ?";
 	
 	
 	
