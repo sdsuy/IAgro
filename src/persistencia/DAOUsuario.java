@@ -15,7 +15,7 @@ public abstract class DAOUsuario {
 	
 	private static Connection conexion = DatabaseManager.getConexion();
 	
-	public static boolean deleteUser(int id) {
+	public static boolean deleteUsuario(int id) {
 		try {
 			PreparedStatement eliminarUsuario = conexion.prepareStatement(DELETE_USUARIO);
 			
