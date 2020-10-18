@@ -6,11 +6,12 @@ public class Experto extends Usuario {
 	private String lis_tareas;
 	private int cedula;
 	private String profesion;
-	private Experto() {
+	
+	public Experto() {
 		super();
 		
 	}
-	private Experto(int id_usuario, String nombre, String apellido, String user, String pswd, String email) {
+	public Experto(int id_usuario, String nombre, String apellido, String user, String pswd, String email) {
 		super(id_usuario, nombre, apellido, user, pswd, email);
 	
 	}
