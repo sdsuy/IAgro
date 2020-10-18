@@ -60,41 +60,14 @@ public class VentanaPrincipal {
 		JMenu mnAdministrador = new JMenu("Administrador");
 		menuBar.add(mnAdministrador);
 		
-		JMenu mnAlta = new JMenu("Alta");
-		mnAdministrador.add(mnAlta);
+		JMenuItem mntmAlta = new JMenuItem("Alta");
+		mnAdministrador.add(mntmAlta);
 		
-		JMenuItem mntmAltaAdministrador = new JMenuItem("Adminnistrador");
-		mnAlta.add(mntmAltaAdministrador);
+		JMenuItem mntmBaja = new JMenuItem("Baja");
+		mnAdministrador.add(mntmBaja);
 		
-		JMenuItem mntmAltaExperto = new JMenuItem("Experto");
-		mnAlta.add(mntmAltaExperto);
-		
-		JMenuItem mntmAltaComun = new JMenuItem("Comun");
-		mnAlta.add(mntmAltaComun);
-		
-		JMenu mnBaja = new JMenu("Baja");
-		mnAdministrador.add(mnBaja);
-		
-		JMenuItem mntmBajaAdministrador = new JMenuItem("Adminnistrador");
-		mnBaja.add(mntmBajaAdministrador);
-		
-		JMenuItem mntmBajaExperto = new JMenuItem("Experto");
-		mnBaja.add(mntmBajaExperto);
-		
-		JMenuItem mntmBajaComun = new JMenuItem("Comun");
-		mnBaja.add(mntmBajaComun);
-		
-		JMenu mnModificacion = new JMenu("Modificacion");
-		mnAdministrador.add(mnModificacion);
-		
-		JMenuItem mntmModificacionAdministrador = new JMenuItem("Adminnistrador");
-		mnModificacion.add(mntmModificacionAdministrador);
-		
-		JMenuItem mntmModificacionExperto = new JMenuItem("Experto");
-		mnModificacion.add(mntmModificacionExperto);
-		
-		JMenuItem mntmModificacionComun = new JMenuItem("Comun");
-		mnModificacion.add(mntmModificacionComun);
+		JMenuItem mntmModificacion = new JMenuItem("Modificacion");
+		mnAdministrador.add(mntmModificacion);
 	}
 	private static void addPopup(Component component, final JPopupMenu popup) {
 		component.addMouseListener(new MouseAdapter() {
