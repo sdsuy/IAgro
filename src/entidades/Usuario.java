@@ -34,6 +34,8 @@ public abstract class Usuario {
 		this.list_tareas = list_tareas;
 		this.instituto = instituto;
 	}
+	
+	abstract String getRol();
 
 	public int getId() {
 		return id;
