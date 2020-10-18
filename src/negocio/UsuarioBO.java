@@ -29,12 +29,12 @@ public abstract class UsuarioBO {
 	 * @return boolean
 	 */
 	public boolean bootstrap() {
-		Usuario admin = DAOAdministrador.findAdministrador(0);
+		Usuario admin = DAOAdministrador.findUsuario(0);
 		if(admin == null) {
 			Administrador user = new Administrador();
 			user.setEmail("admin@utec");
 			user.setPswd("admin");
-			return DAOAdministrador.createAdministrador(user);
+			return DAOAdministrador.createUsuario(user);
 		}
 		return false;
 	}

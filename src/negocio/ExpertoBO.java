@@ -24,7 +24,7 @@ public class ExpertoBO extends UsuarioBO {
 	
 	@Override
 	public boolean createUsuario(Usuario usuario) {
-		return DAOExperto.nuevoUsuario(usuario);
+		return DAOExperto.CreateUsuario(usuario);
 	}
 	
 	/**
