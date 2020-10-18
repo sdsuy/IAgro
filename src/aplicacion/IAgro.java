@@ -1,13 +1,18 @@
 package aplicacion;
 
+import entidades.Usuario;
 import negocio.AdministradorBO;
+import negocio.ComunBO;
+import negocio.ExpertoBO;
+import negocio.UsuarioBO;
 import presentacion.Login;
 
 public class IAgro {
 	
-	Login login;
+	private Login login; // capa presentacion de login
+	private UsuarioBO usuario_; // capa de negocios de usuario
+	private Usuario usuario; // usuario logueado
 	int id; // id del usuario logueado
-	private AdministradorBO administrador;
 
 	public static void main(String[] args) {
 		IAgro iagro = new IAgro();
@@ -20,16 +25,35 @@ public class IAgro {
 	}
 	
 	private void start() {
-		administrador = new AdministradorBO();
+		usuario_ = new AdministradorBO();
 		login.start();
 	}
 	
 	public void login(String username, String password) {
-		id = administrador.login(username, password);
+		id = usuario_.login(username, password);
 	}
 
 	public int getId() {
 		return id;
+	}
+	
+	public void findUsuario(){
+		usuario = usuario_.findUsuario(id); // lo busco como administrador
+		if(!(usuario.getId() > 0)) {
+			usuario_ = new ExpertoBO(); // si no encuentra lo busco como experto
+			usuario = usuario_.findUsuario(id);
+		} else if(!(usuario.getId() > 0)) {
+			usuario_ = new ComunBO(); // si no encuentra lo busco como comun
+			usuario = usuario_.findUsuario(id);
+		}
+	}
+
+	public Usuario getUsuario() {
+		return usuario;
+	}
+	
+	public void menuPrincipal() {
+		
 	}
 
 }
