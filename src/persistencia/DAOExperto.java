@@ -2,7 +2,10 @@ package persistencia;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.LinkedList;
 
 import entidades.Administrador;
 import entidades.Experto;
@@ -13,8 +16,8 @@ public class DAOExperto extends DAOUsuario {
 	
 	private static final String INSERT_EXPERT = "INSERT INTO EXPERTOS (ID_USUARIO, LIST_TAREAS, CEDULA, PROFESION) VALUES (SEQ_ID_USUARIO.NEXTVAL,?,?,?)";
 	private static final String UPDATE_EXPERT = "UPDATE EXPERTOS SET LIST_TAREAS=?, CEDULA=?, PROFESION=? WHERE ID_USUARIO=?";
-	private static final String ALL_EXPERTS = "SELECT * FROM EXPERTOS";
-	private static final String FIND_EXPERT = "SELECT * FROM EXPERTOS WHERE NOMB_USUARIO=?";
+	private static final String ALL_EXPERTS = "SELECT * FROM EXPERTOS"; //+join
+	private static final String FIND_EXPERT = "SELECT * FROM EXPERTOS WHERE NOMB_USUARIO=?"; //+join
 	
 	
 	
@@ -49,6 +52,93 @@ public class DAOExperto extends DAOUsuario {
 			e.printStackTrace();
 		}
 		return false;	
+	}
+	
+	public static boolean actualizarUsuario(Experto user) {
+		try {
+			PreparedStatement modificarUser = conexion.prepareStatement(UPDATE_USUARIO);
+			PreparedStatement modificarExperto = conexion.prepareStatement(UPDATE_EXPERT);
+			
+			conexion.setAutoCommit(false);
+			
+			
+			modificarUser.setString(1, user.getNombre());
+			modificarUser.setString(2, user.getApellido());
+			modificarUser.setString(3, user.getUser());
+			modificarUser.setString(4, user.getPswd());
+			modificarUser.setString(5, user.getEmail());
+			modificarUser.setInt(6, user.getId());
+			int filasAgregadas1 = modificarUser.executeUpdate();
+			
+			
+			modificarExperto.setString(1, user.getLis_tareas());
+			modificarExperto.setInt(2, user.getCedula());
+			modificarExperto.setString(3, user.getProfesion());
+			modificarUser.setInt(4, user.getId());
+			int filasAgregadas2 = modificarExperto.executeUpdate();
+			
+			
+			conexion.commit();
+			
+			return filasAgregadas1 > 0 && filasAgregadas2 > 0;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return false;	
+	}
+	
+	public static Experto EncontrarExperto (String user) {
+		Experto usuario = new Experto();
+		try {
+			PreparedStatement pst = conexion.prepareStatement(FIND_EXPERT);
+			
+			pst.setString(1, user);
+			ResultSet rs = pst.executeQuery();
+			
+			if(rs.next()) {
+				usuario.setId(rs.getInt("ID_USUARIO"));
+				usuario.setNombre(rs.getString("NOMBRE"));
+				usuario.setApellido(rs.getString("APELLIDO"));
+				usuario.setUser(rs.getString("NOMB_USUARIO"));
+				usuario.setPswd(rs.getString("CONTRASENIA"));
+				usuario.setEmail(rs.getString("EMAIL"));
+				usuario.setLis_tareas(rs.getString("LIST_TAREAS"));
+				usuario.setCedula(rs.getInt("CEDULA"));
+				usuario.setProfesion(rs.getString("INSTITUTO"));
+				
+			}
+			return usuario;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
+	public static LinkedList<Experto> listarExpertos(){
+		LinkedList<Experto> users = new LinkedList<>();
+		
+		try {
+			Statement st = conexion.createStatement();
+			ResultSet rs = st.executeQuery(ALL_EXPERTS);
+			
+			while(rs.next()) {
+				Experto user = new Experto();
+				user.setId(rs.getInt("ID_USUARIO"));
+				user.setNombre(rs.getString("NOMBRE"));
+				user.setApellido(rs.getString("APELLIDO"));
+				user.setUser(rs.getString("NOMB_USUARIO"));
+				user.setPswd(rs.getString("CONTRASENIA"));
+				user.setEmail(rs.getString("EMAIL"));
+				user.setLis_tareas(rs.getString("LIST_TAREAS"));
+				user.setCedula(rs.getInt("CEDULA"));
+				user.setProfesion(rs.getString("INSTITUTO"));
+				users.add(user);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return users;
+		
 	}
 	
 
