@@ -8,6 +8,7 @@ import java.sql.Statement;
 import java.util.LinkedList;
 
 import entidades.Administrador;
+import entidades.Usuario;
 
 public class DAOAdministrador extends DAOUsuario {
 	
@@ -16,9 +17,16 @@ private static Connection conexion = DatabaseManager.getConexion();
 	private static final String INSERT_ADMIN = "INSERT INTO ADMINISTRADORES (ID_USUARIO,CEDULA,INSTITUTO,LIST_TAREAS) VALUES (SEQ_ID_USUARIO.CURRVAL,?,?,?)";
 	private static final String UPDATE_ADMIN = "UPDATE ADMINISTRADORES SET CEDULA=?,INSTITUTO=?,LIST_TAREAS=? WHERE ID_USUARIO=?";
 	private static final String ALL_ADMIN = "--ES UN JOIN--";
-	private static final String FIND_ADMIN = "--ES OTRO JOIN-- WHERE NOMB_USUARIO=?";
+	private static final String FIND_ADMIN = "SELECT\r\n" + 
+			"    usuarios.*,\r\n" + 
+			"    administradores.*\r\n" + 
+			"FROM\r\n" + 
+			"    administradores\r\n" + 
+			"    INNER JOIN usuarios ON usuarios.id_usuario = administradores.id_usuario\r\n" + 
+			"WHERE\r\n" + 
+			"    administradores.id_usuario = ?";
 	
-	public static boolean nuevoUsuario(Administrador user) {
+	public static boolean createUsuario(Usuario usuario) {
 		try {
 			PreparedStatement insertarUsuario = conexion.prepareStatement(INSERT_USUARIO);
 			PreparedStatement insertarAdmin = conexion.prepareStatement(INSERT_ADMIN);
@@ -28,17 +36,17 @@ private static Connection conexion = DatabaseManager.getConexion();
 			conexion.setAutoCommit(false);
 			
 			// Primero inserto un Usuario
-			insertarUsuario.setString(1, user.getNombre());
-			insertarUsuario.setString(2, user.getApellido());
-			insertarUsuario.setString(3, user.getUser());
-			insertarUsuario.setString(4, user.getPswd());
-			insertarUsuario.setString(5, user.getEmail());
+			insertarUsuario.setString(1, usuario.getNombre());
+			insertarUsuario.setString(2, usuario.getApellido());
+			insertarUsuario.setString(3, usuario.getUser());
+			insertarUsuario.setString(4, usuario.getPswd());
+			insertarUsuario.setString(5, usuario.getEmail());
 			int filasAgregadas1 = insertarUsuario.executeUpdate();
 			
 			// Despues inserto el Administrador relacionado a ese usuario
-			insertarAdmin.setInt(1, user.getCedula());
-			insertarAdmin.setString(2, user.getInstituto());
-			insertarAdmin.setString(3, user.getList_tareas());
+			insertarAdmin.setInt(1, usuario.getCedula());
+			insertarAdmin.setString(2, usuario.getInstituto());
+			insertarAdmin.setString(3, usuario.getList_tareas());
 			int filasAgregadas2 = insertarAdmin.executeUpdate();
 			
 			// Hacemos el commit con ambas consultas de una vez sola
@@ -51,7 +59,7 @@ private static Connection conexion = DatabaseManager.getConexion();
 		return false;	
 	}
 	
-	public static boolean updateUser(Administrador user) {
+	public static boolean updateUsuario(Usuario user) {
 		try {
 			PreparedStatement modificarUser = conexion.prepareStatement(UPDATE_USUARIO);
 			PreparedStatement modificarAdmin = conexion.prepareStatement(UPDATE_ADMIN);
@@ -84,12 +92,12 @@ private static Connection conexion = DatabaseManager.getConexion();
 		return false;	
 	}
 	
-	public static Administrador findUser(String user) {
-		Administrador usuario = new Administrador();
+	public static Usuario findUsuario(int id) {
+		Usuario usuario = new Administrador();
 		try {
 			PreparedStatement pst = conexion.prepareStatement(FIND_ADMIN);
 			
-			pst.setString(1, user);
+			pst.setInt(1, id);
 			ResultSet rs = pst.executeQuery();
 			
 			if(rs.next()) {
@@ -110,15 +118,15 @@ private static Connection conexion = DatabaseManager.getConexion();
 		return null;
 	}
 	
-	public static LinkedList<Administrador> selectUser(){
-		LinkedList<Administrador> users = new LinkedList<>();
+	public static LinkedList<Usuario> selectUsuario(){
+		LinkedList<Usuario> users = new LinkedList<>();
 		
 		try {
 			Statement st = conexion.createStatement();
 			ResultSet rs = st.executeQuery(ALL_ADMIN);
 			
 			while(rs.next()) {
-				Administrador user = new Administrador();
+				Usuario user = new Administrador();
 				user.setId(rs.getInt("ID_USUARIO"));
 				user.setNombre(rs.getString("NOMBRE"));
 				user.setApellido(rs.getString("APELLIDO"));
