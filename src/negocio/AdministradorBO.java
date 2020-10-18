@@ -22,7 +22,7 @@ public class AdministradorBO extends UsuarioBO {
 	 */
 	@Override
 	public boolean createUsuario(Usuario usuario) {
-		return DAOAdministrador.createUsuario(usuario);
+		return DAOAdministrador.createAdministrador(usuario);
 	}
 
 	/**
@@ -33,7 +33,7 @@ public class AdministradorBO extends UsuarioBO {
 	 */
 	@Override
 	public Usuario findUsuario(int id) {
-		return DAOAdministrador.findUsuario(id);
+		return DAOAdministrador.findAdministrador(id);
 	}
 	
 	
@@ -46,7 +46,7 @@ public class AdministradorBO extends UsuarioBO {
 	@Override
 	public boolean updateUsuario(Usuario usuario) {
 		
-		return DAOAdministrador.updateUsuario(usuario);
+		return DAOAdministrador.updateAdministrador(usuario);
 	
 	}
 	

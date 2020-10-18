@@ -26,7 +26,7 @@ private static Connection conexion = DatabaseManager.getConexion();
 			"WHERE\r\n" + 
 			"    administradores.id_usuario = ?";
 	
-	public static boolean createUsuario(Usuario usuario) {
+	public static boolean createAdministrador(Usuario usuario) {
 		try {
 			PreparedStatement insertarUsuario = conexion.prepareStatement(INSERT_USUARIO);
 			PreparedStatement insertarAdmin = conexion.prepareStatement(INSERT_ADMIN);
@@ -59,7 +59,7 @@ private static Connection conexion = DatabaseManager.getConexion();
 		return false;	
 	}
 	
-	public static boolean updateUsuario(Usuario user) {
+	public static boolean updateAdministrador(Usuario user) {
 		try {
 			PreparedStatement modificarUser = conexion.prepareStatement(UPDATE_USUARIO);
 			PreparedStatement modificarAdmin = conexion.prepareStatement(UPDATE_ADMIN);
@@ -92,7 +92,7 @@ private static Connection conexion = DatabaseManager.getConexion();
 		return false;	
 	}
 	
-	public static Usuario findUsuario(int id) {
+	public static Usuario findAdministrador(int id) {
 		Usuario usuario = new Administrador();
 		try {
 			PreparedStatement pst = conexion.prepareStatement(FIND_ADMIN);
@@ -118,7 +118,7 @@ private static Connection conexion = DatabaseManager.getConexion();
 		return null;
 	}
 	
-	public static LinkedList<Usuario> selectUsuario(){
+	public static LinkedList<Usuario> selectAdministrador(){
 		LinkedList<Usuario> users = new LinkedList<>();
 		
 		try {
