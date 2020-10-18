@@ -6,10 +6,12 @@ import negocio.ComunBO;
 import negocio.ExpertoBO;
 import negocio.UsuarioBO;
 import presentacion.Login;
+import presentacion.VentanaPrincipal;
 
 public class IAgro {
 	
 	private Login login; // capa presentacion de login
+	private VentanaPrincipal ventana; // capa presentacion de ventana principal
 	private UsuarioBO usuario_; // capa de negocios de usuario
 	private Usuario usuario; // usuario logueado
 	int id; // id del usuario logueado
@@ -53,7 +55,8 @@ public class IAgro {
 	}
 	
 	public void menuPrincipal() {
-		
+		ventana = new VentanaPrincipal(this); // no instancio la ventana hasta que realmente se ha logueado correctamente un usuario
+		ventana.start();
 	}
 
 }
