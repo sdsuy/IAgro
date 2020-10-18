@@ -12,9 +12,6 @@ public class AdministradorBO {
 	private LinkedList<Administrador> admins;
 	private Administrador admin;
 	
-	// id del usuario logueado
-	private int id;
-	
 	//Constructor que crea un linkedlist de personas vacio
 	public AdministradorBO() {
 		this.admins = new LinkedList<>();
@@ -107,14 +104,8 @@ public class AdministradorBO {
 		return false;
 	}
 	
-	public void login(String username, String password) {
-		id = DAOUsuario.login(username, password);
+	public int login(String username, String password) {
+		return DAOUsuario.login(username, password);
 	}
-
-	public int getId() {
-		return id;
-	}
-	
-	
 	
 }
