@@ -112,7 +112,11 @@ public class Login {
 		desktopPane_1.setBounds(355, 195, 1, 1);
 		desktopPane.add(desktopPane_1);
 		
-		
+		JLabel lblError = new JLabel("Error. Usuario o Contrase\u00F1a incorrectos.");
+		lblError.setVisible(false);
+		lblError.setForeground(Color.RED);
+		lblError.setBounds(272, 113, 208, 41);
+		desktopPane.add(lblError);
 		
 		JButton btnEntrar = new JButton("Entrar");
 		btnEntrar.addActionListener(new ActionListener() {
@@ -130,19 +134,21 @@ public class Login {
 					}
 				} else {
 					// TODO:
-					// mostrar un dialogo que los datos ingresados no fueron correctos
+					lblError.setVisible(true);
 				}
 			}
 		});
 		btnEntrar.setBounds(324, 342, 109, 23);
 		desktopPane.add(btnEntrar);
 		
-		JLabel lblError = new JLabel("Debe cambiar la contrase\u00F1a del Administrador por defecto");
-		lblError.setVisible(false);
-		lblError.setFont(new Font("Tw Cen MT Condensed", Font.PLAIN, 15));
-		lblError.setForeground(Color.RED);
-		lblError.setBounds(253, 114, 256, 53);
-		desktopPane.add(lblError);
+		JLabel lblCambiarPass = new JLabel("Debe cambiar la contrase\u00F1a del Administrador por defecto");
+		lblCambiarPass.setVisible(false);
+		lblCambiarPass.setFont(new Font("Tw Cen MT Condensed", Font.PLAIN, 15));
+		lblCambiarPass.setForeground(Color.RED);
+		lblCambiarPass.setBounds(251, 106, 256, 53);
+		desktopPane.add(lblCambiarPass);
+		
+		
 		
 		JLabel lblFondo = new JLabel("");
 		lblFondo.setFont(new Font("Tahoma", Font.PLAIN, 16));
