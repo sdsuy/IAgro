@@ -24,7 +24,7 @@ public class ExpertoBO extends UsuarioBO {
 	
 	@Override
 	public boolean createUsuario(Usuario usuario) {
-		return DAOExperto.CreateUsuario(usuario);
+		return DAOExperto.createExperto(usuario);
 	}
 	
 	/**
@@ -36,8 +36,15 @@ public class ExpertoBO extends UsuarioBO {
 
 	@Override
 	public Usuario findUsuario(int id) {
-		return null;
+		return DAOExperto.findExperto(id);
 	}
+	
+	/**
+	 * 
+	 * Actualizar un Usuaro
+	 * @param Usuario
+	 * @return boolean
+	 */
 
 	@Override
 	public LinkedList<Usuario> allUsuarios() {

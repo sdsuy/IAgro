@@ -29,7 +29,7 @@ public class DAOExperto extends DAOUsuario {
 	
 	
 	
-	public static boolean CreateUsuario(Usuario user) {
+	public static boolean createExperto(Usuario user) {
 		try {
 			PreparedStatement insertarUsuario = conexion.prepareStatement(INSERT_USUARIO);
 			PreparedStatement insertarExperto = conexion.prepareStatement(INSERT_EXPERT);
@@ -95,12 +95,12 @@ public class DAOExperto extends DAOUsuario {
 		return false;	
 	}
 	
-	public static Experto EncontrarExperto (String user) {
-		Experto usuario = new Experto();
+	public static Usuario findExperto (int id) {
+		Usuario usuario = new Experto();
 		try {
 			PreparedStatement pst = conexion.prepareStatement(FIND_EXPERT);
 			
-			pst.setString(1, user);
+			pst.setInt(1, id);
 			ResultSet rs = pst.executeQuery();
 			
 			if(rs.next()) {
@@ -112,7 +112,7 @@ public class DAOExperto extends DAOUsuario {
 				usuario.setEmail(rs.getString("EMAIL"));
 				usuario.setList_tareas(rs.getString("LIST_TAREAS"));
 				usuario.setCedula(rs.getInt("CEDULA"));
-				usuario.setProfesion(rs.getString("INSTITUTO"));
+				usuario.setProfesion(rs.getString("PROFESION"));
 				
 			}
 			return usuario;
