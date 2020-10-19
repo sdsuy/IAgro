@@ -24,7 +24,7 @@ public class ExpertoBO extends UsuarioBO {
 	
 	@Override
 	public boolean createUsuario(Usuario usuario) {
-		return DAOExperto.createExperto(usuario);
+		return DAOExperto.createUsuario(usuario);
 	}
 	
 	/**
@@ -36,7 +36,7 @@ public class ExpertoBO extends UsuarioBO {
 
 	@Override
 	public Usuario findUsuario(int id) {
-		return DAOExperto.findExperto(id);
+		return DAOExperto.findUsuario(id);
 	}
 	
 	
@@ -60,7 +60,7 @@ public class ExpertoBO extends UsuarioBO {
 
 	@Override
 	public boolean updateUsuario(Usuario usuario) {
-		return DAOExperto.updateExperto(usuario);
+		return DAOExperto.updateUsuario(usuario);
 	}
 	
 	
