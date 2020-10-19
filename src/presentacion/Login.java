@@ -75,14 +75,13 @@ public class Login {
 	 */
 	public Login(IAgro iagro) {
 		this.iagro = iagro;
-		if(administrador.bootstrap() {
-			
-			JLabel lblError = new JLabel("Debe cambiar la contrase\u00F1a del Administrador por defecto");
-			lblError.setFont(new Font("Tw Cen MT Condensed", Font.PLAIN, 15));
-			lblError.setForeground(Color.RED);
-			lblError.setBounds(253, 114, 256, 53);
-			
-		}
+		//if(administrador.bootstrap() {	
+		//}
+		
+		System.out.println("Debe cambiar la contrase\\u00F1a del Administrador por defecto");
+		
+		
+		
 		initialize();
 	}
 
@@ -97,6 +96,10 @@ public class Login {
 		
 		JDesktopPane desktopPane = new JDesktopPane();
 		frmIagro.getContentPane().add(desktopPane, BorderLayout.CENTER);
+		
+		
+		
+		
 		
 		txtFieldUser = new JTextField();
 		txtFieldUser.setBounds(316, 225, 151, 34);
@@ -115,7 +118,7 @@ public class Login {
 		JLabel lblError = new JLabel("Error. Usuario o Contrase\u00F1a incorrectos.");
 		lblError.setVisible(false);
 		lblError.setForeground(Color.RED);
-		lblError.setBounds(272, 113, 208, 41);
+		lblError.setBounds(270, 126, 208, 41);
 		desktopPane.add(lblError);
 		
 		JButton btnEntrar = new JButton("Entrar");
@@ -141,12 +144,7 @@ public class Login {
 		btnEntrar.setBounds(324, 342, 109, 23);
 		desktopPane.add(btnEntrar);
 		
-		JLabel lblCambiarPass = new JLabel("Debe cambiar la contrase\u00F1a del Administrador por defecto");
-		lblCambiarPass.setVisible(false);
-		lblCambiarPass.setFont(new Font("Tw Cen MT Condensed", Font.PLAIN, 15));
-		lblCambiarPass.setForeground(Color.RED);
-		lblCambiarPass.setBounds(251, 106, 256, 53);
-		desktopPane.add(lblCambiarPass);
+		
 		
 		
 		
