@@ -1,9 +1,11 @@
 package persistencia;
 import entidades.Comun;
+import entidades.Experto;
 import entidades.Usuario;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class DAOComun extends DAOUsuario {
@@ -75,5 +77,31 @@ public class DAOComun extends DAOUsuario {
 			e.printStackTrace();
 		}
 		return false;	
+	}
+	
+	public static Usuario findComun (int id) {
+		Usuario usuario = new Experto();
+		try {
+			PreparedStatement pst = conexion.prepareStatement(FIND_COMUN);
+			
+			pst.setInt(1, id);
+			ResultSet rs = pst.executeQuery();
+			
+			if(rs.next()) {
+				usuario.setId(rs.getInt("ID_USUARIO"));
+				usuario.setNombre(rs.getString("NOMBRE"));
+				usuario.setApellido(rs.getString("APELLIDO"));
+				usuario.setUser(rs.getString("NOMB_USUARIO"));
+				usuario.setPswd(rs.getString("CONTRASENIA"));
+				usuario.setEmail(rs.getString("EMAIL"));
+				usuario.setList_tareas(rs.getString("LIST_TAREAS"));
+				
+				
+			}
+			return usuario;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
 	}
 }
