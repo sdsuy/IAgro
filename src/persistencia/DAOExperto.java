@@ -7,7 +7,6 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.LinkedList;
 
-import entidades.Administrador;
 import entidades.Experto;
 import entidades.Usuario;
 

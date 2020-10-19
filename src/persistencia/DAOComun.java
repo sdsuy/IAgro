@@ -1,5 +1,7 @@
 package persistencia;
 import entidades.Comun;
+import entidades.Usuario;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -7,14 +9,22 @@ import java.sql.SQLException;
 public class DAOComun extends DAOUsuario {
 	private static Connection conexion = DatabaseManager.getConexion();
 	
-	private static final String INSERT_COMUNES = "INSERT INTO COMUNES (ID_USUARIO,LIST_TAREAS,NOMBRE,APELLIDO,NOMB_USUARIO,CONTRASENIA,EMAIL,CEDULA,INSTITUTO,) VALUES (SEQ_ID_USUARIO.CURRVAL,?,?,?)";
-	private static final String UPDATE_COMUNES = "UPDATE COMUNES SET LIST_TAREAS=?,NOMBRE=?,LIST_APELLIDO=?,NOMB_USUARIO=?,CONTRASENIA=?,EMAIL=?,CEDULA=?,INSTITUTO=? WHERE ID_USUARIO=?";
+	private static final String INSERT_COMUN = "INSERT INTO COMUNES (ID_USUARIO,NOMBRE,APELLIDO,NOMB_USUARIO,CONTRASENIA,EMAIL, LIST_TAREAS) VALUES (SEQ_ID_USUARIO.NEXTVAL,?,?,?,?,?,?)";
+	private static final String UPDATE_COMUN = "UPDATE COMUNES SET NOMBRE=?,APELLIDO=?,NOMB_USUARIO=?,CONTRASENIA=?,EMAIL=?, LIST_TAREAS=? WHERE ID_USUARIO=?";
+	private static final String ALL_COMUNES = "SELECT * FROM COMUNES"; //+join
+	private static final String FIND_COMUN = "SELECT\r\n" + 
+			"    usuarios.*,\r\n" + 
+			"    comunes.*\r\n" + 
+			"FROM\r\n" + 
+			"    comunes\r\n" + 
+			"    INNER JOIN usuarios ON usuarios.id_usuario = comunes.id_usuario\r\n" + 
+			"WHERE\r\n" + 
+			"    comunes.id_usuario = ?";
 	
-	
-	public static boolean nuevoUsuario(Comun user){
+	public static boolean createComun(Usuario user){
 		try {
 			PreparedStatement insertarUsuario = conexion.prepareStatement(INSERT_USUARIO);
-			PreparedStatement insertarComun = conexion.prepareStatement(INSERT_COMUNES);
+			PreparedStatement insertarComun = conexion.prepareStatement(INSERT_COMUN);
 			
 			// Usamos una transaccion con auto commit deshabilitado
 			// ya que son 2 consultas y ambas deben hacerse al mismo tiempo
@@ -45,7 +55,7 @@ public class DAOComun extends DAOUsuario {
 	public static boolean updateUser(Comun user) {
 		try {
 			PreparedStatement modificarUser = conexion.prepareStatement(UPDATE_USUARIO);
-			PreparedStatement modificarComun = conexion.prepareStatement(UPDATE_COMUNES);
+			PreparedStatement modificarComun = conexion.prepareStatement(UPDATE_COMUN);
 			
 			conexion.setAutoCommit(false);
 			
