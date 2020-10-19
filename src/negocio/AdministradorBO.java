@@ -9,7 +9,7 @@ public class AdministradorBO extends UsuarioBO {
 	
 	private LinkedList<Usuario> admins;
 	
-	//Constructor que crea un linkedlist de personas vacio
+	//Constructor que crea un linkedlist de usuario vacio
 	public AdministradorBO() {
 		this.admins = new LinkedList<>();
 	}
