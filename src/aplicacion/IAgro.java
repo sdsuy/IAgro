@@ -17,13 +17,13 @@ public class IAgro {
 	int id; // id del usuario logueado
 
 	public static void main(String[] args) {
-		IAgro iagro = new IAgro();
-		iagro.start();
+		IAgro iagro = new IAgro();//Se crea una instancia
+		iagro.start();//instancia la capa de negocio.
 //		login.main(this);
 	}
 	
 	public IAgro() {
-		login = new Login(this);
+		login = new Login(this);//Le paso la propia clase instanciada...!
 	}
 	
 	private void start() {
