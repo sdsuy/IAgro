@@ -57,7 +57,7 @@ public class ComunBO extends UsuarioBO {
 	
 	/**
 	 * 
-	 * Getter del linkedlist Admins
+	 * Getter del linkedlist comuns
 	 * @return
 	 */
 	
