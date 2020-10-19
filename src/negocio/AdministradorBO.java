@@ -16,7 +16,7 @@ public class AdministradorBO extends UsuarioBO {
 	
 	/**
 	 * 
-	 * Agrego un administrador
+	 * Agrego un Usuario administrador
 	 * @param Usuario
 	 * @return
 	 */
@@ -27,7 +27,7 @@ public class AdministradorBO extends UsuarioBO {
 
 	/**
 	 * 
-	 * Busco un Usuario
+	 * Busco un Usuario Administrador 
 	 * @param int
 	 * @return Usuario
 	 */
@@ -39,7 +39,7 @@ public class AdministradorBO extends UsuarioBO {
 	
 	/**
 	 * 
-	 * Actualizar usuarop
+	 * Actualizar usuario Administrador
 	 * @param Usuario
 	 * @return boolean
 	 */
