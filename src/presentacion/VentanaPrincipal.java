@@ -86,17 +86,14 @@ public class VentanaPrincipal {
 		menuBar.setBounds(0, 0, 734, 29);
 		desktopPane.add(menuBar);
 		
-		JMenu mnAdministrador = new JMenu("Administrador");
+		JMenu mnAdministrador = new JMenu("Usuarios");
 		menuBar.add(mnAdministrador);
 		
 		JMenuItem mntmAlta = new JMenuItem("Alta");
 		mnAdministrador.add(mntmAlta);
 		
-		JMenuItem mntmBaja = new JMenuItem("Baja");
-		mnAdministrador.add(mntmBaja);
-		
-		JMenuItem mntmModificacion = new JMenuItem("Modificacion");
-		mnAdministrador.add(mntmModificacion);
+		JMenuItem mntmListar = new JMenuItem("Listar");
+		mnAdministrador.add(mntmListar);
 	}
 	private static void addPopup(Component component, final JPopupMenu popup) {
 		component.addMouseListener(new MouseAdapter() {
