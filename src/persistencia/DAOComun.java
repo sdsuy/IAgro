@@ -7,6 +7,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.LinkedList;
 
 public class DAOComun extends DAOUsuario {
 	private static Connection conexion = DatabaseManager.getConexion();
@@ -103,5 +105,30 @@ public class DAOComun extends DAOUsuario {
 			e.printStackTrace();
 		}
 		return null;
+	}
+	
+	public static LinkedList<Comun> listarComunes(){
+		LinkedList<Comun> users = new LinkedList<>();
+		
+		try {
+			Statement st = conexion.createStatement();
+			ResultSet rs = st.executeQuery(ALL_COMUNES);
+			
+			while(rs.next()) {
+				Comun user = new Comun();
+				user.setId(rs.getInt("ID_USUARIO"));
+				user.setNombre(rs.getString("NOMBRE"));
+				user.setApellido(rs.getString("APELLIDO"));
+				user.setUser(rs.getString("NOMB_USUARIO"));
+				user.setPswd(rs.getString("CONTRASENIA"));
+				user.setEmail(rs.getString("EMAIL"));
+				user.setList_tareas(rs.getString("LIST_TAREAS"));
+				users.add(user);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return users;
+		
 	}
 }
