@@ -26,11 +26,8 @@ public class DAOComun extends DAOUsuario {
 			PreparedStatement insertarUsuario = conexion.prepareStatement(INSERT_USUARIO);
 			PreparedStatement insertarComun = conexion.prepareStatement(INSERT_COMUN);
 			
-			// Usamos una transaccion con auto commit deshabilitado
-			// ya que son 2 consultas y ambas deben hacerse al mismo tiempo
 			conexion.setAutoCommit(false);
 			
-			// Primero inserto un Usuario
 			insertarUsuario.setString(1, user.getNombre());
 			insertarUsuario.setString(2, user.getApellido());
 			insertarUsuario.setString(3, user.getUser());
@@ -38,8 +35,7 @@ public class DAOComun extends DAOUsuario {
 			insertarUsuario.setString(5, user.getEmail());
 			int filasAgregadas1 = insertarUsuario.executeUpdate();
 			
-			// Despues inserto el usuario comun relacionado a ese usuario
-			insertarComun.setString(1, user.getList_tareas());
+			insertarComun.setString(6, user.getList_tareas());
 			int filasAgregadas2 = insertarComun.executeUpdate();
 			
 			// Hacemos el commit con ambas consultas de una vez sola
