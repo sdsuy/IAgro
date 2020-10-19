@@ -13,7 +13,8 @@ public abstract class UsuarioBO {
 	
 	public abstract Usuario findUsuario(int id);
 	
-	public abstract LinkedList<Usuario> allUsuarios();
+	public abstract LinkedList<Usuario> allUsuarios(); // este metodo no sera abstracto
+	// sera un metodo generico en el DAOUsuario que obtenga todos los usuarios de todos los roles
 	
 	public abstract boolean updateUsuario(Usuario usuario);
 	
