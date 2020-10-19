@@ -150,29 +150,6 @@ public class DAOExperto extends DAOUsuario {
 	}
 	
 	
-	public static boolean deleteExperto(int id) {
-		
-		try {
-			PreparedStatement pst = conexion.prepareStatement(DELETE_EXPERT);
-			
-			pst.setInt(1, id);
-			int filasalteradas = pst.executeUpdate();
-			
-			if (filasalteradas>0) {
-				return true;
-			}
-			
-			else {
-				return false;
-			}
-			
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return false;
-		
-	}
 	
 	
 
