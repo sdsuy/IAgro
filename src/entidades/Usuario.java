@@ -8,20 +8,12 @@ public abstract class Usuario {
 	private String user;
 	private String pswd;
 	private String email;
-	
-	private String profesion; // usuario experto
-	
-	private int cedula; // usuario experto y administrador
-	private String list_tareas; // usuario experto y administrador
-	
-	private String instituto; // usuario administrador
 
 	public Usuario() {
 		super();
 	}
 
-	public Usuario(int id, String nombre, String apellido, String user, String pswd, String email, String profesion,
-			int cedula, String list_tareas, String instituto) {
+	public Usuario(int id, String nombre, String apellido, String user, String pswd, String email) {
 		super();
 		this.id = id;
 		this.nombre = nombre;
@@ -29,10 +21,6 @@ public abstract class Usuario {
 		this.user = user;
 		this.pswd = pswd;
 		this.email = email;
-		this.profesion = profesion;
-		this.cedula = cedula;
-		this.list_tareas = list_tareas;
-		this.instituto = instituto;
 	}
 	
 	public abstract String getRol();
@@ -85,36 +73,20 @@ public abstract class Usuario {
 		this.email = email;
 	}
 
-	public String getProfesion() {
-		return profesion;
-	}
+	abstract public String getProfesion();
 
-	public void setProfesion(String profesion) {
-		this.profesion = profesion;
-	}
+	abstract public void setProfesion(String profesion);
 
-	public int getCedula() {
-		return cedula;
-	}
+	abstract public int getCedula();
 
-	public void setCedula(int cedula) {
-		this.cedula = cedula;
-	}
+	abstract public void setCedula(int cedula);
 
-	public String getList_tareas() {
-		return list_tareas;
-	}
+	abstract public String getList_tareas();
 
-	public void setList_tareas(String list_tareas) {
-		this.list_tareas = list_tareas;
-	}
+	abstract public void setList_tareas(String list_tareas);
 
-	public String getInstituto() {
-		return instituto;
-	}
+	abstract public String getInstituto();
 
-	public void setInstituto(String instituto) {
-		this.instituto = instituto;
-	}
+	abstract public void setInstituto(String instituto);
 
 }
