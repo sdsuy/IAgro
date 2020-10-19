@@ -28,7 +28,7 @@ public class DAOExperto extends DAOUsuario {
 	
 	
 	
-	public static boolean createExperto(Usuario user) {
+	public static boolean createUsuario(Usuario user) {
 		try {
 			PreparedStatement insertarUsuario = conexion.prepareStatement(INSERT_USUARIO);
 			PreparedStatement insertarExperto = conexion.prepareStatement(INSERT_EXPERT);
@@ -61,7 +61,7 @@ public class DAOExperto extends DAOUsuario {
 		return false;	
 	}
 	
-	public static boolean updateExperto(Usuario user) {
+	public static boolean updateUsuario(Usuario user) {
 		try {
 			PreparedStatement modificarUser = conexion.prepareStatement(UPDATE_USUARIO);
 			PreparedStatement modificarExperto = conexion.prepareStatement(UPDATE_EXPERT);
@@ -94,7 +94,7 @@ public class DAOExperto extends DAOUsuario {
 		return false;	
 	}
 	
-	public static Usuario findExperto (int id) {
+	public static Usuario findUsuario(int id) {
 		Usuario usuario = new Experto();
 		try {
 			PreparedStatement pst = conexion.prepareStatement(FIND_EXPERT);
@@ -121,7 +121,7 @@ public class DAOExperto extends DAOUsuario {
 		return null;
 	}
 	
-	public static LinkedList<Experto> listarExpertos(){
+	public static LinkedList<Experto> listarUsuarios(){
 		LinkedList<Experto> users = new LinkedList<>();
 		
 		try {
