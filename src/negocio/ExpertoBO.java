@@ -62,5 +62,7 @@ public class ExpertoBO extends UsuarioBO {
 	public boolean updateUsuario(Usuario usuario) {
 		return DAOExperto.updateExperto(usuario);
 	}
+	
+	
 
 }

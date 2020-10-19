@@ -5,59 +5,57 @@ import java.util.LinkedList;
 import entidades.Comun;
 import entidades.Usuario;
 import persistencia.DAOComun;
+import persistencia.DAOUsuario;
 
 public class ComunBO extends UsuarioBO {
-	private LinkedList<Comun> comunes;
+	private LinkedList<Usuario> comunes;
 	
 	//constructor
 	public ComunBO() {
-//		comunes = DAOComun.listarUsuarios();
+		comunes = DAOComun.listarComunes();
 	}
 	
 	//insertar nuevo usuario comun
 	public void insertarUsuario(Comun usuario){
-		DAOComun.nuevoUsuario(usuario);
+		DAOComun.createComun(usuario);
 		System.out.println("Ingresando usuario");
 	}
 	
 	//modificar usuario Comun
 	public void modificarComun(Comun usuario){
-//		DAOComun.updateUsuario(usuario);
+		DAOComun.updateUser(usuario);
 		System.out.println("Modificando usuario");
 	}
 	//eliminar usuario Comun
-	public void eliminarComun(Comun usuario){
-//		DAOComun.borrarUsuario(usuario);
-		System.out.println("Usuario compún "+usuario.getUser()+"eliminado");
+	public void eliminarComun(int id){
+		DAOUsuario.deleteUsuario(id);
+		System.out.println("Usuario compún eliminado");
 	}
 	
 	//obtener lista usuario Comun
-	public LinkedList<Comun> listarComun(){
+	public LinkedList<Usuario> listarComun(){
 		return comunes;
 	}
 	
-	//encontrar usuario por nombre de usuario
-	public Comun encontrarUsuario(String nombreUsuario){
-//		return DAOComun.encontrarUsuario(nombreUsuario);
-		return null;
+	//encontrar usuario por id de usuario
+	public Usuario encontrarUsuario(int id){
+		return DAOComun.findComun(id);
 	}
 
 	@Override
 	public boolean createUsuario(Usuario usuario) {
-		// TODO Auto-generated method stub
-		return false;
+		return DAOComun.createComun(usuario);
+		
 	}
 
 	@Override
 	public Usuario findUsuario(int id) {
-		// TODO Auto-generated method stub
-		return null;
+		return DAOComun.findComun(id);
 	}
 
 	@Override
 	public LinkedList<Usuario> allUsuarios() {
-		// TODO Auto-generated method stub
-		return null;
+		return comunes;
 	}
 
 	@Override
@@ -65,5 +63,7 @@ public class ComunBO extends UsuarioBO {
 		// TODO Auto-generated method stub
 		return false;
 	}
+
+	
 	
 }

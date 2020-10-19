@@ -107,8 +107,8 @@ public class DAOComun extends DAOUsuario {
 		return null;
 	}
 	
-	public static LinkedList<Comun> listarComunes(){
-		LinkedList<Comun> users = new LinkedList<>();
+	public static LinkedList<Usuario> listarComunes(){
+		LinkedList<Usuario> users = new LinkedList<>();
 		
 		try {
 			Statement st = conexion.createStatement();
