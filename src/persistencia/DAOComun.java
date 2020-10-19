@@ -25,7 +25,7 @@ public class DAOComun extends DAOUsuario {
 			"WHERE\r\n" + 
 			"    comunes.id_usuario = ?";
 	
-	public static boolean createComun(Usuario user){
+	public static boolean createUsuario(Usuario user){
 		try {
 			PreparedStatement insertarUsuario = conexion.prepareStatement(INSERT_USUARIO);
 			PreparedStatement insertarComun = conexion.prepareStatement(INSERT_COMUN);
@@ -52,7 +52,7 @@ public class DAOComun extends DAOUsuario {
 		return false;	
 	}
 	
-	public static boolean updateUser(Usuario user) {
+	public static boolean updateUsuario(Usuario user) {
 		
 		try {
 			PreparedStatement modificarUser = conexion.prepareStatement(UPDATE_USUARIO);
@@ -81,7 +81,7 @@ public class DAOComun extends DAOUsuario {
 		return false;	
 	}
 	
-	public static Usuario findComun (int id) {
+	public static Usuario findUsuario(int id) {
 		Usuario usuario = new Experto();
 		try {
 			PreparedStatement pst = conexion.prepareStatement(FIND_COMUN);
@@ -107,7 +107,7 @@ public class DAOComun extends DAOUsuario {
 		return null;
 	}
 	
-	public static LinkedList<Usuario> listarComunes(){
+	public static LinkedList<Usuario> listarUsuarios(){
 		LinkedList<Usuario> users = new LinkedList<>();
 		
 		try {
