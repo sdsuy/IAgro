@@ -8,29 +8,63 @@ import persistencia.DAOComun;
 import persistencia.DAOUsuario;
 
 public class ComunBO extends UsuarioBO {
+	
+	private LinkedList<Usuario> comuns;
+	
+	//Constructor que crea un linkedlist de comun vacio
+	public ComunBO() {
+		this.comuns = new LinkedList<>();
+	}
+	
+	/**
+	 * 
+	 * Agrego un Usuario comun
+	 * @param Usuario
+	 * @return
+	 */
 
 	@Override
 	public boolean createUsuario(Usuario usuario) {
-		// TODO Auto-generated method stub
-		return false;
+		
+		return DAOComun.createUsuario(usuario);
 	}
+	
+	/**
+	 * 
+	 * Busco un Usuario Comun
+	 * @param int
+	 * @return Usuario
+	 */
 
 	@Override
 	public Usuario findUsuario(int id) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return DAOComun.findUsuario(id);
 	}
 
-	@Override
-	public LinkedList<Usuario> allUsuarios() {//para sprint 2..!
-		// TODO Auto-generated method stub
-		return null;
-	}
+	/**
+	 * 
+	 * Actualizar usuario comun
+	 * @param usuario
+	 * @return boolean
+	 */
 
 	@Override
 	public boolean updateUsuario(Usuario usuario) {
-		// TODO Auto-generated method stub
-		return false;
+		
+		return DAOComun.updateUsuario(usuario);
+	}
+	
+	/**
+	 * 
+	 * Getter del linkedlist Admins
+	 * @return
+	 */
+	
+	@Override
+	public LinkedList<Usuario> allUsuarios() {//para sprint 2..!
+		
+		return comuns;
 	}
 	
 }
