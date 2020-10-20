@@ -67,8 +67,8 @@ public class IAgro {
 	}
 	
 	public void registro() {
-		// registro = new Registro(this); // instancio la ventana de registro al hacer click en Alta en el menu Usuario
-		// registro.start();
+		registro = new Registro(this); // instancio la ventana de registro al hacer click en Alta en el menu Usuario
+		registro.start();
 	}
 
 	public LinkedList<Usuario> getUsuarios() {
