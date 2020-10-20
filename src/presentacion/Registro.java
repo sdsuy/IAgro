@@ -8,6 +8,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JButton;
 import javax.swing.JTextField;
 
+import aplicacion.IAgro;
 import entidades.Usuario;
 import negocio.UsuarioBO;
 
@@ -31,6 +32,8 @@ public class Registro {
 	private JTextField textFieldInstituto;
 	private JTextField textFieldProfesion;
 	private JTextField textFieldUserName;
+	
+	private IAgro iagro;
 
 	/**
 	 * Launch the application.
@@ -47,11 +50,28 @@ public class Registro {
 			}
 		});
 	}
+	
+	public void start() {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
 
 	/**
 	 * Create the application.
 	 */
 	public Registro() {
+		initialize();
+	}
+	
+	public Registro(IAgro iagro) {
+		this.iagro = iagro; // inyecto la aplicacion IAgro en la ventana
 		initialize();
 	}
 
@@ -153,7 +173,8 @@ public class Registro {
 						
 						UsuarioBO usuario=null;
 						Usuario user=null;
-						//user.setCedula.ParseInt(textFieldDocumento.getText());
+						int x=Integer.parseInt(textFieldDocumento.getText());
+						user.setCedula(x);
 						user.setEmail(textFieldMail.getText().toUpperCase());
 						user.setNombre(textFieldNombre1.getText().toUpperCase());
 						user.setApellido(textFieldApellido1.getText().toUpperCase());
