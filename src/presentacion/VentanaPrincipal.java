@@ -87,6 +87,11 @@ public class VentanaPrincipal {
 		JMenu mnAdministrador = new JMenu("Usuarios");
 		menuBar.add(mnAdministrador);
 		
+		mnAdministrador.setVisible(false);
+		
+		// Si el usuario logueado tiene como rol administrador muestro el menu Usuarios
+		if(iagro.getUsuario().getRol().equals("administrador")) mnAdministrador.setVisible(true);
+		
 		JMenuItem mntmAlta = new JMenuItem("Alta");
 		mnAdministrador.add(mntmAlta);
 		
