@@ -11,7 +11,7 @@ import presentacion.Login;
 import presentacion.Registro;
 import presentacion.VentanaPrincipal;
 
-public class IAgr {
+public class IAgro {
 	
 	private Login login; // capa presentacion de login
 	private VentanaPrincipal ventana; // capa presentacion de ventana principal
