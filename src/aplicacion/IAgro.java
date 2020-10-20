@@ -32,7 +32,7 @@ public class IAgro {
 	
 	private void start() {
 		usuario_ = new AdministradorBO(); // instancia la capa de negocio.
-		usuarios = usuario_.allUsuarios(); // cargo la lista usuarios
+		refreshUsuarios();
 		// si es el primer uso creamos un usuario administrador:
 		if(usuarios.size() < 1) if(usuario_.bootstrap()) login.mensajeEditarAdminPassword();
 		login.start(); // muestro la ventana de login
@@ -73,6 +73,10 @@ public class IAgro {
 
 	public LinkedList<Usuario> getUsuarios() {
 		return usuarios;
+	}
+	
+	public void refreshUsuarios() {
+		usuarios = usuario_.allUsuarios(); // cargo la lista usuarios
 	}
 
 }
