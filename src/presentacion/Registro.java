@@ -4,11 +4,18 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JButton;
 import javax.swing.JTextField;
+
+import entidades.Usuario;
+import negocio.UsuarioBO;
+
 import javax.swing.JPasswordField;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class Registro {
 
@@ -23,6 +30,7 @@ public class Registro {
 	private JPasswordField Password;
 	private JTextField textFieldInstituto;
 	private JTextField textFieldProfesion;
+	private JTextField textFieldUserName;
 
 	/**
 	 * Launch the application.
@@ -92,7 +100,7 @@ public class Registro {
 		textFieldNombre2.setBounds(150, 114, 130, 26);
 		frame.getContentPane().add(textFieldNombre2);
 		
-		JLabel lblPassword = new JLabel("Password");
+		JLabel lblPassword = new JLabel("Clave");
 		lblPassword.setBounds(292, 91, 88, 16);
 		frame.getContentPane().add(lblPassword);
 		
@@ -133,6 +141,44 @@ public class Registro {
 		frame.getContentPane().add(lblRol);
 		
 		JButton btnAlta = new JButton("Alta");
+		btnAlta.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(textFieldDocumento.getText().isEmpty() || textFieldMail.getText().isEmpty() || textFieldNombre1.getText().isEmpty() ||  
+						textFieldApellido1.getText().isEmpty() || textFieldUserName.getText().isEmpty()  || textFieldApellido2.getText().isEmpty() || ConfirmaPassword.getText().isEmpty()) {
+					JOptionPane.showMessageDialog(null, "No tiene todos lo campos","Error",JOptionPane.ERROR_MESSAGE);
+				}else {
+						String repClave="";
+						
+						String nombRol = comboBoxRol.getSelectedItem().toString();
+						
+						UsuarioBO usuario=null;
+						Usuario user=null;
+						//user.setCedula.ParseInt(textFieldDocumento.getText());
+						user.setEmail(textFieldMail.getText().toUpperCase());
+						user.setNombre(textFieldNombre1.getText().toUpperCase());
+						user.setApellido(textFieldApellido1.getText().toUpperCase());
+						user.setPswd(Password.getText());
+						user.setUser(textFieldUserName.getText());
+						repClave=ConfirmaPassword.getText();
+						if(repClave.equals(ConfirmaPassword.getText())) {
+							
+							boolean resultado = usuario.createUsuario(user);
+							if(resultado) {
+								limpiarCampos();
+								JOptionPane.showMessageDialog(null, "La operacion se realizo con exito","Correcto",JOptionPane.INFORMATION_MESSAGE);
+							}
+							
+							else {
+								JOptionPane.showMessageDialog(null, "Se produjo un error","Error",JOptionPane.ERROR_MESSAGE);
+							}
+
+							}
+						else {
+							JOptionPane.showMessageDialog(null, "Su clave no coincide","Error",JOptionPane.ERROR_MESSAGE);
+						}
+					}
+				}
+		});
 		btnAlta.setBounds(6, 398, 117, 29);
 		frame.getContentPane().add(btnAlta);
 		
@@ -169,5 +215,29 @@ public class Registro {
 		textFieldProfesion.setColumns(10);
 		textFieldProfesion.setBounds(435, 181, 130, 26);
 		frame.getContentPane().add(textFieldProfesion);
+		
+		JLabel lblUserName = new JLabel("User Name");
+		lblUserName.setBounds(348, 233, 88, 16);
+		frame.getContentPane().add(lblUserName);
+		
+		textFieldUserName = new JTextField();
+		textFieldUserName.setColumns(10);
+		textFieldUserName.setBounds(348, 261, 130, 26);
+		frame.getContentPane().add(textFieldUserName);
+		
+	}
+	private void limpiarCampos() {
+		textFieldDocumento.setText("");
+		textFieldMail.setText("");
+		textFieldNombre1.setText("");
+		textFieldNombre2.setText("");
+		textFieldApellido1.setText("");
+		textFieldApellido2.setText("");
+		textFieldInstituto.setText("");
+		textFieldProfesion.setText("");
+		textFieldUserName.setText("");
+		Password.setText("");
+		ConfirmaPassword.setText("");
+		
 	}
 }
