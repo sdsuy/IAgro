@@ -79,8 +79,9 @@ public class IAgro {
 		usuarios = usuario_.allUsuarios(); // cargo la lista usuarios
 	}
 	
-	public void createUsuario(Usuario usuario) {
+	public boolean createUsuario(Usuario usuario) {
 		System.out.println("usuario creado");
+		return true;
 	}
 
 }
