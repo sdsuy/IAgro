@@ -74,10 +74,6 @@ public class IAgro {
 	public LinkedList<Usuario> getUsuarios() {
 		return usuarios;
 	}
-
-	public void setUsuarios(LinkedList<Usuario> usuarios) {
-		this.usuarios = usuarios;
-	}
 	
 	
 
