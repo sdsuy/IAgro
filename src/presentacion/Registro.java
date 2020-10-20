@@ -153,7 +153,8 @@ public class Registro {
 						
 						UsuarioBO usuario=null;
 						Usuario user=null;
-						//user.setCedula.ParseInt(textFieldDocumento.getText());
+						int x=Integer.parseInt(textFieldDocumento.getText());
+						user.setCedula(x);
 						user.setEmail(textFieldMail.getText().toUpperCase());
 						user.setNombre(textFieldNombre1.getText().toUpperCase());
 						user.setApellido(textFieldApellido1.getText().toUpperCase());
