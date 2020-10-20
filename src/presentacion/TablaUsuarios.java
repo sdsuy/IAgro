@@ -43,30 +43,31 @@ public class TablaUsuarios {
 	/**
 	 * Initialize the contents of the frame.
 	 */
-	private void initialize(LinkedList<Usuario> usuarios, String[] columnas) {
+//	private void initialize(LinkedList<Usuario> usuarios, String[] columnas) {
+	private void initialize() {
 		frame = new JFrame();
 		frame.setBounds(100, 100, 450, 300);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
-		int x = usuarios.size();
-		int y = columnas.length;
+//		int x = usuarios.size();
+//		int y = columnas.length;
 		
-		Object[][] datos = new Object[x][y];
+//		Object[][] datos = new Object[x][y];
 		
-		for(Usuario usuario: usuarios) {
-			datos[usuarios.indexOf(usuario)][0] = usuario.getId();
-			datos[usuarios.indexOf(usuario)][0] = usuario.getNombre();
-			datos[usuarios.indexOf(usuario)][1] = usuario.getApellido();
-			datos[usuarios.indexOf(usuario)][0] = usuario.getUser();
-			datos[usuarios.indexOf(usuario)][0] = usuario.getPswd();
-			datos[usuarios.indexOf(usuario)][0] = usuario.getEmail();
-			datos[usuarios.indexOf(usuario)][0] = usuario.getInstituto();
-			datos[usuarios.indexOf(usuario)][2] = usuario.getCedula();
-			datos[usuarios.indexOf(usuario)][0] = usuario.getProfesion();
-			datos[usuarios.indexOf(usuario)][0] = usuario.getRol();
-		}
+//		for(Usuario usuario: usuarios) {
+//			datos[usuarios.indexOf(usuario)][0] = usuario.getId();
+//			datos[usuarios.indexOf(usuario)][0] = usuario.getNombre();
+//			datos[usuarios.indexOf(usuario)][1] = usuario.getApellido();
+//			datos[usuarios.indexOf(usuario)][0] = usuario.getUser();
+//			datos[usuarios.indexOf(usuario)][0] = usuario.getPswd();
+//			datos[usuarios.indexOf(usuario)][0] = usuario.getEmail();
+//			datos[usuarios.indexOf(usuario)][0] = usuario.getInstituto();
+//			datos[usuarios.indexOf(usuario)][2] = usuario.getCedula();
+//			datos[usuarios.indexOf(usuario)][0] = usuario.getProfesion();
+//			datos[usuarios.indexOf(usuario)][0] = usuario.getRol();
+//		}
 		
-		tableUsuarios = new JTable(datos, columnas);
+//		tableUsuarios = new JTable(datos, columnas);
 		frame.getContentPane().add(tableUsuarios, BorderLayout.CENTER);
 		
 		
