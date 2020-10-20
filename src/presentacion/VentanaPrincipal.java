@@ -98,7 +98,6 @@ public class VentanaPrincipal {
 		mntmAlta.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				iagro.registro();
-				
 			}
 		});
 		mnAdministrador.add(mntmAlta);
