@@ -27,6 +27,9 @@ public class Login {
 	private JTextField txtFieldUser;
 	private JPasswordField textFieldPass;
 	
+	private JLabel lblCmbiarPass;
+	private JTextArea txtAreaDatosDefault;
+	
 	private IAgro iagro;
 
 	/**
@@ -89,6 +92,21 @@ public class Login {
 		JDesktopPane desktopPane = new JDesktopPane();
 		frmIagro.getContentPane().add(desktopPane, BorderLayout.CENTER);
 		
+		txtAreaDatosDefault = new JTextArea();
+		txtAreaDatosDefault.setEditable(false);
+		txtAreaDatosDefault.setVisible(false);
+		
+		lblCmbiarPass = new JLabel();
+		lblCmbiarPass.setVisible(false);
+		lblCmbiarPass.setForeground(Color.RED);
+		lblCmbiarPass.setBounds(194, 300, 373, 79);
+		desktopPane.add(lblCmbiarPass);
+		txtAreaDatosDefault.setForeground(new Color(0, 0, 128));
+		txtAreaDatosDefault.setLineWrap(true);
+		txtAreaDatosDefault.setBounds(10, 11, 235, 46);
+		txtAreaDatosDefault.setOpaque(false);
+		desktopPane.add(txtAreaDatosDefault);
+		
 		txtFieldUser = new JTextField();
 		txtFieldUser.setBounds(316, 225, 151, 34);
 		desktopPane.add(txtFieldUser);
@@ -132,13 +150,6 @@ public class Login {
 		btnEntrar.setBounds(325, 356, 109, 23);
 		desktopPane.add(btnEntrar);
 		
-		
-		
-		
-		
-		
-		
-		
 		JLabel lblFondo = new JLabel("");
 		lblFondo.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		lblFondo.setIcon(new ImageIcon(Login.class.getResource("/IMG/login.png")));
@@ -149,21 +160,11 @@ public class Login {
 	}
 	
 	public void mensajeEditarAdminPassword(){
-		// TODO: mostrar un mensaje de que el usuario administrador debe cambiar la contraseña
-		// mostrar ademas que el usuario de fabrica o por defecto es admin y contrasenia 1234
-//		System.out.println("Debe cambiar la contrase\\u00F1a del Administrador por defecto");
-		
-		JLabel lblCmbiarPass = new JLabel("Debe cambiar la contrase\u00F1a pr defecto del Administrador!");
-		lblCmbiarPass.setForeground(Color.RED);
-		lblCmbiarPass.setBounds(235, 300, 284, 79);
-		
-		JTextArea txtAreaDatosDefault = new JTextArea();
-		txtAreaDatosDefault.setForeground(new Color(0, 0, 128));
-		txtAreaDatosDefault.setLineWrap(true);
-		txtAreaDatosDefault.setText("Administrador Default: adminContrase\u00F1a Default: 1234");
-		txtAreaDatosDefault.setBounds(10, 11, 235, 46);
-		txtAreaDatosDefault.setOpaque(false);
-		
-		
+		iagro.refreshUsuarios();
+		System.out.println(iagro.getUsuarios().getFirst().getRol());
+		txtAreaDatosDefault.setText("Administrador Default: " + iagro.getUsuarios().getFirst().getUser() + "\r\nContrase\u00F1a Default: " + iagro.getUsuarios().getFirst().getPswd());
+		lblCmbiarPass.setVisible(true);
+		lblCmbiarPass.setText("Debe cambiar la contrase\u00F1a por defecto del Administrador!");
+		txtAreaDatosDefault.setVisible(true);
 	}
 }
