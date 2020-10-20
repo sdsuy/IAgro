@@ -1,5 +1,7 @@
 package aplicacion;
 
+import java.util.LinkedList;
+
 import entidades.Usuario;
 import negocio.AdministradorBO;
 import negocio.ComunBO;
@@ -14,21 +16,24 @@ public class IAgro {
 	private VentanaPrincipal ventana; // capa presentacion de ventana principal
 	private UsuarioBO usuario_; // capa de negocios de usuario
 	private Usuario usuario; // usuario logueado
+	private LinkedList<Usuario> usuarios; // lista de todos los usuarios
 	int id; // id del usuario logueado
 
 	public static void main(String[] args) {
-		IAgro iagro = new IAgro();//Se crea una instancia
-		iagro.start();//instancia la capa de negocio.
-//		login.main(this);
+		IAgro iagro = new IAgro(); // Se crea una instancia
+		iagro.start();
 	}
 	
 	public IAgro() {
-		login = new Login(this);//Le paso la propia clase instanciada...!
+		login = new Login(this); // Inyecto esta clase a login
 	}
 	
 	private void start() {
-		usuario_ = new AdministradorBO();
-		login.start();
+		usuario_ = new AdministradorBO(); // instancia la capa de negocio.
+		usuarios = usuario_.allUsuarios(); // cargo la lista usuarios
+		// si es el primer uso creamos un usuario administrador:
+		if(usuarios.size() < 1) if(usuario_.bootstrap()) login.mensajeEditarAdminPassword();
+		login.start(); // muestro la ventana de login
 	}
 	
 	public void login(String username, String password) {
