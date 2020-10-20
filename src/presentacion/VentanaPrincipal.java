@@ -95,7 +95,12 @@ public class VentanaPrincipal {
 		if(iagro.getUsuario().getRol().equals("administrador")) mnAdministrador.setVisible(true);
 		
 		JMenuItem mntmAlta = new JMenuItem("Alta");
-	
+		mntmAlta.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				iagro.registro();
+				
+			}
+		});
 		mnAdministrador.add(mntmAlta);
 		
 		JMenuItem mntmListar = new JMenuItem("Listar");
