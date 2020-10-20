@@ -171,8 +171,9 @@ public class Registro {
 						
 						String nombRol = comboBoxRol.getSelectedItem().toString();
 						
-						UsuarioBO usuario=null;
+						//UsuarioBO usuario=null;
 						Usuario user=null;
+						if(nombRol.equals(comboBoxRol.))
 						int x=Integer.parseInt(textFieldDocumento.getText());
 						user.setCedula(x);
 						user.setEmail(textFieldMail.getText().toUpperCase());
@@ -183,8 +184,8 @@ public class Registro {
 						repClave=ConfirmaPassword.getText();
 						if(repClave.equals(ConfirmaPassword.getText())) {
 							
-							boolean resultado = usuario.createUsuario(user);
-							if(resultado) {
+							//boolean resultado = usuario.createUsuario(user);
+							if(true) {
 								limpiarCampos();
 								JOptionPane.showMessageDialog(null, "La operacion se realizo con exito","Correcto",JOptionPane.INFORMATION_MESSAGE);
 							}
