@@ -31,14 +31,16 @@ public abstract class UsuarioBO {
 	 * @return boolean
 	 */
 	public boolean bootstrap() {
-		Usuario admin = DAOAdministrador.findUsuario(0);
-		if(admin == null) {
-			Administrador user = new Administrador();
-			user.setEmail("admin@utec");
-			user.setPswd("admin");
-			return DAOAdministrador.createUsuario(user);
-		}
-		return false;
+		Usuario usuario = new Administrador();
+		usuario.setNombre("nombre");
+		usuario.setApellido("apellido");
+		usuario.setUser("admin");
+		usuario.setPswd("1234");
+		usuario.setEmail("admin@utec");
+		usuario.setCedula(1234);
+		usuario.setInstituto("UTec");
+		usuario.setList_tareas("tareas");
+		return DAOAdministrador.createUsuario(usuario);
 	}
 	
 	/**
