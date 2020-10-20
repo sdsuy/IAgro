@@ -37,6 +37,7 @@ public class Registro {
 	private JTextField textFieldUserName;
 	
 	private IAgro iagro;
+	private JTextField textFieldListaTareas;
 
 	/**
 	 * Launch the application.
@@ -154,7 +155,7 @@ public class Registro {
 		frame.getContentPane().add(lblRepetirClave);
 		
 		JComboBox comboBoxRol = new JComboBox();
-		comboBoxRol.setModel(new DefaultComboBoxModel(new String[] {"", "Adminsitrador", "Experto", "Comun"}));
+		comboBoxRol.setModel(new DefaultComboBoxModel(new String[] {"Administrador", "Experto", "Comun"}));
 		comboBoxRol.setToolTipText("");
 		comboBoxRol.setBounds(6, 260, 173, 27);
 		frame.getContentPane().add(comboBoxRol);
@@ -174,22 +175,44 @@ public class Registro {
 						
 						String nombRol = comboBoxRol.getSelectedItem().toString();
 						
-						Usuario user=null;
+						Usuario user = null;
 						if(nombRol.equals("Administrador")) {
+							System.out.println("Rol Admin: "+nombRol);
 							user = new Administrador();
-						}else if(nombRol.equals("Experto")){
+						}
+						else if(nombRol.equals("Experto")){
+							System.out.println("Rol Experto: "+nombRol);
 							user = new Experto();
-						}else if(nombRol.equals("Comun")) {
+							
+						}
+						else if(nombRol.equals("Comun")) {
+							System.out.println("Rol Comun: "+nombRol);
 							user = new Comun();
 						}
-						user.setEmail(textFieldMail.getText().toUpperCase());
 						user.setNombre(textFieldNombre1.getText().toUpperCase());
 						user.setApellido(textFieldApellido1.getText().toUpperCase());
-						user.setPswd(Password.getText());
 						user.setUser(textFieldUserName.getText());
+						user.setPswd(Password.getText());
+						user.setEmail(textFieldMail.getText().toUpperCase());
 						
 						//Hasta aqui asigno los atributo de usuario
-						
+						if(nombRol.equals("Administrador") || nombRol.equals("Experto")) {
+							int x=Integer.parseInt(textFieldDocumento.getText());
+							user.setCedula(x);
+						}
+						if(user.getRol().equals("Administrador")) {
+							user.setInstituto(textFieldInstituto.getText());
+							iagro.createUsuario(user);
+							System.out.println(user);
+						}
+						if(user.getRol().equals("Experto")) {
+							user.setProfesion(textFieldProfesion.getText());
+							iagro.createUsuario(user);
+						}
+						if(user.getRol().equals("Comun")) {
+							user.setList_tareas(textFieldListaTareas.getText());
+							iagro.createUsuario(user);
+						}
 						
 						//Compruebo que la contrasenias sean iguales.
 						repClave=ConfirmaPassword.getText();
@@ -279,13 +302,22 @@ public class Registro {
 		frame.getContentPane().add(textFieldProfesion);
 		
 		JLabel lblUserName = new JLabel("User Name");
-		lblUserName.setBounds(348, 233, 88, 16);
+		lblUserName.setBounds(202, 236, 88, 16);
 		frame.getContentPane().add(lblUserName);
 		
 		textFieldUserName = new JTextField();
 		textFieldUserName.setColumns(10);
-		textFieldUserName.setBounds(348, 261, 130, 26);
+		textFieldUserName.setBounds(202, 259, 130, 26);
 		frame.getContentPane().add(textFieldUserName);
+		
+		textFieldListaTareas = new JTextField();
+		textFieldListaTareas.setColumns(10);
+		textFieldListaTareas.setBounds(359, 259, 130, 26);
+		frame.getContentPane().add(textFieldListaTareas);
+		
+		JLabel lblListaTareas = new JLabel("Lista Tareas");
+		lblListaTareas.setBounds(359, 236, 88, 16);
+		frame.getContentPane().add(lblListaTareas);
 		
 	}
 	private void limpiarCampos() {
@@ -302,4 +334,6 @@ public class Registro {
 		ConfirmaPassword.setText("");
 		
 	}
+	
+	
 }
