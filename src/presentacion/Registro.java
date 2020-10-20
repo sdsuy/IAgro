@@ -204,10 +204,39 @@ public class Registro {
 		frame.getContentPane().add(btnAlta);
 		
 		JButton btnBaja = new JButton("Modificar");
+		btnBaja.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+			}
+		});
 		btnBaja.setBounds(130, 398, 117, 29);
 		frame.getContentPane().add(btnBaja);
 		
 		JButton btnModificar = new JButton("Eliminar");
+		btnModificar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				UsuarioBO user=null;
+				Usuario usuario=null;
+				int result=JOptionPane.showConfirmDialog(null, "Desea continuar?",null,JOptionPane.YES_NO_OPTION);
+				if(result==JOptionPane.YES_OPTION) {
+					boolean resultado = user.deleteUsuario(usuario.getId());
+					
+					if (resultado) {
+						limpiarCampos();
+						
+						JOptionPane.showMessageDialog(null, "La operacion se realizo con exito","Correcto",JOptionPane.INFORMATION_MESSAGE);
+					}else {
+						JOptionPane.showMessageDialog(null, "Se produjo un error","Error",JOptionPane.ERROR_MESSAGE);
+					}
+				}else {
+					if(result==JOptionPane.NO_OPTION);
+				}
+				
+			
+
+				
+			}
+		});
 		btnModificar.setBounds(258, 398, 117, 29);
 		frame.getContentPane().add(btnModificar);
 		
