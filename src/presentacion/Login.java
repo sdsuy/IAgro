@@ -18,6 +18,7 @@ import java.awt.event.ActionEvent;
 import java.awt.Color;
 
 import aplicacion.IAgro;
+import javax.swing.JTextArea;
 
 public class Login {
 
@@ -128,19 +129,41 @@ public class Login {
 				}
 			}
 		});
-		btnEntrar.setBounds(324, 342, 109, 23);
+		btnEntrar.setBounds(325, 356, 109, 23);
 		desktopPane.add(btnEntrar);
+		
+		
+		
+		
+		
+		
+		
 		
 		JLabel lblFondo = new JLabel("");
 		lblFondo.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		lblFondo.setIcon(new ImageIcon(Login.class.getResource("/IMG/login.png")));
 		lblFondo.setBounds(0, 0, 734, 461);
 		desktopPane.add(lblFondo);
+		
+		
 	}
 	
 	public void mensajeEditarAdminPassword(){
 		// TODO: mostrar un mensaje de que el usuario administrador debe cambiar la contraseña
 		// mostrar ademas que el usuario de fabrica o por defecto es admin y contrasenia 1234
 //		System.out.println("Debe cambiar la contrase\\u00F1a del Administrador por defecto");
+		
+		JLabel lblCmbiarPass = new JLabel("Debe cambiar la contrase\u00F1a pr defecto del Administrador!");
+		lblCmbiarPass.setForeground(Color.RED);
+		lblCmbiarPass.setBounds(235, 300, 284, 79);
+		
+		JTextArea txtAreaDatosDefault = new JTextArea();
+		txtAreaDatosDefault.setForeground(new Color(0, 0, 128));
+		txtAreaDatosDefault.setLineWrap(true);
+		txtAreaDatosDefault.setText("Administrador Default: adminContrase\u00F1a Default: 1234");
+		txtAreaDatosDefault.setBounds(10, 11, 235, 46);
+		txtAreaDatosDefault.setOpaque(false);
+		
+		
 	}
 }
