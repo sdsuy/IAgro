@@ -71,4 +71,14 @@ public class IAgro {
 		// registro.start();
 	}
 
+	public LinkedList<Usuario> getUsuarios() {
+		return usuarios;
+	}
+
+	public void setUsuarios(LinkedList<Usuario> usuarios) {
+		this.usuarios = usuarios;
+	}
+	
+	
+
 }
