@@ -78,5 +78,9 @@ public class IAgro {
 	public void refreshUsuarios() {
 		usuarios = usuario_.allUsuarios(); // cargo la lista usuarios
 	}
+	
+	public void createUsuario(Usuario usuario) {
+		System.out.println("usuario creado");
+	}
 
 }
