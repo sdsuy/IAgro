@@ -88,10 +88,6 @@ public class Login {
 		JDesktopPane desktopPane = new JDesktopPane();
 		frmIagro.getContentPane().add(desktopPane, BorderLayout.CENTER);
 		
-		
-		
-		
-		
 		txtFieldUser = new JTextField();
 		txtFieldUser.setBounds(316, 225, 151, 34);
 		desktopPane.add(txtFieldUser);
