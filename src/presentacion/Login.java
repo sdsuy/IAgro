@@ -9,26 +9,24 @@ import java.awt.BorderLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JDesktopPane;
 import javax.swing.JTextField;
+import javax.swing.JPasswordField;
 
 import java.awt.Font;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.Color;
 
 import aplicacion.IAgro;
-
-import javax.swing.JPasswordField;
-import java.awt.Color;
 
 public class Login {
 
 	private JFrame frmIagro;
 	
 	private JTextField txtFieldUser;
-	private JTextField textFieldPass;
+	private JPasswordField textFieldPass;
 	
 	private IAgro iagro;
-	private JPasswordField passwordField;
 
 	/**
 	 * Launch the application.
@@ -71,17 +69,10 @@ public class Login {
 
 	/**
 	 * 
-	 * Constructor con la aplicacion de IAgro integrada.
+	 * Constructor con la aplicacion de IAgro inyectada.
 	 */
 	public Login(IAgro iagro) {
 		this.iagro = iagro;
-		//if(administrador.bootstrap() {	
-		//}
-		
-		System.out.println("Debe cambiar la contrase\\u00F1a del Administrador por defecto");
-		
-		
-		
 		initialize();
 	}
 
@@ -144,19 +135,16 @@ public class Login {
 		btnEntrar.setBounds(324, 342, 109, 23);
 		desktopPane.add(btnEntrar);
 		
-		
-		
-		
-		
 		JLabel lblFondo = new JLabel("");
 		lblFondo.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		lblFondo.setIcon(new ImageIcon(Login.class.getResource("/IMG/login.png")));
 		lblFondo.setBounds(0, 0, 734, 461);
 		desktopPane.add(lblFondo);
-		
+	}
 	
-		
-		
-		
+	public void mensajeEditarAdminPassword(){
+		// TODO: mostrar un mensaje de que el usuario administrador debe cambiar la contraseña
+		// mostrar ademas que el usuario de fabrica o por defecto es admin y contrasenia 1234
+//		System.out.println("Debe cambiar la contrase\\u00F1a del Administrador por defecto");
 	}
 }
