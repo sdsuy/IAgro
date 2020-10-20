@@ -16,7 +16,8 @@ public class IAgro {
 	private Login login; // capa presentacion de login
 	private VentanaPrincipal ventana; // capa presentacion de ventana principal
 	private Registro registro; // capa presentacion de registro
-	private UsuarioBO usuario_; // capa de negocios de usuario
+	private UsuarioBO usuario_; // capa de negocios de usuario logueado
+	private UsuarioBO userService; // capa de negocios para gestionar los usuarios
 	private Usuario usuario; // usuario logueado
 	private LinkedList<Usuario> usuarios; // lista de todos los usuarios
 	int id; // id del usuario logueado
@@ -80,8 +81,14 @@ public class IAgro {
 	}
 	
 	public boolean createUsuario(Usuario usuario) {
-		System.out.println("usuario creado");
-		return true;
+		if(usuario.getRol().equals("administrador")) {
+			userService = new AdministradorBO();
+		} else if(usuario.getRol().equals("experto")) {
+			userService = new ExpertoBO();
+		} else if(usuario.getRol().equals("comun")) {
+			userService = new ComunBO();
+		}
+		return userService.createUsuario(usuario);
 	}
 
 }
