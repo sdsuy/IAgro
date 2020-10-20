@@ -45,20 +45,7 @@ public class AdministradorBO extends UsuarioBO {
 	 */
 	@Override
 	public boolean updateUsuario(Usuario usuario) {
-		
 		return DAOAdministrador.updateUsuario(usuario);
-	
-	}
-	
-	/**
-	 * 
-	 * Getter del linkedlist Admins
-	 * @return
-	 */
-	@Override
-	public LinkedList<Usuario> allUsuarios() {
-		
-		return admins;
 	}
 	
 }

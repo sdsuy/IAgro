@@ -55,16 +55,4 @@ public class ComunBO extends UsuarioBO {
 		return DAOComun.updateUsuario(usuario);
 	}
 	
-	/**
-	 * 
-	 * Getter del linkedlist comuns
-	 * @return
-	 */
-	
-	@Override
-	public LinkedList<Usuario> allUsuarios() {//para sprint 2..!
-		
-		return comuns;
-	}
-	
 }
