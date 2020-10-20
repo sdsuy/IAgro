@@ -9,6 +9,9 @@ import javax.swing.JButton;
 import javax.swing.JTextField;
 
 import aplicacion.IAgro;
+import entidades.Administrador;
+import entidades.Comun;
+import entidades.Experto;
 import entidades.Usuario;
 import negocio.UsuarioBO;
 
@@ -171,20 +174,28 @@ public class Registro {
 						
 						String nombRol = comboBoxRol.getSelectedItem().toString();
 						
-						//UsuarioBO usuario=null;
 						Usuario user=null;
-						if(nombRol.equals(comboBoxRol.))
-						int x=Integer.parseInt(textFieldDocumento.getText());
-						user.setCedula(x);
+						if(nombRol.equals("Administrador")) {
+							user = new Administrador();
+						}else if(nombRol.equals("Experto")){
+							user = new Experto();
+						}else if(nombRol.equals("Comun")) {
+							user = new Comun();
+						}
 						user.setEmail(textFieldMail.getText().toUpperCase());
 						user.setNombre(textFieldNombre1.getText().toUpperCase());
 						user.setApellido(textFieldApellido1.getText().toUpperCase());
 						user.setPswd(Password.getText());
 						user.setUser(textFieldUserName.getText());
+						
+						//Hasta aqui asigno los atributo de usuario
+						
+						
+						//Compruebo que la contrasenias sean iguales.
 						repClave=ConfirmaPassword.getText();
 						if(repClave.equals(ConfirmaPassword.getText())) {
 							
-							//boolean resultado = usuario.createUsuario(user);
+							boolean resultado = iagro.createUsuario(user);
 							if(true) {
 								limpiarCampos();
 								JOptionPane.showMessageDialog(null, "La operacion se realizo con exito","Correcto",JOptionPane.INFORMATION_MESSAGE);
