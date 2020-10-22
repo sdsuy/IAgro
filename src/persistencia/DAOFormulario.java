@@ -19,6 +19,7 @@ public class DAOFormulario {
 	
 	//Insertar un formulario
 	public static boolean nuevoFormulario(Formulario formulario) {
+		
 		try {
 			PreparedStatement insertForm = conexion.prepareStatement(INSERT_FORMULARIO);
 			
@@ -37,6 +38,23 @@ public class DAOFormulario {
 			int filasAgregadas = insertForm.executeUpdate();
 			
 			return filasAgregadas>0;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return false;
+		
+	}
+	
+	public static boolean eliminarFormulario(int id) {
+		
+		try {
+			PreparedStatement elimForm = conexion.prepareStatement(DELETE_FORMULARIO);
+			elimForm.setInt(1, id);
+			
+			int retorno = elimForm.executeUpdate();
+			
+			return retorno > 0;
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
