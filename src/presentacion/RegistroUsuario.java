@@ -156,7 +156,7 @@ public class RegistroUsuario {
 		frame.getContentPane().add(lblRepetirClave);
 		
 		JComboBox comboBoxRol = new JComboBox();
-		comboBoxRol.setModel(new DefaultComboBoxModel(new String[] {"Administrador", "Experto", "Comun"}));
+		comboBoxRol.setModel(new DefaultComboBoxModel(new String[] {"","Administrador", "Experto", "Comun"}));
 		comboBoxRol.setToolTipText("");
 		comboBoxRol.setBounds(6, 260, 173, 27);
 		frame.getContentPane().add(comboBoxRol);
@@ -169,7 +169,7 @@ public class RegistroUsuario {
 		btnAlta.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(textFieldDocumento.getText().isEmpty() || textFieldMail.getText().isEmpty() || textFieldNombre1.getText().isEmpty() ||  
-						textFieldApellido1.getText().isEmpty() || textFieldUserName.getText().isEmpty()  || textFieldApellido2.getText().isEmpty() || ConfirmaPassword.getText().isEmpty()) {
+						textFieldApellido1.getText().isEmpty() || textFieldUserName.getText().isEmpty()  || textFieldApellido2.getText().isEmpty() || ConfirmaPassword.getText().isEmpty() || comboBoxRol.equals("")) {
 					JOptionPane.showMessageDialog(null, "No tiene todos lo campos","Error",JOptionPane.ERROR_MESSAGE);
 				}else {
 						String repClave="";
