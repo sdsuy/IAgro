@@ -206,6 +206,11 @@ public class RegistroUsuario {
 		comboBoxRol.setBounds(6, 260, 173, 27);
 		frame.getContentPane().add(comboBoxRol);
 		
+		textFieldUserName = new JTextField();
+		textFieldUserName.setColumns(10);
+		textFieldUserName.setBounds(202, 259, 130, 26);
+		frame.getContentPane().add(textFieldUserName);
+		
 		JLabel lblRol = new JLabel("Rol");
 		lblRol.setBounds(6, 236, 26, 16);
 		frame.getContentPane().add(lblRol);
@@ -228,16 +233,34 @@ public class RegistroUsuario {
 		        
 		        Matcher mather = pattern.matcher(textFieldMail.getText());
 				
+		        //controlamos si hay algun campo vacio
 				if(textFieldDocumento.getText().isEmpty() || textFieldMail.getText().isEmpty() || textFieldNombre1.getText().isEmpty() ||  
 						textFieldApellido1.getText().isEmpty() || textFieldUserName.getText().isEmpty()  || textFieldApellido2.getText().isEmpty() || ConfirmaPassword.getText().isEmpty() || comboBoxRol.equals("")) {
 					JOptionPane.showMessageDialog(null, "Debe rellenar todos los campos obligatorios","Error",JOptionPane.ERROR_MESSAGE);
 						
 				} 
 				
-				
+				//controlamos si el mail tiene un formato invalido
 				else if (mather.find() == false) {
 					JOptionPane.showMessageDialog(null, "El Email que ingreso no tiene formato valido","Error",JOptionPane.ERROR_MESSAGE);
 				}
+				
+				//controlamos que el nombre de usuario no tenga numeros
+				else if (textFieldUserName.getText().contains("1") ||
+						textFieldUserName.getText().contains("2") ||
+						textFieldUserName.getText().contains("3") ||
+						textFieldUserName.getText().contains("4") ||
+						textFieldUserName.getText().contains("5") ||
+						textFieldUserName.getText().contains("6") ||
+						textFieldUserName.getText().contains("7") ||
+						textFieldUserName.getText().contains("8") ||
+						textFieldUserName.getText().contains("9")) {
+					
+					JOptionPane.showMessageDialog(null, "El nombre de usuario no puede cotener numeros","Error",JOptionPane.ERROR_MESSAGE);
+					
+				}
+				
+				
 				
 				
 				else {
@@ -386,11 +409,6 @@ public class RegistroUsuario {
 		JLabel lblUserName = new JLabel("User Name");
 		lblUserName.setBounds(202, 236, 52, 16);
 		frame.getContentPane().add(lblUserName);
-		
-		textFieldUserName = new JTextField();
-		textFieldUserName.setColumns(10);
-		textFieldUserName.setBounds(202, 259, 130, 26);
-		frame.getContentPane().add(textFieldUserName);
 		
 		textFieldListaTareas = new JTextField();
 		textFieldListaTareas.setColumns(10);
