@@ -17,13 +17,15 @@ public class Formulario {
 	private String localidad;
 	private String est_muestreo;
 	
+	private Usuario user;
+	
 	public Formulario() {
 		super();
 	}
 
 	public Formulario(int id_formulario, String met_muestreo, String equipamiento, String nom_formulario,
 			String resumen, String departamento, Date fecha, String zona, String tip_muestreo, Long geopunto,
-			String localidad, String est_muestreo) {
+			String localidad, String est_muestreo, Usuario user) {
 		super();
 		this.id_formulario = id_formulario;
 		this.met_muestreo = met_muestreo;
@@ -37,6 +39,7 @@ public class Formulario {
 		this.geopunto = geopunto;
 		this.localidad = localidad;
 		this.est_muestreo = est_muestreo;
+		this.user = user;
 	}
 
 	public int getId_formulario() {
@@ -133,6 +136,14 @@ public class Formulario {
 
 	public void setEst_muestreo(String est_muestreo) {
 		this.est_muestreo = est_muestreo;
+	}
+	
+	public Usuario getUser() {
+		return user;
+	}
+
+	public void setUser(Usuario user) {
+		this.user = user;
 	}
 
 
