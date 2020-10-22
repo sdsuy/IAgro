@@ -2,6 +2,7 @@ package persistencia;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import entidades.Formulario;
@@ -92,6 +93,36 @@ public class DAOFormulario {
 			e.printStackTrace();
 		}
 		return false;
+		
+	}
+	
+	public static Formulario findForm(int id) {
+		Formulario form = new Formulario();
+		try {
+			PreparedStatement find = conexion.prepareStatement(FIND_FORMULARIO);
+			
+			find.setInt(1, id);
+			
+			ResultSet rs = find.executeQuery();
+			if(rs.next()) {
+				form.setId_formulario(rs.getInt("ID_FORMULARIO"));
+				form.setMet_muestreo(rs.getString("MET_MUESTREO"));
+				form.setEquipamiento(rs.getString("EQUIPAMIENTO"));
+				form.setResumen(rs.getString("RESUMEN"));
+				form.setDepartamento(rs.getString("DEPARTAMENTO"));
+				form.setFecha(rs.getDate("FECHA"));
+				form.setZona(rs.getString("ZONA"));
+				form.setTip_muestreo(rs.getString("TIP_MUESTREO"));
+				form.setGeopunto(rs.getLong("GEOPUNTO"));
+				form.setLocalidad(rs.getString("LOCALIDAD"));
+				form.setEst_muestreo(rs.getString("EST_MUESTREO"));	
+			}
+			
+			return form ;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return null;
 		
 	}
 }
