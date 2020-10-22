@@ -4,8 +4,12 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.LinkedList;
 
+import apple.laf.JRSUIConstants.State;
 import entidades.Formulario;
+import entidades.Usuario;
 
 public class DAOFormulario {
 	private static Connection conexion = DatabaseManager.getConexion();
@@ -98,6 +102,7 @@ public class DAOFormulario {
 	
 	public static Formulario findForm(int id) {
 		Formulario form = new Formulario();
+		Usuario user = null;
 		try {
 			PreparedStatement find = conexion.prepareStatement(FIND_FORMULARIO);
 			
@@ -116,12 +121,50 @@ public class DAOFormulario {
 				form.setGeopunto(rs.getLong("GEOPUNTO"));
 				form.setLocalidad(rs.getString("LOCALIDAD"));
 				form.setEst_muestreo(rs.getString("EST_MUESTREO"));	
+				//user.setId(rs.getInt("ID_USUARIO"));
+				//form.setUser(user);
+				
 			}
 			
 			return form ;
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		return null;
+		
+	}
+	
+	public static LinkedList<Formulario> allFormularios(){
+		LinkedList<Formulario> formularios = new LinkedList<>();
+		
+		try {
+			Statement st = conexion.createStatement();
+			ResultSet rs = st.executeQuery(ALL_FORMULARIO);
+			
+			while(rs.next()) {
+				Usuario user = null;
+				Formulario form = new Formulario();
+				
+				form.setId_formulario(rs.getInt("ID_FORMULARIO"));
+				form.setMet_muestreo(rs.getString("MET_MUESTREO"));
+				form.setEquipamiento(rs.getString("EQUIPAMIENTO"));
+				form.setResumen(rs.getString("RESUMEN"));
+				form.setDepartamento(rs.getString("DEPARTAMENTO"));
+				form.setFecha(rs.getDate("FECHA"));
+				form.setZona(rs.getString("ZONA"));
+				form.setTip_muestreo(rs.getString("TIP_MUESTREO"));
+				form.setGeopunto(rs.getLong("GEOPUNTO"));
+				form.setLocalidad(rs.getString("LOCALIDAD"));
+				form.setEst_muestreo(rs.getString("EST_MUESTREO"));	
+				user.setId(rs.getInt("ID_USUARIO"));
+				form.setUser(user);
+				formularios.add(form);
+				
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
 		return null;
 		
 	}
