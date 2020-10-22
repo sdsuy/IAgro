@@ -8,7 +8,7 @@ import aplicacion.IAgro;
 
 public class Registro_Formulario {
 
-	private JFrame frame;
+	private JFrame frmRegistroDeFormulario;
 	
 	private IAgro iagro;
 
@@ -20,7 +20,7 @@ public class Registro_Formulario {
 			public void run() {
 				try {
 					Registro_Formulario window = new Registro_Formulario();
-					window.frame.setVisible(true);
+					window.frmRegistroDeFormulario.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -31,7 +31,7 @@ public class Registro_Formulario {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					frame.setVisible(true);
+					frmRegistroDeFormulario.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -55,9 +55,10 @@ public class Registro_Formulario {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		frame = new JFrame();
-		frame.setBounds(100, 100, 450, 300);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frmRegistroDeFormulario = new JFrame();
+		frmRegistroDeFormulario.setTitle("Registro de Formulario");
+		frmRegistroDeFormulario.setBounds(100, 100, 450, 300);
+		frmRegistroDeFormulario.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 
 }
