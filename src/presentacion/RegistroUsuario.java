@@ -19,6 +19,8 @@ import javax.swing.JPasswordField;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
 import java.awt.event.ActionListener;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import java.awt.event.ActionEvent;
 import java.awt.Color;
 
@@ -153,7 +155,7 @@ public class RegistroUsuario {
 		frame.getContentPane().add(Password);
 		
 		JLabel lblRepetirClave = new JLabel("Repetir Clave");
-		lblRepetirClave.setBounds(292, 153, 88, 16);
+		lblRepetirClave.setBounds(292, 153, 72, 16);
 		frame.getContentPane().add(lblRepetirClave);
 		
 		JLabel lblObligatorio1 = new JLabel("*");
@@ -192,6 +194,12 @@ public class RegistroUsuario {
 		frame.getContentPane().add(lblObligatorio6);
 		lblObligatorio6.setVisible(false);
 		
+		JLabel lblObligatorio7 = new JLabel("*");
+		lblObligatorio7.setForeground(Color.RED);
+		lblObligatorio7.setBounds(368, 154, 21, 14);
+		frame.getContentPane().add(lblObligatorio7);
+		lblObligatorio6.setVisible(false);
+		
 		JComboBox comboBoxRol = new JComboBox();
 		comboBoxRol.setModel(new DefaultComboBoxModel(new String[] {"","Administrador", "Experto", "Comun"}));
 		comboBoxRol.setToolTipText("");
@@ -212,6 +220,13 @@ public class RegistroUsuario {
 				lblObligatorio4.setVisible(true);
 				lblObligatorio5.setVisible(true);
 				lblObligatorio6.setVisible(true);
+				lblObligatorio6.setVisible(true);
+				
+				// Patrón para validar el email
+		        Pattern pattern = Pattern.compile("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
+		                        + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$");
+		        
+		        Matcher mather = pattern.matcher(textFieldMail.getText());
 				
 				if(textFieldDocumento.getText().isEmpty() || textFieldMail.getText().isEmpty() || textFieldNombre1.getText().isEmpty() ||  
 						textFieldApellido1.getText().isEmpty() || textFieldUserName.getText().isEmpty()  || textFieldApellido2.getText().isEmpty() || ConfirmaPassword.getText().isEmpty() || comboBoxRol.equals("")) {
@@ -219,14 +234,13 @@ public class RegistroUsuario {
 						
 				} 
 				
-				//else if () {
-					
-				//}
+				
+				else if (mather.find() == false) {
+					JOptionPane.showMessageDialog(null, "El Email que ingreso no tiene formato valido","Error",JOptionPane.ERROR_MESSAGE);
+				}
 				
 				
 				else {
-					
-					    
 					    
 						String repClave="";
 						
@@ -285,6 +299,7 @@ public class RegistroUsuario {
 								lblObligatorio3.setVisible(false);
 								lblObligatorio4.setVisible(false);
 								lblObligatorio5.setVisible(false);
+								lblObligatorio6.setVisible(false);
 								lblObligatorio6.setVisible(false);
 								
 							}
@@ -385,6 +400,8 @@ public class RegistroUsuario {
 		JLabel lblListaTareas = new JLabel("Lista Tareas");
 		lblListaTareas.setBounds(359, 236, 88, 16);
 		frame.getContentPane().add(lblListaTareas);
+		
+		
 		
 		
 		
