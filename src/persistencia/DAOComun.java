@@ -13,7 +13,7 @@ import java.util.LinkedList;
 public class DAOComun extends DAOUsuario {
 	private static Connection conexion = DatabaseManager.getConexion();
 	
-	private static final String INSERT_COMUN = "INSERT INTO COMUNES (ID_USUARIO, LIST_TAREAS) VALUES (SEQ_ID_USUARIO.NEXTVAL,?)";
+	private static final String INSERT_COMUN = "INSERT INTO COMUNES (ID_USUARIO, LIST_TAREAS) VALUES (SEQ_ID_USUARIO.CURRVAL,?)";
 	private static final String UPDATE_COMUN = "UPDATE COMUNES SET LIST_TAREAS=? WHERE ID_USUARIO=?";
 	private static final String ALL_COMUNES = "SELECT * FROM COMUNES"; //+join
 	private static final String FIND_COMUN = "SELECT\r\n" + 
