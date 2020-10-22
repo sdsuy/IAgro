@@ -14,7 +14,7 @@ public class DAOExperto extends DAOUsuario {
 	
 	private static Connection conexion = DatabaseManager.getConexion();
 	
-	private static final String INSERT_EXPERT = "INSERT INTO EXPERTOS (ID_USUARIO, LIST_TAREAS, CEDULA, PROFESION) VALUES (SEQ_ID_USUARIO.NEXTVAL,?,?,?)";
+	private static final String INSERT_EXPERT = "INSERT INTO EXPERTOS (ID_USUARIO, LIST_TAREAS, CEDULA, PROFESION) VALUES (SEQ_ID_USUARIO.CURRVAL,?,?,?)";
 	private static final String UPDATE_EXPERT = "UPDATE EXPERTOS SET LIST_TAREAS=?, CEDULA=?, PROFESION=? WHERE ID_USUARIO=?";
 	private static final String ALL_EXPERTS = "SELECT * FROM EXPERTOS"; //+join
 	private static final String FIND_EXPERT = "SELECT\r\n" + 
