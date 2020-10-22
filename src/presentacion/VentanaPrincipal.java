@@ -103,6 +103,11 @@ public class VentanaPrincipal {
 		mnAdministrador.add(mntmAlta);
 		
 		JMenuItem mntmListar = new JMenuItem("Listar");
+		mntmListar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				iagro.listado();
+			}
+		});
 		mnAdministrador.add(mntmListar);
 	}
 	private static void addPopup(Component component, final JPopupMenu popup) {
