@@ -9,7 +9,7 @@ import negocio.ExpertoBO;
 import negocio.UsuarioBO;
 import presentacion.Login;
 import presentacion.Registro;
-import presentacion.Registro_Formulario;
+import presentacion.RegistroFormulario;
 import presentacion.TablaUsuarios;
 import presentacion.VentanaPrincipal;
 
@@ -18,7 +18,7 @@ public class IAgro {
 	private Login login; // capa presentacion de login
 	private VentanaPrincipal ventana; // capa presentacion de ventana principal
 	private Registro registro; // capa presentacion de registro
-	private Registro_Formulario registroFormulario;// capa presentacion de Registro_Formulario
+	private RegistroFormulario registroFormulario;// capa presentacion de Registro_Formulario
 	private TablaUsuarios listado; // capa presentacion de listado
 	private UsuarioBO usuario_; // capa de negocios de usuario logueado
 	private UsuarioBO userService; // capa de negocios para gestionar los usuarios
@@ -79,7 +79,7 @@ public class IAgro {
 	}
 	
 	public void registroFormulario() {
-		registroFormulario = new Registro_Formulario(this);
+		registroFormulario = new RegistroFormulario(this);
 		registroFormulario.start();
 	}
 	
