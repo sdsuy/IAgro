@@ -20,7 +20,7 @@ import java.awt.event.ActionEvent;
 
 public class VentanaPrincipal {
 
-	private JFrame frame;
+	private JFrame frmAdministracin;
 	
 	private IAgro iagro;
 
@@ -32,7 +32,7 @@ public class VentanaPrincipal {
 			public void run() {
 				try {
 					VentanaPrincipal window = new VentanaPrincipal();
-					window.frame.setVisible(true);
+					window.frmAdministracin.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -47,7 +47,7 @@ public class VentanaPrincipal {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					frame.setVisible(true);
+					frmAdministracin.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -75,12 +75,13 @@ public class VentanaPrincipal {
 	 */
 	private void initialize() {
 		System.out.println(iagro.getUsuario().getRol());
-		frame = new JFrame();
-		frame.setBounds(100, 100, 750, 500);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frmAdministracin = new JFrame();
+		frmAdministracin.setTitle("Principal");
+		frmAdministracin.setBounds(100, 100, 750, 500);
+		frmAdministracin.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		JDesktopPane desktopPane = new JDesktopPane();
-		frame.getContentPane().add(desktopPane, BorderLayout.CENTER);
+		frmAdministracin.getContentPane().add(desktopPane, BorderLayout.CENTER);
 		
 		JMenuBar menuBar = new JMenuBar();
 		menuBar.setBounds(0, 0, 734, 29);
@@ -91,9 +92,14 @@ public class VentanaPrincipal {
 		
 		mnAdministrador.setVisible(false);
 		
-		// Si el usuario logueado tiene como rol administrador muestro el menu Usuarios
-		if(iagro.getUsuario().getRol().equals("administrador")) mnAdministrador.setVisible(true);
+		JMenu mnFormulario = new JMenu("Formularios");
+		menuBar.add(mnFormulario);
 		
+		mnFormulario.setVisible(false);
+		
+		// Si el usuario logueado tiene como rol administrador muestro el menu Usuarios
+		if(iagro.getUsuario().getRol().equals("administrador")) mnAdministrador.setVisible(true); mnFormulario.setVisible(true);
+		if(iagro.getUsuario().getRol().equals("Experto")|| iagro.getUsuario().getRol().equals("Comun")) mnFormulario.setVisible(true);
 		JMenuItem mntmAlta = new JMenuItem("Alta");
 		mntmAlta.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -109,6 +115,15 @@ public class VentanaPrincipal {
 			}
 		});
 		mnAdministrador.add(mntmListar);
+		
+		JMenuItem mnCrear = new JMenuItem("Crear");
+		mnCrear.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e) {
+				iagro.registroFormulario();
+			}
+		});
+		mnFormulario.add(mnCrear);
+	
 	}
 	private static void addPopup(Component component, final JPopupMenu popup) {
 		component.addMouseListener(new MouseAdapter() {

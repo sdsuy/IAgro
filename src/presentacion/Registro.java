@@ -23,7 +23,7 @@ import java.awt.event.ActionEvent;
 
 public class Registro {
 
-	private JFrame frame;
+	private JFrame frmRegistroUsuario;
 	private JTextField textFieldDocumento;
 	private JTextField textFieldMail;
 	private JTextField textFieldNombre1;
@@ -47,7 +47,7 @@ public class Registro {
 			public void run() {
 				try {
 					Registro window = new Registro();
-					window.frame.setVisible(true);
+					window.frmRegistroUsuario.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -59,7 +59,7 @@ public class Registro {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					frame.setVisible(true);
+					frmRegistroUsuario.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -83,86 +83,87 @@ public class Registro {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		frame = new JFrame();
-		frame.setBounds(100, 100, 650, 486);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.getContentPane().setLayout(null);
+		frmRegistroUsuario = new JFrame();
+		frmRegistroUsuario.setTitle("Registro Usuario");
+		frmRegistroUsuario.setBounds(100, 100, 650, 486);
+		frmRegistroUsuario.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frmRegistroUsuario.getContentPane().setLayout(null);
 		
 		JLabel lblDocumento = new JLabel("Cedula");
 		lblDocumento.setBounds(6, 24, 88, 16);
-		frame.getContentPane().add(lblDocumento);
+		frmRegistroUsuario.getContentPane().add(lblDocumento);
 		
 		JButton btnBuscar = new JButton("Buscar");
 		btnBuscar.setBounds(148, 52, 117, 29);
-		frame.getContentPane().add(btnBuscar);
+		frmRegistroUsuario.getContentPane().add(btnBuscar);
 		
 		textFieldDocumento = new JTextField();
 		textFieldDocumento.setBounds(6, 52, 130, 26);
-		frame.getContentPane().add(textFieldDocumento);
+		frmRegistroUsuario.getContentPane().add(textFieldDocumento);
 		textFieldDocumento.setColumns(10);
 		
 		textFieldMail = new JTextField();
 		textFieldMail.setColumns(10);
 		textFieldMail.setBounds(292, 52, 273, 26);
-		frame.getContentPane().add(textFieldMail);
+		frmRegistroUsuario.getContentPane().add(textFieldMail);
 		
 		JLabel lblEmail = new JLabel("Mail");
 		lblEmail.setBounds(292, 24, 88, 16);
-		frame.getContentPane().add(lblEmail);
+		frmRegistroUsuario.getContentPane().add(lblEmail);
 		
 		JLabel lblNombres = new JLabel("Nombres");
 		lblNombres.setBounds(6, 91, 88, 16);
-		frame.getContentPane().add(lblNombres);
+		frmRegistroUsuario.getContentPane().add(lblNombres);
 		
 		textFieldNombre1 = new JTextField();
 		textFieldNombre1.setColumns(10);
 		textFieldNombre1.setBounds(6, 114, 130, 26);
-		frame.getContentPane().add(textFieldNombre1);
+		frmRegistroUsuario.getContentPane().add(textFieldNombre1);
 		
 		textFieldNombre2 = new JTextField();
 		textFieldNombre2.setColumns(10);
 		textFieldNombre2.setBounds(150, 114, 130, 26);
-		frame.getContentPane().add(textFieldNombre2);
+		frmRegistroUsuario.getContentPane().add(textFieldNombre2);
 		
 		JLabel lblPassword = new JLabel("Clave");
 		lblPassword.setBounds(292, 91, 88, 16);
-		frame.getContentPane().add(lblPassword);
+		frmRegistroUsuario.getContentPane().add(lblPassword);
 		
 		JLabel lblApellidos = new JLabel("Apellidos");
 		lblApellidos.setBounds(6, 153, 88, 16);
-		frame.getContentPane().add(lblApellidos);
+		frmRegistroUsuario.getContentPane().add(lblApellidos);
 		
 		textFieldApellido1 = new JTextField();
 		textFieldApellido1.setColumns(10);
 		textFieldApellido1.setBounds(6, 181, 130, 26);
-		frame.getContentPane().add(textFieldApellido1);
+		frmRegistroUsuario.getContentPane().add(textFieldApellido1);
 		
 		textFieldApellido2 = new JTextField();
 		textFieldApellido2.setColumns(10);
 		textFieldApellido2.setBounds(150, 181, 130, 26);
-		frame.getContentPane().add(textFieldApellido2);
+		frmRegistroUsuario.getContentPane().add(textFieldApellido2);
 		
 		ConfirmaPassword = new JPasswordField();
 		ConfirmaPassword.setBounds(292, 181, 131, 26);
-		frame.getContentPane().add(ConfirmaPassword);
+		frmRegistroUsuario.getContentPane().add(ConfirmaPassword);
 		
 		Password = new JPasswordField();
 		Password.setBounds(292, 114, 131, 26);
-		frame.getContentPane().add(Password);
+		frmRegistroUsuario.getContentPane().add(Password);
 		
 		JLabel lblRepetirClave = new JLabel("Repetir Clave");
 		lblRepetirClave.setBounds(292, 153, 88, 16);
-		frame.getContentPane().add(lblRepetirClave);
+		frmRegistroUsuario.getContentPane().add(lblRepetirClave);
 		
 		JComboBox comboBoxRol = new JComboBox();
 		comboBoxRol.setModel(new DefaultComboBoxModel(new String[] {"Administrador", "Experto", "Comun"}));
 		comboBoxRol.setToolTipText("");
 		comboBoxRol.setBounds(6, 260, 173, 27);
-		frame.getContentPane().add(comboBoxRol);
+		frmRegistroUsuario.getContentPane().add(comboBoxRol);
 		
 		JLabel lblRol = new JLabel("Rol");
 		lblRol.setBounds(6, 236, 88, 16);
-		frame.getContentPane().add(lblRol);
+		frmRegistroUsuario.getContentPane().add(lblRol);
 		
 		JButton btnAlta = new JButton("Alta");
 		btnAlta.addActionListener(new ActionListener() {
@@ -236,7 +237,7 @@ public class Registro {
 				}
 		});
 		btnAlta.setBounds(6, 398, 117, 29);
-		frame.getContentPane().add(btnAlta);
+		frmRegistroUsuario.getContentPane().add(btnAlta);
 		
 		JButton btnBaja = new JButton("Modificar");
 		btnBaja.addActionListener(new ActionListener() {
@@ -245,7 +246,7 @@ public class Registro {
 			}
 		});
 		btnBaja.setBounds(130, 398, 117, 29);
-		frame.getContentPane().add(btnBaja);
+		frmRegistroUsuario.getContentPane().add(btnBaja);
 		
 		JButton btnModificar = new JButton("Eliminar");
 		btnModificar.addActionListener(new ActionListener() {
@@ -273,51 +274,51 @@ public class Registro {
 			}
 		});
 		btnModificar.setBounds(258, 398, 117, 29);
-		frame.getContentPane().add(btnModificar);
+		frmRegistroUsuario.getContentPane().add(btnModificar);
 		
 		JButton btnListar = new JButton("Listar");
 		btnListar.setBounds(387, 398, 117, 29);
-		frame.getContentPane().add(btnListar);
+		frmRegistroUsuario.getContentPane().add(btnListar);
 		
 		JLabel lblInstituto = new JLabel("Instituto");
 		lblInstituto.setBounds(435, 91, 88, 16);
-		frame.getContentPane().add(lblInstituto);
+		frmRegistroUsuario.getContentPane().add(lblInstituto);
 		
 		textFieldInstituto = new JTextField();
 		textFieldInstituto.setColumns(10);
 		textFieldInstituto.setBounds(435, 114, 130, 26);
-		frame.getContentPane().add(textFieldInstituto);
+		frmRegistroUsuario.getContentPane().add(textFieldInstituto);
 		
 		JButton btnListarTareas = new JButton("Listar Tareas");
 		btnListarTareas.setBounds(516, 398, 117, 29);
-		frame.getContentPane().add(btnListarTareas);
+		frmRegistroUsuario.getContentPane().add(btnListarTareas);
 		
 		JLabel lblProfesion = new JLabel("Profesion");
 		lblProfesion.setBounds(435, 153, 88, 16);
-		frame.getContentPane().add(lblProfesion);
+		frmRegistroUsuario.getContentPane().add(lblProfesion);
 		
 		textFieldProfesion = new JTextField();
 		textFieldProfesion.setColumns(10);
 		textFieldProfesion.setBounds(435, 181, 130, 26);
-		frame.getContentPane().add(textFieldProfesion);
+		frmRegistroUsuario.getContentPane().add(textFieldProfesion);
 		
 		JLabel lblUserName = new JLabel("User Name");
 		lblUserName.setBounds(202, 236, 88, 16);
-		frame.getContentPane().add(lblUserName);
+		frmRegistroUsuario.getContentPane().add(lblUserName);
 		
 		textFieldUserName = new JTextField();
 		textFieldUserName.setColumns(10);
 		textFieldUserName.setBounds(202, 259, 130, 26);
-		frame.getContentPane().add(textFieldUserName);
+		frmRegistroUsuario.getContentPane().add(textFieldUserName);
 		
 		textFieldListaTareas = new JTextField();
 		textFieldListaTareas.setColumns(10);
 		textFieldListaTareas.setBounds(359, 259, 130, 26);
-		frame.getContentPane().add(textFieldListaTareas);
+		frmRegistroUsuario.getContentPane().add(textFieldListaTareas);
 		
 		JLabel lblListaTareas = new JLabel("Lista Tareas");
 		lblListaTareas.setBounds(359, 236, 88, 16);
-		frame.getContentPane().add(lblListaTareas);
+		frmRegistroUsuario.getContentPane().add(lblListaTareas);
 		
 	}
 	private void limpiarCampos() {
