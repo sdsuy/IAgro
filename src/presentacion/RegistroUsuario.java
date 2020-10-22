@@ -20,6 +20,7 @@ import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.Color;
 
 public class RegistroUsuario {
 
@@ -108,11 +109,11 @@ public class RegistroUsuario {
 		frame.getContentPane().add(textFieldMail);
 		
 		JLabel lblEmail = new JLabel("Mail");
-		lblEmail.setBounds(292, 24, 88, 16);
+		lblEmail.setBounds(292, 24, 26, 16);
 		frame.getContentPane().add(lblEmail);
 		
 		JLabel lblNombres = new JLabel("Nombres");
-		lblNombres.setBounds(6, 91, 88, 16);
+		lblNombres.setBounds(6, 91, 52, 16);
 		frame.getContentPane().add(lblNombres);
 		
 		textFieldNombre1 = new JTextField();
@@ -126,11 +127,11 @@ public class RegistroUsuario {
 		frame.getContentPane().add(textFieldNombre2);
 		
 		JLabel lblPassword = new JLabel("Clave");
-		lblPassword.setBounds(292, 91, 88, 16);
+		lblPassword.setBounds(292, 91, 40, 16);
 		frame.getContentPane().add(lblPassword);
 		
 		JLabel lblApellidos = new JLabel("Apellidos");
-		lblApellidos.setBounds(6, 153, 88, 16);
+		lblApellidos.setBounds(6, 153, 52, 16);
 		frame.getContentPane().add(lblApellidos);
 		
 		textFieldApellido1 = new JTextField();
@@ -162,7 +163,7 @@ public class RegistroUsuario {
 		frame.getContentPane().add(comboBoxRol);
 		
 		JLabel lblRol = new JLabel("Rol");
-		lblRol.setBounds(6, 236, 88, 16);
+		lblRol.setBounds(6, 236, 26, 16);
 		frame.getContentPane().add(lblRol);
 		
 		JButton btnAlta = new JButton("Alta");
@@ -170,8 +171,16 @@ public class RegistroUsuario {
 			public void actionPerformed(ActionEvent e) {
 				if(textFieldDocumento.getText().isEmpty() || textFieldMail.getText().isEmpty() || textFieldNombre1.getText().isEmpty() ||  
 						textFieldApellido1.getText().isEmpty() || textFieldUserName.getText().isEmpty()  || textFieldApellido2.getText().isEmpty() || ConfirmaPassword.getText().isEmpty() || comboBoxRol.equals("")) {
-					JOptionPane.showMessageDialog(null, "No tiene todos lo campos","Error",JOptionPane.ERROR_MESSAGE);
-				}else {
+					JOptionPane.showMessageDialog(null, "Debe rellenar todos los campos obligatorios","Error",JOptionPane.ERROR_MESSAGE);
+						
+				} 
+				
+				//else if () {
+					
+				//}
+				
+				
+				else {
 						String repClave="";
 						
 						String nombRol = comboBoxRol.getSelectedItem().toString();
@@ -303,7 +312,7 @@ public class RegistroUsuario {
 		frame.getContentPane().add(textFieldProfesion);
 		
 		JLabel lblUserName = new JLabel("User Name");
-		lblUserName.setBounds(202, 236, 88, 16);
+		lblUserName.setBounds(202, 236, 52, 16);
 		frame.getContentPane().add(lblUserName);
 		
 		textFieldUserName = new JTextField();
@@ -320,6 +329,42 @@ public class RegistroUsuario {
 		lblListaTareas.setBounds(359, 236, 88, 16);
 		frame.getContentPane().add(lblListaTareas);
 		
+		JLabel lblObligatorio1 = new JLabel("*");
+		lblObligatorio1.setForeground(Color.RED);
+		lblObligatorio1.setBounds(30, 235, 26, 14);
+		frame.getContentPane().add(lblObligatorio1);
+		lblObligatorio1.setVisible(false);
+		
+		JLabel lblObligatorio2 = new JLabel("*");
+		lblObligatorio2.setForeground(Color.RED);
+		lblObligatorio2.setBounds(258, 237, 26, 14);
+		frame.getContentPane().add(lblObligatorio2);
+		lblObligatorio2.setVisible(false);
+		
+		JLabel lblObligatorio5 = new JLabel("*");
+		lblObligatorio5.setForeground(Color.RED);
+		lblObligatorio5.setBounds(64, 92, 26, 14);
+		frame.getContentPane().add(lblObligatorio5);
+		lblObligatorio5.setVisible(false);
+		
+		JLabel lblObligatorio3 = new JLabel("*");
+		lblObligatorio3.setForeground(Color.RED);
+		lblObligatorio3.setBounds(64, 154, 26, 14);
+		frame.getContentPane().add(lblObligatorio3);
+		lblObligatorio3.setVisible(false);
+		
+		JLabel lblObligatorio6 = new JLabel("*");
+		lblObligatorio6.setForeground(Color.RED);
+		lblObligatorio6.setBounds(327, 25, 26, 14);
+		frame.getContentPane().add(lblObligatorio6);
+		lblObligatorio6.setVisible(false);
+		
+		JLabel lblObligatorio4 = new JLabel("*");
+		lblObligatorio4.setForeground(Color.RED);
+		lblObligatorio4.setBounds(338, 92, 26, 14);
+		frame.getContentPane().add(lblObligatorio4);
+		lblObligatorio4.setVisible(false);
+		
 	}
 	private void limpiarCampos() {
 		textFieldDocumento.setText("");
@@ -335,6 +380,4 @@ public class RegistroUsuario {
 		ConfirmaPassword.setText("");
 		
 	}
-	
-	
 }
