@@ -91,9 +91,14 @@ public class VentanaPrincipal {
 		
 		mnAdministrador.setVisible(false);
 		
-		// Si el usuario logueado tiene como rol administrador muestro el menu Usuarios
-		if(iagro.getUsuario().getRol().equals("administrador")) mnAdministrador.setVisible(true);
+		JMenu mnFormulario = new JMenu("Formularios");
+		menuBar.add(mnFormulario);
 		
+		mnFormulario.setVisible(false);
+		
+		// Si el usuario logueado tiene como rol administrador muestro el menu Usuarios
+		if(iagro.getUsuario().getRol().equals("administrador")) mnAdministrador.setVisible(true); mnFormulario.setVisible(true);
+		if(iagro.getUsuario().getRol().equals("Experto")|| iagro.getUsuario().getRol().equals("Comun")) mnFormulario.setVisible(true);
 		JMenuItem mntmAlta = new JMenuItem("Alta");
 		mntmAlta.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -109,6 +114,14 @@ public class VentanaPrincipal {
 			}
 		});
 		mnAdministrador.add(mntmListar);
+		
+		JMenuItem mnCrear = new JMenuItem("Crear");
+		mnCrear.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e) {
+				
+			}
+		});
+	
 	}
 	private static void addPopup(Component component, final JPopupMenu popup) {
 		component.addMouseListener(new MouseAdapter() {
