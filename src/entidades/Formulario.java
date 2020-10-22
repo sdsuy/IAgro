@@ -2,7 +2,7 @@ package entidades;
 
 import java.util.Date;
 
-public class Formulario extends Usuario {
+public class Formulario {
 	
 	private int id_formulario;
 	private String met_muestreo;
@@ -135,60 +135,5 @@ public class Formulario extends Usuario {
 		this.est_muestreo = est_muestreo;
 	}
 
-	@Override
-	public String getRol() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public String getProfesion() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public void setProfesion(String profesion) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public int getCedula() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public void setCedula(int cedula) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public String getList_tareas() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public void setList_tareas(String list_tareas) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public String getInstituto() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public void setInstituto(String instituto) {
-		// TODO Auto-generated method stub
-		
-	}
-	
-	
 
 }
