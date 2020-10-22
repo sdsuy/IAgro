@@ -206,12 +206,12 @@ public class RegistroUsuario {
 		btnAlta.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				lblObligatorio1.setVisible(false);
-				lblObligatorio2.setVisible(false);
-				lblObligatorio3.setVisible(false);
-				lblObligatorio4.setVisible(false);
-				lblObligatorio5.setVisible(false);
-				lblObligatorio6.setVisible(false);
+				lblObligatorio1.setVisible(true);
+				lblObligatorio2.setVisible(true);
+				lblObligatorio3.setVisible(true);
+				lblObligatorio4.setVisible(true);
+				lblObligatorio5.setVisible(true);
+				lblObligatorio6.setVisible(true);
 				
 				if(textFieldDocumento.getText().isEmpty() || textFieldMail.getText().isEmpty() || textFieldNombre1.getText().isEmpty() ||  
 						textFieldApellido1.getText().isEmpty() || textFieldUserName.getText().isEmpty()  || textFieldApellido2.getText().isEmpty() || ConfirmaPassword.getText().isEmpty() || comboBoxRol.equals("")) {
@@ -279,6 +279,14 @@ public class RegistroUsuario {
 							if(true) {
 								limpiarCampos();
 								JOptionPane.showMessageDialog(null, "La operacion se realizo con exito","Correcto",JOptionPane.INFORMATION_MESSAGE);
+								
+								lblObligatorio1.setVisible(false);
+								lblObligatorio2.setVisible(false);
+								lblObligatorio3.setVisible(false);
+								lblObligatorio4.setVisible(false);
+								lblObligatorio5.setVisible(false);
+								lblObligatorio6.setVisible(false);
+								
 							}
 							
 							else {
@@ -289,6 +297,8 @@ public class RegistroUsuario {
 						else {
 							JOptionPane.showMessageDialog(null, "Su clave no coincide","Error",JOptionPane.ERROR_MESSAGE);
 						}
+						
+						
 					}
 				}
 		});
