@@ -87,34 +87,38 @@ public class VentanaPrincipal {
 		menuBar.setBounds(0, 0, 734, 29);
 		desktopPane.add(menuBar);
 		
-		JMenu mnAdministrador = new JMenu("Usuarios");
-		menuBar.add(mnAdministrador);
+		// Menu Usuarios
 		
-		mnAdministrador.setVisible(false);
+		JMenu mnUsuarios = new JMenu("Usuarios");
+		menuBar.add(mnUsuarios);
 		
-		JMenu mnFormulario = new JMenu("Formularios");
-		menuBar.add(mnFormulario);
-		
-		mnFormulario.setVisible(false);
+		mnUsuarios.setVisible(false);
 		
 		// Si el usuario logueado tiene como rol administrador muestro el menu Usuarios
-		if(iagro.getUsuario().getRol().equals("administrador")) mnAdministrador.setVisible(true); mnFormulario.setVisible(true);
-		if(iagro.getUsuario().getRol().equals("Experto")|| iagro.getUsuario().getRol().equals("Comun")) mnFormulario.setVisible(true);
+		if(iagro.getUsuario().getRol().equals("administrador")) mnUsuarios.setVisible(true);
+		
+		// Item Alta mnUsuarios
 		JMenuItem mntmAlta = new JMenuItem("Alta");
 		mntmAlta.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				iagro.registro();
 			}
 		});
-		mnAdministrador.add(mntmAlta);
+		mnUsuarios.add(mntmAlta);
 		
+		// Item Listar mnUsuarios
 		JMenuItem mntmListar = new JMenuItem("Listar");
 		mntmListar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				iagro.listado();
 			}
 		});
-		mnAdministrador.add(mntmListar);
+		mnUsuarios.add(mntmListar);
+		
+		// Menu Formularios
+		
+		JMenu mnFormulario = new JMenu("Formularios");
+		menuBar.add(mnFormulario);
 		
 		JMenuItem mnCrear = new JMenuItem("Crear");
 		mnCrear.addActionListener(new ActionListener(){
@@ -122,9 +126,16 @@ public class VentanaPrincipal {
 				iagro.registroFormulario();
 			}
 		});
+		
+		// Item Crear
 		mnFormulario.add(mnCrear);
+		mnCrear.setVisible(false);
+		
+		// Si el usuario logueado tiene como rol administrador o experto muestro el item Crear del menu Formularios
+		if(iagro.getUsuario().getRol().equals("administrador") || iagro.getUsuario().getRol().equals("experto")) mnCrear.setVisible(true);
 	
 	}
+	
 	private static void addPopup(Component component, final JPopupMenu popup) {
 		component.addMouseListener(new MouseAdapter() {
 			public void mousePressed(MouseEvent e) {
