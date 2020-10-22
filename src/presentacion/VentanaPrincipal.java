@@ -118,9 +118,10 @@ public class VentanaPrincipal {
 		JMenuItem mnCrear = new JMenuItem("Crear");
 		mnCrear.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e) {
-				
+				iagro.registroFormulario();
 			}
 		});
+		mnFormulario.add(mnCrear);
 	
 	}
 	private static void addPopup(Component component, final JPopupMenu popup) {

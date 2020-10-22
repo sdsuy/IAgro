@@ -4,9 +4,13 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 
+import aplicacion.IAgro;
+
 public class Registro_Formulario {
 
 	private JFrame frame;
+	
+	private IAgro iagro;
 
 	/**
 	 * Launch the application.
@@ -39,6 +43,11 @@ public class Registro_Formulario {
 	 * Create the application.
 	 */
 	public Registro_Formulario() {
+		initialize();
+	}
+	
+	public Registro_Formulario(IAgro iagro) {
+		this.iagro = iagro; // inyecto la aplicacion IAgro en la ventana
 		initialize();
 	}
 
