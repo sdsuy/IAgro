@@ -6,7 +6,7 @@ import javax.swing.JFrame;
 
 import aplicacion.IAgro;
 
-public class Registro_Formulario {
+public class RegistroFormulario {
 
 	private JFrame frmRegistroDeFormulario;
 	
@@ -19,7 +19,7 @@ public class Registro_Formulario {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Registro_Formulario window = new Registro_Formulario();
+					RegistroFormulario window = new RegistroFormulario();
 					window.frmRegistroDeFormulario.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -42,11 +42,11 @@ public class Registro_Formulario {
 	/**
 	 * Create the application.
 	 */
-	public Registro_Formulario() {
+	public RegistroFormulario() {
 		initialize();
 	}
 	
-	public Registro_Formulario(IAgro iagro) {
+	public RegistroFormulario(IAgro iagro) {
 		this.iagro = iagro; // inyecto la aplicacion IAgro en la ventana
 		initialize();
 	}
