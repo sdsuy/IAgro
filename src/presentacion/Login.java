@@ -22,7 +22,7 @@ import javax.swing.JTextArea;
 
 public class Login {
 
-	private JFrame frmIagro;
+	private JFrame frame;
 	
 	private JTextField txtFieldUser;
 	private JPasswordField textFieldPass;
@@ -40,7 +40,7 @@ public class Login {
 			public void run() {
 				try {
 					Login window = new Login();
-					window.frmIagro.setVisible(true);
+					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -56,7 +56,7 @@ public class Login {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					frmIagro.setVisible(true);
+					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -84,13 +84,13 @@ public class Login {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		frmIagro = new JFrame();
-		frmIagro.setTitle("IAgro");
-		frmIagro.setBounds(100, 100, 750, 500);
-		frmIagro.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		frame = new JFrame();
+		frame.setTitle("IAgro");
+		frame.setBounds(100, 100, 750, 500);
+		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		
 		JDesktopPane desktopPane = new JDesktopPane();
-		frmIagro.getContentPane().add(desktopPane, BorderLayout.CENTER);
+		frame.getContentPane().add(desktopPane, BorderLayout.CENTER);
 		
 		txtAreaDatosDefault = new JTextArea();
 		txtAreaDatosDefault.setEditable(false);
@@ -139,7 +139,7 @@ public class Login {
 					if(iagro.getUsuario().getId() > 0) { // si encuentro un usuario con ese id
 //						System.out.println(iagro.getUsuario().getRol());
 						iagro.menuPrincipal(); // abro la Ventana Principal
-						frmIagro.dispose(); // cierro login
+						frame.dispose(); // cierro login
 					}
 				} else {
 					// TODO:

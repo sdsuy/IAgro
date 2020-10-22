@@ -20,7 +20,7 @@ import java.awt.event.ActionEvent;
 
 public class VentanaPrincipal {
 
-	private JFrame frmAdministracin;
+	private JFrame frame;
 	
 	private IAgro iagro;
 
@@ -32,7 +32,7 @@ public class VentanaPrincipal {
 			public void run() {
 				try {
 					VentanaPrincipal window = new VentanaPrincipal();
-					window.frmAdministracin.setVisible(true);
+					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -47,7 +47,7 @@ public class VentanaPrincipal {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					frmAdministracin.setVisible(true);
+					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -75,13 +75,13 @@ public class VentanaPrincipal {
 	 */
 	private void initialize() {
 		System.out.println(iagro.getUsuario().getRol());
-		frmAdministracin = new JFrame();
-		frmAdministracin.setTitle("Principal");
-		frmAdministracin.setBounds(100, 100, 750, 500);
-		frmAdministracin.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame = new JFrame();
+		frame.setTitle("Principal");
+		frame.setBounds(100, 100, 750, 500);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		JDesktopPane desktopPane = new JDesktopPane();
-		frmAdministracin.getContentPane().add(desktopPane, BorderLayout.CENTER);
+		frame.getContentPane().add(desktopPane, BorderLayout.CENTER);
 		
 		JMenuBar menuBar = new JMenuBar();
 		menuBar.setBounds(0, 0, 734, 29);
