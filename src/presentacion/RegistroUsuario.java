@@ -21,7 +21,7 @@ import javax.swing.DefaultComboBoxModel;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class Registro {
+public class RegistroUsuario {
 
 	private JFrame frame;
 	private JTextField textFieldDocumento;
@@ -46,7 +46,7 @@ public class Registro {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Registro window = new Registro();
+					RegistroUsuario window = new RegistroUsuario();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -70,11 +70,11 @@ public class Registro {
 	/**
 	 * Create the application.
 	 */
-	public Registro() {
+	public RegistroUsuario() {
 		initialize();
 	}
 	
-	public Registro(IAgro iagro) {
+	public RegistroUsuario(IAgro iagro) {
 		this.iagro = iagro; // inyecto la aplicacion IAgro en la ventana
 		initialize();
 	}
