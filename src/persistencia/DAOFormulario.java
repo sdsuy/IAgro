@@ -2,6 +2,7 @@ package persistencia;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.SQLException;
 
 import entidades.Formulario;
 
@@ -33,8 +34,11 @@ public class DAOFormulario {
 			insertForm.setString(10, formulario.getLocalidad());
 			insertForm.setString(11, formulario.getEst_muestreo());
 			
-		} catch (Exception e) {
+			int filasAgregadas = insertForm.executeUpdate();
 			
+			return filasAgregadas>0;
+		} catch (SQLException e) {
+			e.printStackTrace();
 		}
 		return false;
 		
