@@ -156,6 +156,42 @@ public class RegistroUsuario {
 		lblRepetirClave.setBounds(292, 153, 88, 16);
 		frame.getContentPane().add(lblRepetirClave);
 		
+		JLabel lblObligatorio1 = new JLabel("*");
+		lblObligatorio1.setForeground(Color.RED);
+		lblObligatorio1.setBounds(30, 235, 26, 14);
+		frame.getContentPane().add(lblObligatorio1);
+		lblObligatorio1.setVisible(false);
+		
+		JLabel lblObligatorio2 = new JLabel("*");
+		lblObligatorio2.setForeground(Color.RED);
+		lblObligatorio2.setBounds(258, 237, 26, 14);
+		frame.getContentPane().add(lblObligatorio2);
+		lblObligatorio2.setVisible(false);
+		
+		JLabel lblObligatorio3 = new JLabel("*");
+		lblObligatorio3.setForeground(Color.RED);
+		lblObligatorio3.setBounds(64, 154, 26, 14);
+		frame.getContentPane().add(lblObligatorio3);
+		lblObligatorio3.setVisible(false);
+		
+		JLabel lblObligatorio4 = new JLabel("*");
+		lblObligatorio4.setForeground(Color.RED);
+		lblObligatorio4.setBounds(338, 92, 26, 14);
+		frame.getContentPane().add(lblObligatorio4);
+		lblObligatorio4.setVisible(false);
+		
+		JLabel lblObligatorio5 = new JLabel("*");
+		lblObligatorio5.setForeground(Color.RED);
+		lblObligatorio5.setBounds(64, 92, 26, 14);
+		frame.getContentPane().add(lblObligatorio5);
+		lblObligatorio5.setVisible(false);
+		
+		JLabel lblObligatorio6 = new JLabel("*");
+		lblObligatorio6.setForeground(Color.RED);
+		lblObligatorio6.setBounds(327, 25, 26, 14);
+		frame.getContentPane().add(lblObligatorio6);
+		lblObligatorio6.setVisible(false);
+		
 		JComboBox comboBoxRol = new JComboBox();
 		comboBoxRol.setModel(new DefaultComboBoxModel(new String[] {"","Administrador", "Experto", "Comun"}));
 		comboBoxRol.setToolTipText("");
@@ -169,6 +205,14 @@ public class RegistroUsuario {
 		JButton btnAlta = new JButton("Alta");
 		btnAlta.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
+				lblObligatorio1.setVisible(false);
+				lblObligatorio2.setVisible(false);
+				lblObligatorio3.setVisible(false);
+				lblObligatorio4.setVisible(false);
+				lblObligatorio5.setVisible(false);
+				lblObligatorio6.setVisible(false);
+				
 				if(textFieldDocumento.getText().isEmpty() || textFieldMail.getText().isEmpty() || textFieldNombre1.getText().isEmpty() ||  
 						textFieldApellido1.getText().isEmpty() || textFieldUserName.getText().isEmpty()  || textFieldApellido2.getText().isEmpty() || ConfirmaPassword.getText().isEmpty() || comboBoxRol.equals("")) {
 					JOptionPane.showMessageDialog(null, "Debe rellenar todos los campos obligatorios","Error",JOptionPane.ERROR_MESSAGE);
@@ -181,6 +225,9 @@ public class RegistroUsuario {
 				
 				
 				else {
+					
+					    
+					    
 						String repClave="";
 						
 						String nombRol = comboBoxRol.getSelectedItem().toString();
@@ -329,41 +376,7 @@ public class RegistroUsuario {
 		lblListaTareas.setBounds(359, 236, 88, 16);
 		frame.getContentPane().add(lblListaTareas);
 		
-		JLabel lblObligatorio1 = new JLabel("*");
-		lblObligatorio1.setForeground(Color.RED);
-		lblObligatorio1.setBounds(30, 235, 26, 14);
-		frame.getContentPane().add(lblObligatorio1);
-		lblObligatorio1.setVisible(false);
 		
-		JLabel lblObligatorio2 = new JLabel("*");
-		lblObligatorio2.setForeground(Color.RED);
-		lblObligatorio2.setBounds(258, 237, 26, 14);
-		frame.getContentPane().add(lblObligatorio2);
-		lblObligatorio2.setVisible(false);
-		
-		JLabel lblObligatorio5 = new JLabel("*");
-		lblObligatorio5.setForeground(Color.RED);
-		lblObligatorio5.setBounds(64, 92, 26, 14);
-		frame.getContentPane().add(lblObligatorio5);
-		lblObligatorio5.setVisible(false);
-		
-		JLabel lblObligatorio3 = new JLabel("*");
-		lblObligatorio3.setForeground(Color.RED);
-		lblObligatorio3.setBounds(64, 154, 26, 14);
-		frame.getContentPane().add(lblObligatorio3);
-		lblObligatorio3.setVisible(false);
-		
-		JLabel lblObligatorio6 = new JLabel("*");
-		lblObligatorio6.setForeground(Color.RED);
-		lblObligatorio6.setBounds(327, 25, 26, 14);
-		frame.getContentPane().add(lblObligatorio6);
-		lblObligatorio6.setVisible(false);
-		
-		JLabel lblObligatorio4 = new JLabel("*");
-		lblObligatorio4.setForeground(Color.RED);
-		lblObligatorio4.setBounds(338, 92, 26, 14);
-		frame.getContentPane().add(lblObligatorio4);
-		lblObligatorio4.setVisible(false);
 		
 	}
 	private void limpiarCampos() {
