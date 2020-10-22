@@ -120,15 +120,15 @@ public class VentanaPrincipal {
 		JMenu mnFormulario = new JMenu("Formularios");
 		menuBar.add(mnFormulario);
 		
+		// Item Crear
 		JMenuItem mnCrear = new JMenuItem("Crear");
 		mnCrear.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e) {
 				iagro.registroFormulario();
 			}
 		});
-		
-		// Item Crear
 		mnFormulario.add(mnCrear);
+		// hago el item no visible en caso el usuario sea comun
 		mnCrear.setVisible(false);
 		
 		// Si el usuario logueado tiene como rol administrador o experto muestro el item Crear del menu Formularios
