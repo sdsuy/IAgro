@@ -1,6 +1,9 @@
 package persistencia;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
+
+import entidades.Formulario;
 
 public class DAOFormulario {
 	private static Connection conexion = DatabaseManager.getConexion();
@@ -12,4 +15,29 @@ public class DAOFormulario {
 			+ "			+ \"RESUMEN = ?,DEPARTAMENTO = ?,FECHA = ?,ZONA = ?,TIP_MUESTREO = ?,GEOPUNTO = ?,LOCALIDAD = ?,EST_MUESTREO = ? WHERE ID_FORMULARIO = ?";
 	private static final String ALL_FORMULARIO = "SELECT * FROM FORMULARIO";
 	private static final String FIND_FORMULARIO = "SELECT * FROM FORMULARIO WHERE ID_FORMULARIO = ?";
+	
+	//Insertar un formulario
+	public static boolean nuevoFormulario(Formulario formulario) {
+		try {
+			PreparedStatement insertForm = conexion.prepareStatement(INSERT_FORMULARIO);
+			
+			insertForm.setString(1, formulario.getMet_muestreo());
+			insertForm.setString(2, formulario.getEquipamiento());
+			insertForm.setString(3, formulario.getNom_formulario());
+			insertForm.setString(4, formulario.getResumen());
+			insertForm.setString(5, formulario.getDepartamento());
+			insertForm.setDate(6, formulario.getFecha());
+			insertForm.setString(7, formulario.getZona());
+			insertForm.setString(8, formulario.getTip_muestreo());
+			insertForm.setLong(9, formulario.getGeopunto());
+			insertForm.setString(10, formulario.getLocalidad());
+			insertForm.setString(11, formulario.getEst_muestreo());
+			
+		} catch (Exception e) {
+			
+		}
+		return false;
+		
+	}
+	
 }
