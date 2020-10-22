@@ -8,7 +8,7 @@ import negocio.ComunBO;
 import negocio.ExpertoBO;
 import negocio.UsuarioBO;
 import presentacion.Login;
-import presentacion.Registro;
+import presentacion.RegistroUsuario;
 import presentacion.Registro_Formulario;
 import presentacion.TablaUsuarios;
 import presentacion.VentanaPrincipal;
@@ -17,7 +17,7 @@ public class IAgro {
 	
 	private Login login; // capa presentacion de login
 	private VentanaPrincipal ventana; // capa presentacion de ventana principal
-	private Registro registro; // capa presentacion de registro
+	private RegistroUsuario registro; // capa presentacion de registro
 	private Registro_Formulario registroFormulario;// capa presentacion de Registro_Formulario
 	private TablaUsuarios listado; // capa presentacion de listado
 	private UsuarioBO usuario_; // capa de negocios de usuario logueado
@@ -69,7 +69,7 @@ public class IAgro {
 	}
 	
 	public void registro() {
-		registro = new Registro(this); // instancio la ventana de registro al hacer click en Alta en el menu Usuario
+		registro = new RegistroUsuario(this); // instancio la ventana de registro al hacer click en Alta en el menu Usuario
 		registro.start();
 	}
 	
