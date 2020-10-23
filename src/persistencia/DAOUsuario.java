@@ -36,7 +36,7 @@ public abstract class DAOUsuario {
 			"    expertos.cedula,\r\n" + 
 			"    null AS instituto,\r\n" + 
 			"    expertos.profesion,\r\n" + 
-			"    expertos.lis_tareas,\r\n" + 
+			"    expertos.list_tareas,\r\n" + 
 			"    'experto' AS rol\r\n" + 
 			"FROM\r\n" + 
 			"         usuarios\r\n" + 
