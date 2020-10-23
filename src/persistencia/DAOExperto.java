@@ -14,7 +14,7 @@ public class DAOExperto extends DAOUsuario {
 	
 	private static Connection conexion = DatabaseManager.getConexion();
 	
-	private static final String INSERT_EXPERT = "INSERT INTO EXPERTOS (ID_USUARIO, LIST_TAREAS, CEDULA, PROFESION) VALUES (SEQ_ID_USUARIO.CURRVAL,?,?,?)";
+	private static final String INSERT_EXPERT = "INSERT INTO EXPERTOS (ID_USUARIO, CEDULA, PROFESION, LIST_TAREAS) VALUES (SEQ_ID_USUARIO.CURRVAL,?,?,?)";
 	private static final String UPDATE_EXPERT = "UPDATE EXPERTOS SET LIST_TAREAS=?, CEDULA=?, PROFESION=? WHERE ID_USUARIO=?";
 	private static final String ALL_EXPERTS = "SELECT * FROM EXPERTOS"; //+join
 	private static final String FIND_EXPERT = "SELECT\r\n" + 
@@ -44,10 +44,9 @@ public class DAOExperto extends DAOUsuario {
 			insertarUsuario.setString(5, user.getEmail());
 			int filasAgregadas1 = insertarUsuario.executeUpdate();
 			
-			
-			insertarExperto.setString(1, user.getList_tareas());
-			insertarExperto.setInt(2, user.getCedula());
-			insertarExperto.setString(3, user.getProfesion());
+			insertarExperto.setInt(1, user.getCedula());
+			insertarExperto.setString(2, user.getProfesion());
+			insertarExperto.setString(3, user.getList_tareas());
 			
 			int filasAgregadas2 = insertarExperto.executeUpdate();
 			
