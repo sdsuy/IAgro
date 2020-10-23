@@ -39,9 +39,17 @@ public class RegistroUsuario {
 	private JTextField textFieldInstituto;
 	private JTextField textFieldProfesion;
 	private JTextField textFieldUserName;
-	
-	private IAgro iagro;
 	private JTextField textFieldListaTareas;
+	
+	private JLabel lblObligatorio1;
+	private JLabel lblObligatorio2;
+	private JLabel lblObligatorio3;
+	private JLabel lblObligatorio4;
+	private JLabel lblObligatorio5;
+	private JLabel lblObligatorio6;
+	
+	private boolean obligatorio = true;
+	private IAgro iagro;
 
 	/**
 	 * Launch the application.
@@ -159,47 +167,43 @@ public class RegistroUsuario {
 		lblRepetirClave.setBounds(292, 153, 72, 16);
 		frame.getContentPane().add(lblRepetirClave);
 		
-		JLabel lblObligatorio1 = new JLabel("*");
+		lblObligatorio1 = new JLabel("*");
 		lblObligatorio1.setForeground(Color.RED);
 		lblObligatorio1.setBounds(30, 235, 26, 14);
 		frame.getContentPane().add(lblObligatorio1);
-		lblObligatorio1.setVisible(false);
 		
-		JLabel lblObligatorio2 = new JLabel("*");
+		lblObligatorio2 = new JLabel("*");
 		lblObligatorio2.setForeground(Color.RED);
 		lblObligatorio2.setBounds(258, 237, 26, 14);
 		frame.getContentPane().add(lblObligatorio2);
-		lblObligatorio2.setVisible(false);
 		
-		JLabel lblObligatorio3 = new JLabel("*");
+		lblObligatorio3 = new JLabel("*");
 		lblObligatorio3.setForeground(Color.RED);
 		lblObligatorio3.setBounds(64, 154, 26, 14);
 		frame.getContentPane().add(lblObligatorio3);
-		lblObligatorio3.setVisible(false);
 		
-		JLabel lblObligatorio4 = new JLabel("*");
+		lblObligatorio4 = new JLabel("*");
 		lblObligatorio4.setForeground(Color.RED);
 		lblObligatorio4.setBounds(338, 92, 26, 14);
 		frame.getContentPane().add(lblObligatorio4);
-		lblObligatorio4.setVisible(false);
 		
-		JLabel lblObligatorio5 = new JLabel("*");
+		lblObligatorio5 = new JLabel("*");
 		lblObligatorio5.setForeground(Color.RED);
 		lblObligatorio5.setBounds(64, 92, 26, 14);
 		frame.getContentPane().add(lblObligatorio5);
-		lblObligatorio5.setVisible(false);
 		
-		JLabel lblObligatorio6 = new JLabel("*");
+		lblObligatorio6 = new JLabel("*");
 		lblObligatorio6.setForeground(Color.RED);
 		lblObligatorio6.setBounds(327, 25, 26, 14);
 		frame.getContentPane().add(lblObligatorio6);
-		lblObligatorio6.setVisible(false);
 		
+		switchObligatorio();
+		
+		// se Utiliza?
 		JLabel lblObligatorio7 = new JLabel("*");
 		lblObligatorio7.setForeground(Color.RED);
 		lblObligatorio7.setBounds(368, 154, 21, 14);
 		frame.getContentPane().add(lblObligatorio7);
-		lblObligatorio6.setVisible(false);
 		
 		JComboBox comboBoxRol = new JComboBox();
 		comboBoxRol.setModel(new DefaultComboBoxModel(new String[] {"","Administrador", "Experto", "Comun"}));
@@ -213,6 +217,7 @@ public class RegistroUsuario {
 		frame.getContentPane().add(textFieldUserName);
 		
 		JLabel lblRol = new JLabel("Rol");
+		lblRol.setForeground(Color.WHITE);
 		lblRol.setBounds(6, 236, 26, 16);
 		frame.getContentPane().add(lblRol);
 		
@@ -220,13 +225,7 @@ public class RegistroUsuario {
 		btnAlta.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				lblObligatorio1.setVisible(true);
-				lblObligatorio2.setVisible(true);
-				lblObligatorio3.setVisible(true);
-				lblObligatorio4.setVisible(true);
-				lblObligatorio5.setVisible(true);
-				lblObligatorio6.setVisible(true);
-				lblObligatorio6.setVisible(true);
+				switchObligatorio();
 				
 				// Patrón para validar el email
 		        Pattern pattern = Pattern.compile("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
@@ -308,45 +307,32 @@ public class RegistroUsuario {
 							int x=Integer.parseInt(textFieldDocumento.getText());
 							user.setCedula(x);
 						}
-						if(user.getRol().equals("Administrador")) {
+						if(user.getRol().equals("administrador")) {
 							user.setInstituto(textFieldInstituto.getText());
-							iagro.createUsuario(user);
 							System.out.println(user);
 						}
-						if(user.getRol().equals("Experto")) {
+						if(user.getRol().equals("experto")) {
 							user.setProfesion(textFieldProfesion.getText());
-							iagro.createUsuario(user);
 						}
-						if(user.getRol().equals("Comun")) {
-							user.setList_tareas(textFieldListaTareas.getText());
-							iagro.createUsuario(user);
-						}
+						user.setList_tareas(textFieldListaTareas.getText());
 						
 						//Compruebo que la contrasenias sean iguales.
 						repClave=ConfirmaPassword.getText();
 						if(repClave.equals(ConfirmaPassword.getText())) {
 							
+							// creo el usuario pasadas las comprobaciones
 							boolean resultado = iagro.createUsuario(user);
-							if(true) {
+							if(resultado) {
 								limpiarCampos();
 								JOptionPane.showMessageDialog(null, "La operacion se realizo con exito","Correcto",JOptionPane.INFORMATION_MESSAGE);
 								
-								lblObligatorio1.setVisible(false);
-								lblObligatorio2.setVisible(false);
-								lblObligatorio3.setVisible(false);
-								lblObligatorio4.setVisible(false);
-								lblObligatorio5.setVisible(false);
-								lblObligatorio6.setVisible(false);
-								lblObligatorio6.setVisible(false);
+								switchObligatorio();
 								
-							}
-							
-							else {
+							} else {
 								JOptionPane.showMessageDialog(null, "Se produjo un error","Error",JOptionPane.ERROR_MESSAGE);
 							}
 
-							}
-						else {
+						} else {
 							JOptionPane.showMessageDialog(null, "Su clave no coincide","Error",JOptionPane.ERROR_MESSAGE);
 						}
 						
@@ -421,6 +407,7 @@ public class RegistroUsuario {
 		frame.getContentPane().add(textFieldProfesion);
 		
 		JLabel lblUserName = new JLabel("User Name");
+		lblUserName.setForeground(Color.WHITE);
 		lblUserName.setBounds(202, 236, 52, 16);
 		frame.getContentPane().add(lblUserName);
 		
@@ -430,6 +417,7 @@ public class RegistroUsuario {
 		frame.getContentPane().add(textFieldListaTareas);
 		
 		JLabel lblListaTareas = new JLabel("Lista Tareas");
+		lblListaTareas.setForeground(Color.WHITE);
 		lblListaTareas.setBounds(359, 236, 88, 16);
 		frame.getContentPane().add(lblListaTareas);
 		
@@ -437,12 +425,21 @@ public class RegistroUsuario {
 		lblFondo.setIcon(new ImageIcon(RegistroUsuario.class.getResource("/IMG/registroUsuarios.jpg")));
 		lblFondo.setBounds(0, -1, 734, 462);
 		frame.getContentPane().add(lblFondo);
-		
-		
-		
-		
-		
 	}
+	
+	private void switchObligatorio() {
+		
+		obligatorio = obligatorio ? false: true;
+		
+		lblObligatorio1.setVisible(obligatorio);
+		lblObligatorio2.setVisible(obligatorio);
+		lblObligatorio3.setVisible(obligatorio);
+		lblObligatorio4.setVisible(obligatorio);
+		lblObligatorio5.setVisible(obligatorio);
+		lblObligatorio6.setVisible(obligatorio);
+		lblObligatorio6.setVisible(obligatorio);
+	}
+	
 	private void limpiarCampos() {
 		textFieldDocumento.setText("");
 		textFieldMail.setText("");
