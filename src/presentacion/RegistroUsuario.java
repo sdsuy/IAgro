@@ -260,7 +260,10 @@ public class RegistroUsuario {
 					
 				}
 				
-				
+				//controlamos el largo de la pass
+				else if (Password.getText().length()<8) {
+					JOptionPane.showMessageDialog(null, "El largo de la contraseña debe ser mayor o igual a 8 caracteres","Error",JOptionPane.ERROR_MESSAGE);
+				}
 				
 				
 				else {
