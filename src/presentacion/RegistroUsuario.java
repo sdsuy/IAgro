@@ -88,7 +88,7 @@ public class RegistroUsuario {
 	private void initialize() {
 		frame = new JFrame();
 		frame.setTitle("Registro Usuario");
-		frame.setBounds(100, 100, 650, 486);
+		frame.setBounds(100, 100, 750, 500);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
