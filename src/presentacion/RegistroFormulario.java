@@ -57,7 +57,7 @@ public class RegistroFormulario {
 	private void initialize() {
 		frmRegistroDeFormulario = new JFrame();
 		frmRegistroDeFormulario.setTitle("Registro de Formulario");
-		frmRegistroDeFormulario.setBounds(100, 100, 450, 300);
+		frmRegistroDeFormulario.setBounds(100, 100, 750, 500);
 		frmRegistroDeFormulario.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 
