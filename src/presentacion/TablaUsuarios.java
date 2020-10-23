@@ -14,6 +14,14 @@ import javax.swing.JScrollPane;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JMenu;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
+import javax.swing.RowFilter;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
+import javax.swing.table.AbstractTableModel;
+import javax.swing.table.TableRowSorter;
+import javax.swing.JComboBox;
 
 public class TablaUsuarios {
 
@@ -27,6 +35,13 @@ public class TablaUsuarios {
 	private JMenu mnNewMenu;
 	private JMenuItem mntmNewMenuItem;
 	private JMenuItem mntmNewMenuItem_1;
+	private JLabel lblNewLabel;
+	private JTextField textNombre;
+	private JLabel lblNewLabel_1;
+	private JTextField textApellido;
+	private JLabel lblNewLabel_2;
+	private JComboBox comboBoxRol;
+    private TableRowSorter<ModeloTabla> sorter;
 	
 
 	/**
@@ -110,7 +125,12 @@ public class TablaUsuarios {
 		}
 		frame.getContentPane().setLayout(new BorderLayout(0, 0));
 		
-		tableUsuarios = new JTable(datos, columnas);
+		// creo un modelo para la tabla
+		ModeloTabla model = new ModeloTabla(columnas, datos);
+		
+		sorter = new TableRowSorter<ModeloTabla>(model);
+		tableUsuarios = new JTable(model);
+		tableUsuarios.setRowSorter(sorter);
 		
 		JScrollPane scrollPane = new JScrollPane(tableUsuarios);
 		frame.getContentPane().add(scrollPane);
@@ -127,7 +147,87 @@ public class TablaUsuarios {
 		mntmNewMenuItem_1 = new JMenuItem("Eliminar");
 		mnNewMenu.add(mntmNewMenuItem_1);
 		
+		lblNewLabel = new JLabel("nombre");
+		menuBar.add(lblNewLabel);
+		
+		textNombre = new JTextField();
+//		textNombre.setText("");
+		menuBar.add(textNombre);
+		textNombre.setColumns(10);
+		
+		textNombre.getDocument().addDocumentListener(
+				new DocumentListener() {
+					@Override
+					public void removeUpdate(DocumentEvent e) {
+						filterName();
+					}
+					@Override
+					public void insertUpdate(DocumentEvent e) {
+						filterName();
+					}
+					@Override
+					public void changedUpdate(DocumentEvent e) {
+						filterName();
+					}
+				});
+		
+		lblNewLabel_1 = new JLabel("apellido");
+		menuBar.add(lblNewLabel_1);
+		
+		textApellido = new JTextField();
+		menuBar.add(textApellido);
+		textApellido.setColumns(10);
+		
+		lblNewLabel_2 = new JLabel("rol");
+		menuBar.add(lblNewLabel_2);
+		
+		comboBoxRol = new JComboBox();
+		menuBar.add(comboBoxRol);
+		
 		
 	}
+	
+	/** 
+     * Update the row filter regular expression from the expression in
+     * the text box.
+     */
+    private void filterName() {
+        RowFilter<ModeloTabla, Object> rf = null;
+        //If current expression doesn't parse, don't update.
+        try {
+            rf = RowFilter.regexFilter(textNombre.getText(), 1);
+        } catch (java.util.regex.PatternSyntaxException e) {
+            return;
+        }
+        sorter.setRowFilter(rf);
+    }
+    
+    class ModeloTabla extends AbstractTableModel {
+    	
+    	private String[] columnNames;
+    	private Object[][] data;
+
+    	public ModeloTabla(String[] columnNames, Object[][] data) {
+			super();
+			this.columnNames = columnNames;
+			this.data = data;
+		}
+
+		public int getColumnCount() {
+    		return columnNames.length;
+    	}
+
+    	public int getRowCount() {
+    		return data.length;
+    	}
+
+    	public String getColumnName(int col) {
+    		return columnNames[col];
+    	}
+
+		public Object getValueAt(int row, int col) {
+    		return data[row][col];
+    	}
+    }
 
 }
