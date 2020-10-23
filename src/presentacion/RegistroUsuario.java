@@ -260,8 +260,18 @@ public class RegistroUsuario {
 					
 				}
 				
-				//controlamos el largo de la pass
-				else if (Password.getText().length()<8) {
+				//controlamos el largo de la pass y si contiene numeros
+				else if (Password.getText().length()<8 || !(
+						Password.getText().contains("1") ||
+						Password.getText().contains("2") ||
+						Password.getText().contains("3") ||
+						Password.getText().contains("4") ||
+						Password.getText().contains("5") ||
+						Password.getText().contains("6") ||
+						Password.getText().contains("7") ||
+						Password.getText().contains("8") ||
+						Password.getText().contains("9")
+						)) {
 					JOptionPane.showMessageDialog(null, "El largo de la contraseña debe ser mayor o igual a 8 caracteres","Error",JOptionPane.ERROR_MESSAGE);
 				}
 				
