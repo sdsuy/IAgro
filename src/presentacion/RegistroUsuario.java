@@ -23,6 +23,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.awt.event.ActionEvent;
 import java.awt.Color;
+import javax.swing.ImageIcon;
 
 public class RegistroUsuario {
 
@@ -431,6 +432,11 @@ public class RegistroUsuario {
 		JLabel lblListaTareas = new JLabel("Lista Tareas");
 		lblListaTareas.setBounds(359, 236, 88, 16);
 		frame.getContentPane().add(lblListaTareas);
+		
+		JLabel lblFondo = new JLabel("");
+		lblFondo.setIcon(new ImageIcon(RegistroUsuario.class.getResource("/IMG/registroUsuarios.jpg")));
+		lblFondo.setBounds(0, -1, 734, 462);
+		frame.getContentPane().add(lblFondo);
 		
 		
 		
