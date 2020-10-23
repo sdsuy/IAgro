@@ -4,9 +4,13 @@ import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 public class Comun extends Usuario {
 
+	private String list_tareas;
+
 	public Comun() {
 		super();
 	}
+	
+	
 
 	@Override
 	public String getRol() {
@@ -46,12 +50,12 @@ public class Comun extends Usuario {
 
 	@Override
 	public String getList_tareas() {
-		throw new NotImplementedException(); // no se implementa en comun
+		return list_tareas;
 	}
 
 	@Override
 	public void setList_tareas(String list_tareas) {
-		throw new NotImplementedException(); // no se implementa en comun
+		this.list_tareas = list_tareas;
 	}
 
 }
