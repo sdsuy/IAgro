@@ -11,6 +11,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JTextField;
 import javax.swing.JTextPane;
+import javax.swing.ImageIcon;
 
 public class RegistroFormulario {
 
@@ -64,7 +65,7 @@ public class RegistroFormulario {
 	private void initialize() {
 		frmRegistroDeFormulario = new JFrame();
 		frmRegistroDeFormulario.setTitle("Registro de Formulario");
-		frmRegistroDeFormulario.setBounds(100, 100, 567, 403);
+		frmRegistroDeFormulario.setBounds(100, 100, 567, 425);
 		frmRegistroDeFormulario.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmRegistroDeFormulario.getContentPane().setLayout(null);
 		
@@ -133,5 +134,10 @@ public class RegistroFormulario {
 		JLabel lblResumen = new JLabel("Resumen");
 		lblResumen.setBounds(344, 61, 126, 16);
 		frmRegistroDeFormulario.getContentPane().add(lblResumen);
+		
+		JLabel lblFondo = new JLabel("");
+		lblFondo.setIcon(new ImageIcon(RegistroFormulario.class.getResource("/IMG/registroFormulario.jpg")));
+		lblFondo.setBounds(0, 0, 551, 386);
+		frmRegistroDeFormulario.getContentPane().add(lblFondo);
 	}
 }
