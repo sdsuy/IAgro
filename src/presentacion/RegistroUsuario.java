@@ -407,7 +407,7 @@ public class RegistroUsuario {
 		JButton btnSalir = new JButton("Salir");
 		btnSalir.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				dispose();
+				System.exit(0);;
 			}
 		});
 		
