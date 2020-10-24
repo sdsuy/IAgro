@@ -74,15 +74,15 @@ public class RegistroFormulario {
 				
 			}
 		});
-		btnCrear.setBounds(62, 168, 117, 29);
+		btnCrear.setBounds(61, 145, 117, 29);
 		frmRegistroDeFormulario.getContentPane().add(btnCrear);
 		
 		JButton btnEliminar = new JButton("Eliminar");
-		btnEliminar.setBounds(62, 211, 117, 29);
+		btnEliminar.setBounds(61, 188, 117, 29);
 		frmRegistroDeFormulario.getContentPane().add(btnEliminar);
 		
 		JButton btnModificar = new JButton("Modificar");
-		btnModificar.setBounds(62, 252, 117, 29);
+		btnModificar.setBounds(61, 229, 117, 29);
 		frmRegistroDeFormulario.getContentPane().add(btnModificar);
 		
 		JButton btnListar = new JButton("Listar");
@@ -90,44 +90,44 @@ public class RegistroFormulario {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		btnListar.setBounds(62, 292, 117, 29);
+		btnListar.setBounds(61, 269, 117, 29);
 		frmRegistroDeFormulario.getContentPane().add(btnListar);
 		
 		JLabel lblNewLabel = new JLabel("Formulario");
-		lblNewLabel.setBounds(82, 140, 126, 16);
+		lblNewLabel.setBounds(81, 117, 126, 16);
 		frmRegistroDeFormulario.getContentPane().add(lblNewLabel);
 		
 		JLabel lblCasillas = new JLabel("Casillas");
-		lblCasillas.setBounds(232, 140, 126, 16);
+		lblCasillas.setBounds(231, 117, 126, 16);
 		frmRegistroDeFormulario.getContentPane().add(lblCasillas);
 		
 		JButton btnCrearCasillas = new JButton("Crear");
-		btnCrearCasillas.setBounds(206, 168, 117, 29);
+		btnCrearCasillas.setBounds(205, 145, 117, 29);
 		frmRegistroDeFormulario.getContentPane().add(btnCrearCasillas);
 		
 		JButton btnEliminarCasilla = new JButton("Eliminar");
-		btnEliminarCasilla.setBounds(206, 211, 117, 29);
+		btnEliminarCasilla.setBounds(205, 188, 117, 29);
 		frmRegistroDeFormulario.getContentPane().add(btnEliminarCasilla);
 		
 		JButton btnModificarCasillas = new JButton("Modificar");
-		btnModificarCasillas.setBounds(206, 252, 117, 29);
+		btnModificarCasillas.setBounds(205, 229, 117, 29);
 		frmRegistroDeFormulario.getContentPane().add(btnModificarCasillas);
 		
 		JButton btnListarCasillas = new JButton("Listar ");
-		btnListarCasillas.setBounds(206, 292, 117, 29);
+		btnListarCasillas.setBounds(205, 269, 117, 29);
 		frmRegistroDeFormulario.getContentPane().add(btnListarCasillas);
 		
 		textField = new JTextField();
-		textField.setBounds(65, 85, 130, 26);
+		textField.setBounds(10, 80, 130, 26);
 		frmRegistroDeFormulario.getContentPane().add(textField);
 		textField.setColumns(10);
 		
 		JLabel lblNombreFormulario = new JLabel("Nombre Formulario");
-		lblNombreFormulario.setBounds(62, 61, 126, 16);
+		lblNombreFormulario.setBounds(10, 58, 126, 16);
 		frmRegistroDeFormulario.getContentPane().add(lblNombreFormulario);
 		
 		JTextPane textPane = new JTextPane();
-		textPane.setBounds(344, 85, 217, 252);
+		textPane.setBounds(344, 85, 197, 252);
 		frmRegistroDeFormulario.getContentPane().add(textPane);
 		
 		JLabel lblResumen = new JLabel("Resumen");
