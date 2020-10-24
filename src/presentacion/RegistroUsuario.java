@@ -404,9 +404,15 @@ public class RegistroUsuario {
 		textFieldInstituto.setBounds(435, 114, 130, 26);
 		frame.getContentPane().add(textFieldInstituto);
 		
-		JButton btnListarTareas = new JButton("Listar Tareas");
-		btnListarTareas.setBounds(516, 398, 117, 29);
-		frame.getContentPane().add(btnListarTareas);
+		JButton btnSalir = new JButton("Salir");
+		btnSalir.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+			}
+		});
+		
+		btnSalir.setBounds(516, 398, 117, 29);
+		frame.getContentPane().add(btnSalir);
 		
 		JLabel lblProfesion = new JLabel("Profesion");
 		lblProfesion.setBounds(435, 153, 88, 16);
