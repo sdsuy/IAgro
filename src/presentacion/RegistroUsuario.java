@@ -7,6 +7,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JButton;
 import javax.swing.JTextField;
+import javax.swing.text.MaskFormatter;
 
 import aplicacion.IAgro;
 import entidades.Administrador;
@@ -17,8 +18,10 @@ import negocio.UsuarioBO;
 
 import javax.swing.JPasswordField;
 import javax.swing.JComboBox;
+import javax.swing.JFormattedTextField;
 import javax.swing.DefaultComboBoxModel;
 import java.awt.event.ActionListener;
+import java.text.ParseException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.awt.event.ActionEvent;
@@ -28,7 +31,8 @@ import javax.swing.ImageIcon;
 public class RegistroUsuario {
 
 	private JFrame frame;
-	private JTextField textFieldDocumento;
+	//private JTextField textFieldDocumento;
+	private JFormattedTextField formattedTextFieldCedula;
 	private JTextField textFieldMail;
 	private JTextField textFieldNombre1;
 	private JTextField textFieldNombre2;
@@ -109,10 +113,17 @@ public class RegistroUsuario {
 		btnBuscar.setBounds(148, 52, 117, 29);
 		frame.getContentPane().add(btnBuscar);
 		
-		textFieldDocumento = new JTextField();
-		textFieldDocumento.setBounds(6, 52, 130, 26);
-		frame.getContentPane().add(textFieldDocumento);
-		textFieldDocumento.setColumns(10);
+		MaskFormatter formatter = null;
+		try {
+			formatter = new MaskFormatter("#.###.###-#");
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		
+		formattedTextFieldCedula = new JFormattedTextField(formatter);
+		formattedTextFieldCedula.setBounds(6, 52, 130, 26);
+		frame.getContentPane().add(formattedTextFieldCedula);
+		formattedTextFieldCedula.setColumns(10);
 		
 		textFieldMail = new JTextField();
 		textFieldMail.setColumns(10);
@@ -227,14 +238,14 @@ public class RegistroUsuario {
 				
 				switchObligatorio();
 				
-				// Patrón para validar el email
+				// Patrï¿½n para validar el email
 		        Pattern pattern = Pattern.compile("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
 		                        + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$");
 		        
 		        Matcher mather = pattern.matcher(textFieldMail.getText());
 				
 		        //controlamos si hay algun campo vacio
-				if(textFieldDocumento.getText().isEmpty() || textFieldMail.getText().isEmpty() || textFieldNombre1.getText().isEmpty() ||  
+				if(formattedTextFieldCedula.getText().isEmpty() || textFieldMail.getText().isEmpty() || textFieldNombre1.getText().isEmpty() ||  
 						textFieldApellido1.getText().isEmpty() || textFieldUserName.getText().isEmpty()  || textFieldApellido2.getText().isEmpty() || ConfirmaPassword.getText().isEmpty() || comboBoxRol.equals("")) {
 					JOptionPane.showMessageDialog(null, "Debe rellenar todos los campos obligatorios","Error",JOptionPane.ERROR_MESSAGE);
 						
@@ -272,7 +283,7 @@ public class RegistroUsuario {
 						Password.getText().contains("8") ||
 						Password.getText().contains("9")
 						)) {
-					JOptionPane.showMessageDialog(null, "El largo de la contraseña debe ser mayor o igual a 8 caracteres","Error",JOptionPane.ERROR_MESSAGE);
+					JOptionPane.showMessageDialog(null, "El largo de la contraseï¿½a debe ser mayor o igual a 8 caracteres","Error",JOptionPane.ERROR_MESSAGE);
 				}
 				
 				
