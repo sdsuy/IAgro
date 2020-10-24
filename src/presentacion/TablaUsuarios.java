@@ -1,7 +1,9 @@
 package presentacion;
 
 import java.awt.EventQueue;
+import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.List;
 
 import javax.swing.JFrame;
 import javax.swing.JTable;
@@ -159,15 +161,15 @@ public class TablaUsuarios {
 				new DocumentListener() {
 					@Override
 					public void removeUpdate(DocumentEvent e) {
-						filterName();
+						filterColumns();
 					}
 					@Override
 					public void insertUpdate(DocumentEvent e) {
-						filterName();
+						filterColumns();
 					}
 					@Override
 					public void changedUpdate(DocumentEvent e) {
-						filterName();
+						filterColumns();
 					}
 				});
 		
@@ -177,6 +179,22 @@ public class TablaUsuarios {
 		textApellido = new JTextField();
 		menuBar.add(textApellido);
 		textApellido.setColumns(10);
+		
+		textApellido.getDocument().addDocumentListener(
+				new DocumentListener() {
+					@Override
+					public void removeUpdate(DocumentEvent e) {
+						filterColumns();
+					}
+					@Override
+					public void insertUpdate(DocumentEvent e) {
+						filterColumns();
+					}
+					@Override
+					public void changedUpdate(DocumentEvent e) {
+						filterColumns();
+					}
+				});
 		
 		lblNewLabel_2 = new JLabel("rol");
 		menuBar.add(lblNewLabel_2);
@@ -191,11 +209,15 @@ public class TablaUsuarios {
      * Update the row filter regular expression from the expression in
      * the text box.
      */
-    private void filterName() {
+    private void filterColumns() {
         RowFilter<ModeloTabla, Object> rf = null;
         //If current expression doesn't parse, don't update.
         try {
-            rf = RowFilter.regexFilter(textNombre.getText(), 1);
+        	List<RowFilter<Object, Object>> filters = new ArrayList<RowFilter<Object, Object>>(2);
+        	filters.add(RowFilter.regexFilter(textNombre.getText(), 1));
+        	filters.add(RowFilter.regexFilter(textApellido.getText(), 2));
+//            rf = RowFilter.regexFilter(textNombre.getText(), 1);
+        	rf = RowFilter.andFilter(filters);
         } catch (java.util.regex.PatternSyntaxException e) {
             return;
         }
