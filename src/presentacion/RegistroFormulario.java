@@ -12,6 +12,7 @@ import java.awt.event.ActionEvent;
 import javax.swing.JTextField;
 import javax.swing.JTextPane;
 import javax.swing.ImageIcon;
+import java.awt.Color;
 
 public class RegistroFormulario {
 
@@ -124,7 +125,7 @@ public class RegistroFormulario {
 		textField.setColumns(10);
 		
 		JLabel lblNombreFormulario = new JLabel("Nombre Formulario");
-		lblNombreFormulario.setBounds(10, 58, 126, 16);
+		lblNombreFormulario.setBounds(10, 58, 98, 16);
 		frmRegistroDeFormulario.getContentPane().add(lblNombreFormulario);
 		
 		JTextPane textPane = new JTextPane();
@@ -135,9 +136,16 @@ public class RegistroFormulario {
 		lblResumen.setBounds(344, 61, 126, 16);
 		frmRegistroDeFormulario.getContentPane().add(lblResumen);
 		
+		JLabel lblObligatorio = new JLabel("*");
+		lblObligatorio.setForeground(Color.RED);
+		lblObligatorio.setBounds(118, 59, 26, 14);
+		frmRegistroDeFormulario.getContentPane().add(lblObligatorio);
+		
 		JLabel lblFondo = new JLabel("");
 		lblFondo.setIcon(new ImageIcon(RegistroFormulario.class.getResource("/IMG/registroFormulario.jpg")));
 		lblFondo.setBounds(0, 0, 551, 386);
 		frmRegistroDeFormulario.getContentPane().add(lblFondo);
 	}
+	
+	
 }
