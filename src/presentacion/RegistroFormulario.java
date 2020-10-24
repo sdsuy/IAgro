@@ -19,7 +19,7 @@ public class RegistroFormulario {
 	private JFrame frmRegistroDeFormulario;
 	
 	private IAgro iagro;
-	private JTextField textField;
+	private JTextField textFieldNombre;
 	
 	private JLabel lblObligatorio;
 	
@@ -78,6 +78,7 @@ public class RegistroFormulario {
 		btnCrear.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
+				
 			}
 		});
 		btnCrear.setBounds(61, 145, 117, 29);
@@ -123,10 +124,10 @@ public class RegistroFormulario {
 		btnListarCasillas.setBounds(205, 269, 117, 29);
 		frmRegistroDeFormulario.getContentPane().add(btnListarCasillas);
 		
-		textField = new JTextField();
-		textField.setBounds(10, 80, 130, 26);
-		frmRegistroDeFormulario.getContentPane().add(textField);
-		textField.setColumns(10);
+		textFieldNombre = new JTextField();
+		textFieldNombre.setBounds(10, 80, 130, 26);
+		frmRegistroDeFormulario.getContentPane().add(textFieldNombre);
+		textFieldNombre.setColumns(10);
 		
 		JLabel lblNombreFormulario = new JLabel("Nombre Formulario");
 		lblNombreFormulario.setBounds(10, 58, 98, 16);
