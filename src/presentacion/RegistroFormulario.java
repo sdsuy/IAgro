@@ -61,20 +61,20 @@ public class RegistroFormulario {
 	private void initialize() {
 		frmRegistroDeFormulario = new JFrame();
 		frmRegistroDeFormulario.setTitle("Registro de Formulario");
-		frmRegistroDeFormulario.setBounds(100, 100, 750, 500);
+		frmRegistroDeFormulario.setBounds(100, 100, 456, 293);
 		frmRegistroDeFormulario.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmRegistroDeFormulario.getContentPane().setLayout(null);
 		
 		JButton btnNewButton = new JButton("Crear");
-		btnNewButton.setBounds(20, 84, 117, 29);
+		btnNewButton.setBounds(59, 84, 117, 29);
 		frmRegistroDeFormulario.getContentPane().add(btnNewButton);
 		
 		JButton btnBaja = new JButton("Eliminar");
-		btnBaja.setBounds(20, 127, 117, 29);
+		btnBaja.setBounds(59, 127, 117, 29);
 		frmRegistroDeFormulario.getContentPane().add(btnBaja);
 		
 		JButton btnModificar = new JButton("Modificar");
-		btnModificar.setBounds(20, 168, 117, 29);
+		btnModificar.setBounds(59, 168, 117, 29);
 		frmRegistroDeFormulario.getContentPane().add(btnModificar);
 		
 		JButton btnBaja_1 = new JButton("Listar");
@@ -82,11 +82,31 @@ public class RegistroFormulario {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		btnBaja_1.setBounds(20, 208, 117, 29);
+		btnBaja_1.setBounds(59, 208, 117, 29);
 		frmRegistroDeFormulario.getContentPane().add(btnBaja_1);
 		
 		JLabel lblNewLabel = new JLabel("Formulario");
-		lblNewLabel.setBounds(44, 56, 126, 16);
+		lblNewLabel.setBounds(79, 56, 126, 16);
 		frmRegistroDeFormulario.getContentPane().add(lblNewLabel);
+		
+		JLabel lblCasillas = new JLabel("Casillas");
+		lblCasillas.setBounds(262, 56, 126, 16);
+		frmRegistroDeFormulario.getContentPane().add(lblCasillas);
+		
+		JButton btnNewButton_1 = new JButton("Crear");
+		btnNewButton_1.setBounds(236, 84, 117, 29);
+		frmRegistroDeFormulario.getContentPane().add(btnNewButton_1);
+		
+		JButton btnBaja_2 = new JButton("Eliminar");
+		btnBaja_2.setBounds(236, 127, 117, 29);
+		frmRegistroDeFormulario.getContentPane().add(btnBaja_2);
+		
+		JButton btnModificar_1 = new JButton("Modificar");
+		btnModificar_1.setBounds(236, 168, 117, 29);
+		frmRegistroDeFormulario.getContentPane().add(btnModificar_1);
+		
+		JButton btnBaja_1_1 = new JButton("Listar");
+		btnBaja_1_1.setBounds(236, 208, 117, 29);
+		frmRegistroDeFormulario.getContentPane().add(btnBaja_1_1);
 	}
 }
