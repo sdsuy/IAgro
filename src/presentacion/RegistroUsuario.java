@@ -51,6 +51,7 @@ public class RegistroUsuario {
 	private JLabel lblObligatorio4;
 	private JLabel lblObligatorio5;
 	private JLabel lblObligatorio6;
+	private JLabel lblObligatorio7;
 	
 	private boolean obligatorio = true;
 	private IAgro iagro;
@@ -208,13 +209,13 @@ public class RegistroUsuario {
 		lblObligatorio6.setBounds(327, 25, 26, 14);
 		frame.getContentPane().add(lblObligatorio6);
 		
-		switchObligatorio();
-		
-		// se Utiliza?
-		JLabel lblObligatorio7 = new JLabel("*");
+		// se Utiliza? / indicamos con un * que el campo repetir la pass es obligatorio
+		lblObligatorio7 = new JLabel("*");
 		lblObligatorio7.setForeground(Color.RED);
 		lblObligatorio7.setBounds(368, 154, 21, 14);
 		frame.getContentPane().add(lblObligatorio7);
+		
+		switchObligatorio();
 		
 		JComboBox comboBoxRol = new JComboBox();
 		comboBoxRol.setModel(new DefaultComboBoxModel(new String[] {"","Administrador", "Experto", "Comun"}));
@@ -445,6 +446,9 @@ public class RegistroUsuario {
 		lblObligatorio5.setVisible(obligatorio);
 		lblObligatorio6.setVisible(obligatorio);
 		lblObligatorio6.setVisible(obligatorio);
+		lblObligatorio7.setVisible(obligatorio);
+		
+		
 	}
 	
 	private void limpiarCampos() {
