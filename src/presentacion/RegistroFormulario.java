@@ -20,6 +20,10 @@ public class RegistroFormulario {
 	
 	private IAgro iagro;
 	private JTextField textField;
+	
+	private JLabel lblObligatorio;
+	
+	private boolean obligatorio = true;
 
 	/**
 	 * Launch the application.
@@ -136,7 +140,7 @@ public class RegistroFormulario {
 		lblResumen.setBounds(344, 61, 126, 16);
 		frmRegistroDeFormulario.getContentPane().add(lblResumen);
 		
-		JLabel lblObligatorio = new JLabel("*");
+		lblObligatorio = new JLabel("*");
 		lblObligatorio.setForeground(Color.RED);
 		lblObligatorio.setBounds(118, 59, 26, 14);
 		frmRegistroDeFormulario.getContentPane().add(lblObligatorio);
@@ -146,6 +150,17 @@ public class RegistroFormulario {
 		lblFondo.setBounds(0, 0, 551, 386);
 		frmRegistroDeFormulario.getContentPane().add(lblFondo);
 	}
+	
+    private void switchObligatorio() {
+        obligatorio = obligatorio ? false: true;
+		
+		lblObligatorio.setVisible(obligatorio);
+		
+    }
+		
+		
+	
+	
 	
 	
 }
