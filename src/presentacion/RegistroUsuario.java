@@ -283,7 +283,7 @@ public class RegistroUsuario {
 						Password.getText().contains("8") ||
 						Password.getText().contains("9")
 						)) {
-					JOptionPane.showMessageDialog(null, "El largo de la contrase�a debe ser mayor o igual a 8 caracteres","Error",JOptionPane.ERROR_MESSAGE);
+					JOptionPane.showMessageDialog(null, "El largo de la clave debe ser mayor o igual a 8 caracteres","Error",JOptionPane.ERROR_MESSAGE);
 				}
 				
 				
