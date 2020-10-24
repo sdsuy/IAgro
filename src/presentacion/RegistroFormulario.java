@@ -5,6 +5,9 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 
 import aplicacion.IAgro;
+import entidades.Formulario;
+import entidades.Usuario;
+
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -17,6 +20,7 @@ import javax.swing.ImageIcon;
 import java.awt.Color;
 
 public class RegistroFormulario {
+	
 
 	private JFrame frmRegistroDeFormulario;
 	
@@ -26,6 +30,7 @@ public class RegistroFormulario {
 	private JLabel lblObligatorio;
 	
 	private boolean obligatorio = true;
+	
 
 	/**
 	 * Launch the application.
@@ -70,6 +75,7 @@ public class RegistroFormulario {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
+		
 		frmRegistroDeFormulario = new JFrame();
 		frmRegistroDeFormulario.setTitle("Registro de Formulario");
 		frmRegistroDeFormulario.setBounds(100, 100, 567, 425);
@@ -80,8 +86,10 @@ public class RegistroFormulario {
 		btnCrear.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(textFieldNombre.getText().isEmpty()) {
+					
 					JOptionPane.showMessageDialog(null,"Debe completar el campo Nombre de Formulario","Error", JOptionPane.ERROR_MESSAGE);
-				}else if(textFieldNombre.getText().contains("0")||
+				}
+				else if(textFieldNombre.getText().contains("0")||
 						textFieldNombre.getText().contains("1")||
 						textFieldNombre.getText().contains("2")||
 						textFieldNombre.getText().contains("3")||
@@ -90,10 +98,26 @@ public class RegistroFormulario {
 						textFieldNombre.getText().contains("6")||
 						textFieldNombre.getText().contains("7")||
 						textFieldNombre.getText().contains("8")||
-						textFieldNombre.getText().contains("9"));
-				JOptionPane.showMessageDialog(null,"El Nombre del Formulario debe no debe contenter numeros ","Error", JOptionPane.ERROR_MESSAGE);
+						textFieldNombre.getText().contains("9")){
+							JOptionPane.showMessageDialog(null,"El Nombre del Formulario debe no debe contenter numeros ","Error", JOptionPane.ERROR_MESSAGE);
+						}
+			else {
+				
+				Formulario formulario = new Formulario();
+				formulario.setNom_formulario(textFieldNombre.getText());
+				Usuario user = iagro.getUsuario();
+				
+				
 				
 			}
+				
+			}
+				
+				
+			
+			
+			
+			
 		});
 		btnCrear.setBounds(61, 145, 117, 29);
 		frmRegistroDeFormulario.getContentPane().add(btnCrear);
@@ -147,9 +171,9 @@ public class RegistroFormulario {
 		lblNombreFormulario.setBounds(10, 58, 98, 16);
 		frmRegistroDeFormulario.getContentPane().add(lblNombreFormulario);
 		
-		JTextPane textPane = new JTextPane();
-		textPane.setBounds(344, 85, 197, 252);
-		frmRegistroDeFormulario.getContentPane().add(textPane);
+		JTextPane textPaneResumen = new JTextPane();
+		textPaneResumen.setBounds(344, 85, 197, 252);
+		frmRegistroDeFormulario.getContentPane().add(textPaneResumen);
 		
 		JLabel lblResumen = new JLabel("Resumen");
 		lblResumen.setBounds(344, 61, 126, 16);
