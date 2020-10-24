@@ -267,7 +267,7 @@ public class RegistroUsuario {
 						textFieldUserName.getText().contains("8") ||
 						textFieldUserName.getText().contains("9")) {
 					
-					JOptionPane.showMessageDialog(null, "El nombre de usuario no puede cotener numeros","Error",JOptionPane.ERROR_MESSAGE);
+					JOptionPane.showMessageDialog(null, "El nombre de usuario no puede contener numeros","Error",JOptionPane.ERROR_MESSAGE);
 					
 				}
 				
