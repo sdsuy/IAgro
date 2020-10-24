@@ -7,6 +7,8 @@ import javax.swing.JFrame;
 import aplicacion.IAgro;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JTextField;
@@ -77,7 +79,19 @@ public class RegistroFormulario {
 		JButton btnCrear = new JButton("Crear");
 		btnCrear.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				if(textFieldNombre.getText().isEmpty()) {
+					JOptionPane.showMessageDialog(null,"Debe completar el campo Nombre de Formulario","Error", JOptionPane.ERROR_MESSAGE);
+				}else if(textFieldNombre.getText().contains("0")||
+						textFieldNombre.getText().contains("1")||
+						textFieldNombre.getText().contains("2")||
+						textFieldNombre.getText().contains("3")||
+						textFieldNombre.getText().contains("4")||
+						textFieldNombre.getText().contains("5")||
+						textFieldNombre.getText().contains("6")||
+						textFieldNombre.getText().contains("7")||
+						textFieldNombre.getText().contains("8")||
+						textFieldNombre.getText().contains("9"));
+				JOptionPane.showMessageDialog(null,"El Nombre del Formulario debe no debe contenter numeros ","Error", JOptionPane.ERROR_MESSAGE);
 				
 			}
 		});
