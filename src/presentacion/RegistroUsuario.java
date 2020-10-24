@@ -315,7 +315,7 @@ public class RegistroUsuario {
 						
 						//Hasta aqui asigno los atributo de usuario
 						if(nombRol.equals("Administrador") || nombRol.equals("Experto")) {
-							int x=Integer.parseInt(textFieldDocumento.getText());
+							int x=Integer.parseInt(formattedTextFieldCedula.getText());
 							user.setCedula(x);
 						}
 						if(user.getRol().equals("administrador")) {
@@ -452,7 +452,7 @@ public class RegistroUsuario {
 	}
 	
 	private void limpiarCampos() {
-		textFieldDocumento.setText("");
+		formattedTextFieldCedula.setText("");
 		textFieldMail.setText("");
 		textFieldNombre1.setText("");
 		textFieldNombre2.setText("");
